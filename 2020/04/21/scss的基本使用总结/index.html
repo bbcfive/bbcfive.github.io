@@ -29,7 +29,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、关系"><span class="toc-text">一、关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、引入"><span class="toc-text">二、引入</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、关系"><span class="toc-text">一、关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、引入"><span class="toc-text">二、引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、动态"><span class="toc-text">三、动态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、逻辑"><span class="toc-text">四、逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、总结"><span class="toc-text">五、总结</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -187,7 +187,7 @@
             <span>
                 
                   
-                    <a href="/tags/css scss">css scss</a>
+                    <a href="/tags/css && scss">css && scss</a>
                   
                 
             </span>
@@ -206,9 +206,7 @@
 <li><code>scss</code> 是 <code>sass3</code> 引入新引入的,其语法完全兼容 <code>css3</code>,并且继承了 <code>sass</code> 的强大功能。</li>
 <li><code>scss</code> 和 <code>sass</code> 的区别在于前者语法格式上需要 <code>{}</code> 和 <code>;</code> ,而后者多用缩进表达，语法较为简洁。<br><a href="https://img-blog.csdnimg.cn/2020041117195020.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tpbUJpbmc=,size_16,color_FFFFFF,t_70" target="_blank" rel="noopener" data-caption="avatat" data-fancybox="images"><img src="https://img-blog.csdnimg.cn/2020041117195020.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tpbUJpbmc=,size_16,color_FFFFFF,t_70" alt="avatat"></a></li>
 </ol>
-<h2 id="二、引入">二、引入<a class="post-anchor" href="#二、引入"></a></h2><p>一般scss搭配vue使用，即在 <code>xxx.vue</code> 中声明引入：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><style lang=<span class="hljs-string">'scss'</span>><<span class="hljs-regexp">/style></span><br></code></pre></td></tr></tbody></table></figure>
-
+<h2 id="二、引入">二、引入<a class="post-anchor" href="#二、引入"></a></h2><p>一般scss搭配vue使用，即在 <code>xxx.vue</code> 中声明引入：<br>  <style lang="scss"></style></p>
 <h2 id="三、动态">三、动态<a class="post-anchor" href="#三、动态"></a></h2><ol>
 <li><p>引入变量<br>使用 <code>scss</code></p>
 <figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// 定义变量 Colors</span><br><span class="hljs-variable">$red</span>:       <span class="hljs-number">#CD594B</span> !global;<br><span class="hljs-variable">$yellow</span>:    <span class="hljs-number">#F8CE5E</span>;<br><span class="hljs-variable">$green</span>:     <span class="hljs-number">#4B9E65</span>;<br><br><span class="hljs-comment">// 定义变量 Unites</span><br><span class="hljs-variable">$btn-lineheight</span>: <span class="hljs-number">26px</span>;<br><br><span class="hljs-comment">// 使用变量 Colors, Unites</span><br><span class="hljs-selector-class">.btn-success</span> {<br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$green</span>;<br>  <span class="hljs-attribute">line-height</span>: <span class="hljs-variable">$btn-lineheight</span>;<br>  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
