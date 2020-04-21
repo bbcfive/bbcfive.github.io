@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      scss的基本使用总结 - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、关系"><span class="toc-text">一、关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、引入"><span class="toc-text">二、引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、动态"><span class="toc-text">三、动态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、逻辑"><span class="toc-text">四、逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、总结"><span class="toc-text">五、总结</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="954998840" target="_block">
+              <span class="iconfont icon-weixin"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">scss的基本使用总结</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/04/21</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/css, scss">css, scss</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><p>前言：本文是对 <code>十月ooOO</code> 的 <a href="https://blog.csdn.net/KimBing/article/details/89738636" target="_blank" rel="noopener">SCSS 日常用法</a> 一文的提炼总结;</p>
+<h2 id="一、关系">一、关系<a class="post-anchor" href="#一、关系"></a></h2><blockquote>
+<p>简单来说： <code>scss</code>(<code>less</code>/<code>sass</code>) =  有 <code>逻辑</code> 的 <code>动态</code> <code>css</code></p>
+</blockquote>
+<ol>
+<li><code>less</code> 和 <code>sass</code> 是两种 <code>css</code> 的预编译语言，两种语言是动态的 <code>css</code>，且最终都会转化成 <code>css</code> 执行。</li>
+<li><code>scss</code> 是 <code>sass3</code> 引入新引入的,其语法完全兼容 <code>css3</code>,并且继承了 <code>sass</code> 的强大功能。</li>
+<li><code>scss</code> 和 <code>sass</code> 的区别在于前者语法格式上需要 <code>{}</code> 和 <code>;</code> ,而后者多用缩进表达，语法较为简洁。<br><a href="https://img-blog.csdnimg.cn/2020041117195020.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tpbUJpbmc=,size_16,color_FFFFFF,t_70" target="_blank" rel="noopener" data-caption="avatat" data-fancybox="images"><img src="https://img-blog.csdnimg.cn/2020041117195020.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tpbUJpbmc=,size_16,color_FFFFFF,t_70" alt="avatat"></a></li>
+</ol>
+<h2 id="二、引入">二、引入<a class="post-anchor" href="#二、引入"></a></h2><p>一般scss搭配vue使用，即在 <code>xxx.vue</code> 中声明引入：</p>
+<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><style lang='scss'></style><br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="三、动态">三、动态<a class="post-anchor" href="#三、动态"></a></h2><ol>
+<li><p>引入变量</p>
+<blockquote>
+<p>使用 <code>scss</code></p>
+</blockquote>
+<figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// 定义变量 Colors</span><br><span class="hljs-variable">$red</span>:       <span class="hljs-number">#CD594B</span> !global;<br><span class="hljs-variable">$yellow</span>:    <span class="hljs-number">#F8CE5E</span>;<br><span class="hljs-variable">$green</span>:     <span class="hljs-number">#4B9E65</span>;<br><br><span class="hljs-comment">// 定义变量 Unites</span><br><span class="hljs-variable">$btn-lineheight</span>: <span class="hljs-number">26px</span>;<br><br><span class="hljs-comment">// 使用变量 Colors, Unites</span><br><span class="hljs-selector-class">.btn-success</span> {<br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$green</span>;<br>  <span class="hljs-attribute">line-height</span>: <span class="hljs-variable">$btn-lineheight</span>;<br>  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>生成 <code>css</code></p>
+</blockquote>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.btn-success</span> {<br>    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#4B9E65</span>;<br>    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">26px</span>;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;<br>}<br></code></pre></td></tr></tbody></table></figure></li>
+<li><p>嵌入字符串： <code>#{ 变量 }</code></p>
+<blockquote>
+<p>使用 <code>scss</code></p>
+</blockquote>
+<figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-variable">$bg-path</span>: <span class="hljs-string">"./img"</span>;<br><br><span class="hljs-selector-class">.card</span>{<br>    <span class="hljs-attribute">background-color</span>: url(<span class="hljs-string">"#{$bg-path}/card-bg.png"</span> center center);<br>}<br></code></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>生成 <code>css</code></p>
+</blockquote>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.card</span>{<br>    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"./img/card-bg.png"</span> center center);<br>}<br></code></pre></td></tr></tbody></table></figure></li>
+<li><p>导入文件： <code>@import</code></p>
+<blockquote>
+<p>使用 <code>scss</code> </p>
+</blockquote>
+<figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// _variables.scss</span><br><span class="hljs-variable">$bg-btn</span>: <span class="hljs-number">#ddd</span>;<br><span class="hljs-variable">$color-btn</span>: <span class="hljs-number">#444</span>;<br><br><span class="hljs-comment">// btn.scss</span><br><span class="hljs-keyword">@import</span> <span class="hljs-string">"_variables"</span>;<br><br><span class="hljs-selector-class">.btn</span>{<br>    <span class="hljs-attribute">display</span>: inline-block;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">3px</span> <span class="hljs-number">6px</span>;<br>    <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$bg-btn</span>; <br>    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-btn</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>生成 <code>css</code></p>
+</blockquote>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.btn</span>{<br>    <span class="hljs-attribute">display</span>: inline-block;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">3px</span> <span class="hljs-number">6px</span>;<br>    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ddd</span>; <br>    <span class="hljs-attribute">color</span>: <span class="hljs-number">#444</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>相互嵌入，扩展： <code>@mixin</code> <code>@include</code></p>
+</li>
+</ol>
+<blockquote>
+<p>使用 <code>scss</code> </p>
+</blockquote>
+<figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// @mixin 如果没有调用，不会被渲染</span><br><br><span class="hljs-keyword">@mixin</span> rounded(<span class="hljs-variable">$conor</span>: <span class="hljs-number">5px</span>){ <span class="hljs-comment">// 定义 mixin 并设置默认值 5px</span><br>  -webkit-<span class="hljs-attribute">border-radius</span>: <span class="hljs-variable">$conor</span>;<br>  -moz-<span class="hljs-attribute">border-radius</span>: <span class="hljs-variable">$conor</span>;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-variable">$conor</span>;<br>}<br><br><span class="hljs-selector-class">.btn-rounded</span>{<br>  <span class="hljs-keyword">@include</span> rounded(); <span class="hljs-comment">// 这里引用上面的 mixin，默认值 5px</span><br>}<br><br><span class="hljs-selector-class">.btn-big-rounded</span>{<br>  <span class="hljs-keyword">@include</span> rounded(<span class="hljs-number">10px</span>); <span class="hljs-comment">// 这里引用上面的 mixin，并设置值 10px</span><br>}<br></code></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>生成 <code>css</code></p>
+</blockquote>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.btn-rounded</span>{<br>    <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-number">5px</span>;<br>    <span class="hljs-attribute">-moz-border-radius</span>: <span class="hljs-number">5px</span>;<br>    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;<br>}<br><span class="hljs-selector-class">.btn-big-rounded</span>{<br>    <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-number">10px</span>;<br>    <span class="hljs-attribute">-moz-border-radius</span>: <span class="hljs-number">10px</span>;<br>    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">10px</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<ol start="5">
+<li>继承： <code>@extend</code><blockquote>
+<p>使用 <code>scss</code> </p>
+</blockquote>
+<figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-class">.danger</span>{<br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#FF3B30</span>;<br>}<br><span class="hljs-selector-class">.round</span>{<br>  -webkit-<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;<br>  -moz-<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;<br>}<br><span class="hljs-selector-class">.btn</span>{<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">3px</span> <span class="hljs-number">6px</span>;<br>}<br><br><span class="hljs-selector-class">.btn-danger</span>{<br>  <span class="hljs-keyword">@extend</span> .danger, .round, .btn;<br>}<br></code></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>生成 <code>css</code></p>
+</blockquote>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.danger</span>, <span class="hljs-selector-class">.btn-danger</span> {<br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#FF3B30</span>;<br>}<br><span class="hljs-selector-class">.round</span>, <span class="hljs-selector-class">.btn-danger</span> {<br>  <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-number">5px</span>;<br>  <span class="hljs-attribute">-moz-border-radius</span>: <span class="hljs-number">5px</span>;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;<br>}<br><span class="hljs-selector-class">.btn</span>, <span class="hljs-selector-class">.btn-danger</span> {<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">3px</span> <span class="hljs-number">6px</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="四、逻辑">四、逻辑<a class="post-anchor" href="#四、逻辑"></a></h2></li>
+<li>判断： <code>@if</code> <code>@else</code><blockquote>
+<p>使用 <code>scss</code></p>
+</blockquote>
+<figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-keyword">@if</span> <span class="hljs-variable">$name</span> == normal {   <span class="hljs-comment">// 判断 $name 是否为 'normal'</span><br>  <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;          <span class="hljs-comment">// 如果是，内部文字颜色为 #333</span><br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid darken(<span class="hljs-variable">$color</span>, <span class="hljs-number">20%</span>);<br>} <span class="hljs-keyword">@else</span> {<br>  <span class="hljs-attribute">color</span>: white;<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid darken(<span class="hljs-variable">$color</span>, <span class="hljs-number">5%</span>);<br>}<br></code></pre></td></tr></tbody></table></figure></li>
+<li>遍历： <code>@each</code><blockquote>
+<p>使用 <code>scss</code></p>
+</blockquote>
+<figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-variable">$btn-styles</span>: <span class="hljs-string">"normal"</span>, <span class="hljs-string">"primary"</span>, <span class="hljs-string">"danger"</span>;<br><br><span class="hljs-keyword">@each</span> <span class="hljs-variable">$type</span> in <span class="hljs-variable">$btn-styles</span> {<br>  <span class="hljs-selector-class">.btn-</span>#{<span class="hljs-variable">$type</span>}{<br>    <span class="hljs-attribute">background-color</span>: white;<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>生成 <code>css</code></p>
+</blockquote>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.btn-normal</span>  { <span class="hljs-attribute">background-color</span>: white; }<br><span class="hljs-selector-class">.btn-primary</span> { <span class="hljs-attribute">background-color</span>: white; }<br><span class="hljs-selector-class">.btn-danger</span>  { <span class="hljs-attribute">background-color</span>: white; }<br></code></pre></td></tr></tbody></table></figure></li>
+<li>遍历： <code>@for</code><blockquote>
+<p>使用 <code>scss</code></p>
+</blockquote>
+<figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-keyword">@for</span> <span class="hljs-variable">$gap</span> from <span class="hljs-number">1</span> through <span class="hljs-number">8</span> {<br>  <span class="hljs-selector-class">.pb-</span>#{<span class="hljs-variable">$gap</span>} {<br>    <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">10px</span> * <span class="hljs-variable">$gap</span>;<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>生成 <code>css</code></p>
+</blockquote>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.pb-1</span> { <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">10px</span>; }<br><span class="hljs-selector-class">.pb-2</span> { <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">20px</span>; }<br><span class="hljs-selector-class">.pb-3</span> { <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">30px</span>; }<br><span class="hljs-selector-class">.pb-4</span> { <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">40px</span>; }<br><span class="hljs-selector-class">.pb-5</span> { <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">50px</span>; }<br><span class="hljs-selector-class">.pb-6</span> { <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">60px</span>; }<br><span class="hljs-selector-class">.pb-7</span> { <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">70px</span>; }<br><span class="hljs-selector-class">.pb-8</span> { <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">80px</span>; }<br></code></pre></td></tr></tbody></table></figure></li>
+<li>函数： <code>@function</code> <code>@return</code><blockquote>
+<p>使用 <code>scss</code></p>
+</blockquote>
+<figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-variable">$root</span>: <span class="hljs-number">14</span>;<br><br><span class="hljs-comment">// 定义一个方法用于换算尺寸的方法</span><br><span class="hljs-comment">// #{} 是输出字符串的，上面有讲</span><br><span class="hljs-keyword">@function</span> size(<span class="hljs-variable">$size</span>) {<br>  @return #{$size/$root}rem<br>}<br><br><span class="hljs-selector-class">.font-size-normal</span> {<br>  <span class="hljs-attribute">font-size</span>: size(<span class="hljs-number">16</span>); <br>}<br></code></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>生成 <code>css</code></p>
+</blockquote>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.font-size-normal</span> {<br>  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.1428571429rem</span>;<br>}<br></code></pre></td></tr></tbody></table></figure></li>
+<li>关系： <code>&</code><blockquote>
+<p>使用 <code>scss</code></p>
+</blockquote>
+<figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-class">.btn</span>{<br><span class="hljs-comment">// btn 初始样式</span><br>    &<span class="hljs-selector-pseudo">:hover</span>{<br>        <span class="hljs-comment">// hover 样式</span><br>    }<br>    &<span class="hljs-selector-pseudo">:active</span>{<br>        <span class="hljs-comment">// active 样式</span><br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>生成 <code>css</code></p>
+</blockquote>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.btn</span> {<br><span class="hljs-comment">/* btn 初始样式 */</span><br>}<br><span class="hljs-selector-class">.btn</span><span class="hljs-selector-pseudo">:hover</span>{<br><span class="hljs-comment">/* :hover 样式 */</span><br>}<br><span class="hljs-selector-class">.btn</span><span class="hljs-selector-pseudo">:active</span>{<br><span class="hljs-comment">/* :active 样式 */</span><br>}<br></code></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<h2 id="五、总结">五、总结<a class="post-anchor" href="#五、总结"></a></h2><blockquote>
+<p>总的来说： <code>scss</code> 就是有 <code>逻辑</code> 的 <code>动态</code> <code>css</code> 。</p>
+</blockquote>
+</body></html>
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/04/19/exapmle/">exapmle</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2020/04/21/scss%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">https://bbcfive.github.io/2020/04/21/scss%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
