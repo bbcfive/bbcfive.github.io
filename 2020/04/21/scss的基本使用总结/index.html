@@ -207,7 +207,7 @@
 <li><code>scss</code> 和 <code>sass</code> 的区别在于前者语法格式上需要 <code>{}</code> 和 <code>;</code> ,而后者多用缩进表达，语法较为简洁。<br><a href="https://img-blog.csdnimg.cn/2020041117195020.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tpbUJpbmc=,size_16,color_FFFFFF,t_70" target="_blank" rel="noopener" data-caption="avatat" data-fancybox="images"><img src="https://img-blog.csdnimg.cn/2020041117195020.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tpbUJpbmc=,size_16,color_FFFFFF,t_70" alt="avatat"></a></li>
 </ol>
 <h2 id="二、引入">二、引入<a class="post-anchor" href="#二、引入"></a></h2><p>一般scss搭配vue使用，即在 <code>xxx.vue</code> 中声明引入：</p>
-<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><style lang='scss'></style><br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// 定义变量 Colors</span><br><span class="hljs-variable">$red</span>:       <span class="hljs-number">#CD594B</span> !global;<br><span class="hljs-variable">$yellow</span>:    <span class="hljs-number">#F8CE5E</span>;<br><span class="hljs-variable">$green</span>:     <span class="hljs-number">#4B9E65</span>;<br><br><span class="hljs-comment">// 定义变量 Unites</span><br><span class="hljs-variable">$btn-lineheight</span>: <span class="hljs-number">26px</span>;<br><br><span class="hljs-comment">// 使用变量 Colors, Unites</span><br><span class="hljs-selector-class">.btn-success</span> {<br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$green</span>;<br>  <span class="hljs-attribute">line-height</span>: <span class="hljs-variable">$btn-lineheight</span>;<br>  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;<br>}<br><br><style lang='scss'></style><br></code></pre></td></tr></tbody></table></figure>
 
 <h2 id="三、动态">三、动态<a class="post-anchor" href="#三、动态"></a></h2><ol>
 <li><p>引入变量<br>使用 <code>scss</code></p>
@@ -283,6 +283,8 @@
   
   <div class="post-guide">
     <div class="item left">
+        
+          <a href="/2020/04/21/%E5%85%B3%E4%BA%8E%E8%B7%A8%E5%9F%9F%E5%92%8C%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AE/">关于跨域和跨域访问</a>
         
     </div>
     <div class="item right">
