@@ -27,6 +27,11 @@
   <body>
     <canvas id='pagemap'></canvas>
     
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、概念"><span class="toc-text">一、概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、实现原理"><span class="toc-text">二、实现原理</span></a></li></ol>
+    </div>
+    
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
       <span class="icon-toc menu-reset">Toc</span>
@@ -192,7 +197,19 @@
       <div>
       </div>
     </div>
-    
+    <html><head></head><body><h2 id="一、概念">一、概念<a class="post-anchor" href="#一、概念"></a></h2><ol>
+<li><p>函数防抖（debounce）：就是指触发事件后在 n 秒内函数只能执行一次，如果在 n 秒内又触发了事件，则会重新计算函数执行时间。<br>eg：坐公交，需要等最后一个人进入才能关门。每次进入一个人，司机就会多等待几秒再关门。<br>场景：搜索框搜索输入。只需用户最后一次输入完，再发送请求</p>
+</li>
+<li><p>函数节流（throttle）：限制一个函数在一定时间内只能执行一次。<br>eg：坐地铁，过闸机时，每个人进入后3秒后门关闭，等待下一个人进入。<br>场景：滚动加载、表单重复提交</p>
+</li>
+</ol>
+<h2 id="二、实现原理">二、实现原理<a class="post-anchor" href="#二、实现原理"></a></h2><p>函数防抖:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> _.debounce = <span class="hljs-function">(<span class="hljs-params">func, wait</span>) =></span> {<br>  <span class="hljs-keyword">let</span> timer;<br><br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    clearTimeout(timer);<br>    timer = setTimeout(func, wait);<br>  };<br>};<br></code></pre></td></tr></tbody></table></figure>
+<p>函数节流:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> _.throttle = <span class="hljs-function">(<span class="hljs-params">func, wait</span>) =></span> {<br>  <span class="hljs-keyword">let</span> timer;<br><br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    <span class="hljs-keyword">if</span> (timer) {<br>      <span class="hljs-keyword">return</span>;<br>    }<br><br>    timer = setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>      func();<br>      timer = <span class="hljs-literal">null</span>;<br>    }, wait);<br>  };<br>};<br></code></pre></td></tr></tbody></table></figure>
+<p>or</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> throttle = <span class="hljs-function">(<span class="hljs-params">func, wait</span>) =></span> {<br>  <span class="hljs-keyword">let</span> last = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    <span class="hljs-keyword">const</span> current_time = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();<br>    <span class="hljs-keyword">if</span> (current_time - last > wait) {<br>      func.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);<br>      last = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();<br>    }<br>  };<br>};<br></code></pre></td></tr></tbody></table></figure>
+</body></html>
 
   
     <!-- <div class="post-reward">
