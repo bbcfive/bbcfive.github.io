@@ -16,7 +16,7 @@
     <meta name="description" content="" />
     
     <title>
-      关于函数防抖与函数节流 - 执白的博客
+      redux入门 - 执白的博客
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -29,7 +29,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、概念"><span class="toc-text">一、概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、实现原理"><span class="toc-text">二、实现原理</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、redux简介"><span class="toc-text">一、redux简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、redux-devtools-extension"><span class="toc-text">二、redux-devtools-extension</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、状态管理库的作用"><span class="toc-text">三、状态管理库的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、不需要用babel打包"><span class="toc-text">四、不需要用babel打包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、工作原理"><span class="toc-text">五、工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、中间件"><span class="toc-text">六、中间件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、基础"><span class="toc-text">七、基础</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -159,11 +159,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">关于函数防抖与函数节流</div>
+      <div class="title">redux入门</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2020/05/11</span>
+          <span>2019/01/21</span>
         </span>
 
         
@@ -190,6 +190,10 @@
                     <a href="/tags/JavaScript">JavaScript</a>
                   
                 
+                  
+                    <a href="/tags/redux">redux</a>
+                  
+                
             </span>
           </span>
          
@@ -197,20 +201,21 @@
       <div>
       </div>
     </div>
-    <html><head></head><body><h2 id="一、概念">一、概念<a class="post-anchor" href="#一、概念"></a></h2><ol>
-<li><p>函数防抖（debounce）：就是指触发事件后在 n 秒内函数只能执行一次，如果在 n 秒内又触发了事件，则会重新计算函数执行时间。<br>eg：坐公交，需要等最后一个人进入才能关门。每次进入一个人，司机就会多等待几秒再关门。<br>场景：搜索框搜索输入。只需用户最后一次输入完，再发送请求</p>
-</li>
-<li><p>函数节流（throttle）：限制一个函数在一定时间内只能执行一次。<br>eg：坐地铁，过闸机时，每个人进入后3秒后门关闭，等待下一个人进入。<br>场景：滚动加载、表单重复提交</p>
+    <html><head></head><body><h2 id="一、redux简介">一、redux简介<a class="post-anchor" href="#一、redux简介"></a></h2><p><code>redux是JavaScript状态容器，提供可预测化的状态管理。</code><br><code>它可以运行于不同环境（客户端、服务器和移动端）</code></p>
+<h2 id="二、redux-devtools-extension">二、redux-devtools-extension<a class="post-anchor" href="#二、redux-devtools-extension"></a></h2><p>redux的时间旅行调试器可以编辑后实时预览。<br>使用方法：</p>
+<ol>
+<li>npm redux-devtools-extension<figure class="highlight plain"><figcaption><span>{ composeWithDevTools } from 'redux-devtools-extension';```</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs import">```composeWithDevTools(applyMiddleware())<br></code></pre></td></tr></tbody></table></figure></li>
+<li>store内加入行代码<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> store = createStore(<br>  rootReducer,<br>  <span class="hljs-comment">// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()</span><br>);<br></code></pre></td></tr></tbody></table></figure>
+
 </li>
 </ol>
-<h2 id="二、实现原理">二、实现原理<a class="post-anchor" href="#二、实现原理"></a></h2><p>函数防抖:</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> _.debounce = <span class="hljs-function">(<span class="hljs-params">func, wait</span>) =></span> {<br>  <span class="hljs-keyword">let</span> timer;<br><br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    clearTimeout(timer);<br>    timer = setTimeout(func, wait);<br>  };<br>};<br></code></pre></td></tr></tbody></table></figure>
-<p>函数节流:</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> _.throttle = <span class="hljs-function">(<span class="hljs-params">func, wait</span>) =></span> {<br>  <span class="hljs-keyword">let</span> timer;<br><br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    <span class="hljs-keyword">if</span> (timer) {<br>      <span class="hljs-keyword">return</span>;<br>    }<br><br>    timer = setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>      func();<br>      timer = <span class="hljs-literal">null</span>;<br>    }, wait);<br>  };<br>};<br></code></pre></td></tr></tbody></table></figure>
-<p>or</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> throttle = <span class="hljs-function">(<span class="hljs-params">func, wait</span>) =></span> {<br>  <span class="hljs-keyword">let</span> last = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    <span class="hljs-keyword">const</span> current_time = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();<br>    <span class="hljs-keyword">if</span> (current_time - last > wait) {<br>      func.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);<br>      last = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();<br>    }<br>  };<br>};<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="三、状态管理库的作用">三、状态管理库的作用<a class="post-anchor" href="#三、状态管理库的作用"></a></h2><p>实现日志打印，热加载，时间旅行，同构应用，录制和重放</p>
+<h2 id="四、不需要用babel打包">四、不需要用babel打包<a class="post-anchor" href="#四、不需要用babel打包"></a></h2><p>Redux 源文件由 ES2015 编写，但是会预编译到 CommonJS 和 UMD 规范的 ES5，所以它可以支持 任何现代浏览器。不必非得使用 Babel 或模块打包器来使用 Redux。</p>
+<h2 id="五、工作原理">五、工作原理<a class="post-anchor" href="#五、工作原理"></a></h2><p>所有的state以一个Json树形式存储在全局唯一的store中，唯一改变state的办法是触发一个action，为了描述action如何改变了state树，需要编写reducers。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> { createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;<br><br><span class="hljs-comment">// 创建reducers</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">counter</span>(<span class="hljs-params">state = <span class="hljs-number">0</span>, action</span>) </span>{<br>  <span class="hljs-keyword">switch</span> (action.type) {<br>  <span class="hljs-keyword">case</span> <span class="hljs-string">'INCREMENT'</span>:<br>    <span class="hljs-keyword">return</span> state + <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">case</span> <span class="hljs-string">'DECREMENT'</span>:<br>    <span class="hljs-keyword">return</span> state - <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">default</span>:<br>    <span class="hljs-keyword">return</span> state;<br>  }<br>}<br><br><span class="hljs-comment">// 创建 Redux store 来存放应用的状态。</span><br><span class="hljs-comment">// API 是 { subscribe, dispatch, getState }。</span><br><span class="hljs-keyword">let</span> store = createStore(counter);<br><br><span class="hljs-comment">// 可以手动订阅更新，也可以事件绑定到视图层。</span><br>store.subscribe(<span class="hljs-function"><span class="hljs-params">()</span> =></span><br>  <span class="hljs-built_in">console</span>.log(store.getState())<br>);<br><br><span class="hljs-comment">// 改变内部 state 惟一方法是 dispatch 一个 action。</span><br><span class="hljs-comment">// action 可以被序列化，用日记记录和储存下来，后期还可以以回放的方式执行</span><br>store.dispatch({ <span class="hljs-attr">type</span>: <span class="hljs-string">'INCREMENT'</span> });<br><span class="hljs-comment">// 1</span><br>store.dispatch({ <span class="hljs-attr">type</span>: <span class="hljs-string">'INCREMENT'</span> });<br><span class="hljs-comment">// 2</span><br>store.dispatch({ <span class="hljs-attr">type</span>: <span class="hljs-string">'DECREMENT'</span> });<br><span class="hljs-comment">// 1</span><br><br><span class="hljs-comment">// 如果有很多个reducers，可以直接bind到props</span><br><span class="hljs-keyword">const</span> mapDispatchToProps = <span class="hljs-function">(<span class="hljs-params">dispatch</span>) =></span> {<br>    <span class="hljs-keyword">return</span> bindActionCreators(reducers, dispatch);<br>};<br><br><span class="hljs-comment">// 再connect到组件里</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> connect(mapStateToProps, mapDispatchToProps)(App);<br></code></pre></td></tr></tbody></table></figure>
 
-<p>参考：<a href="https://www.jianshu.com/p/f9f6b637fd6c" target="_blank" rel="noopener">《浅析函数防抖与函数节流》</a></p>
+<h2 id="六、中间件">六、中间件<a class="post-anchor" href="#六、中间件"></a></h2><p>通俗理解就是：以最小的代价来最大限度的复用逻辑。 =》 中间商 =》 中介<br>前端开发中的中间件：以koa为例，其实就是generator+http<br>参考：<br>1.<a href="http://zhenhua-lee.github.io/node/middleware.html" target="_blank" rel="noopener">http://zhenhua-lee.github.io/node/middleware.html</a><br>2.<a href="https://guoyongfeng.github.io/book/15/02-%E5%88%9D%E6%AD%A5%E7%90%86%E8%A7%A3middleware%E4%B8%AD%E9%97%B4%E4%BB%B6.html" target="_blank" rel="noopener">https://guoyongfeng.github.io/book/15/02-%E5%88%9D%E6%AD%A5%E7%90%86%E8%A7%A3middleware%E4%B8%AD%E9%97%B4%E4%BB%B6.html</a></p>
+<h2 id="七、基础">七、基础<a class="post-anchor" href="#七、基础"></a></h2><p>action：把数据传到store的唯一载荷，通过store.dispatch()将action传到store。store 里能直接通过 store.dispatch() 调用 dispatch() 方法，但是多数情况下你会使用 react-redux 提供的 connect() 帮助器来调用。bindActionCreators() 可以自动把多个 action 创建函数 绑定到 dispatch() 方法上。<br>reducer：描述如何更新state，使store内的具体数据变换对应相应的action。表达式：(previousState, action) => newState<br>store：在使用reducer来根据action更新state时，store的作用有：1. 维持应用的 state；2. 提供 getState() 方法获取 state；3. 提供 dispatch(action) 方法更新 state；4. 通过 subscribe(listener) 注册监听器; 5. 通过 unsubscribe(listener) 返回的函数注销监听器。</p>
 </body></html>
 
   
@@ -237,12 +242,12 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2020/05/11/%E5%85%B3%E4%BA%8E%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/">关于双向数据绑定</a>
+          <a href="/2019/01/21/%E5%85%B3%E4%BA%8E%E8%B7%A8%E5%9F%9F%E5%92%8C%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AE/">关于跨域和跨域访问</a>
         
     </div>
     <div class="item right">
         
-          <a href="/2020/05/01/%E4%B8%89%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">三种类型的设计模式及其相关术语</a>
+          <a href="/2018/12/14/jQuery%E7%9F%A5%E8%AF%86%E7%82%B9%E5%AD%A6%E4%B9%A0%E6%95%B4%E7%90%86/">jQuery知识点学习整理</a>
         
     </div>
   </div>
@@ -254,7 +259,7 @@
       本文作者：<a href="https://bbcfive.github.io">执白</a>
     </div>
     <!-- <div class="link">
-      永久链接：<a href="https://bbcfive.github.io/2020/05/11/%E5%85%B3%E4%BA%8E%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81/">https://bbcfive.github.io/2020/05/11/%E5%85%B3%E4%BA%8E%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81/</a>
+      永久链接：<a href="https://bbcfive.github.io/2019/01/21/redux%E5%85%A5%E9%97%A8/">https://bbcfive.github.io/2019/01/21/redux%E5%85%A5%E9%97%A8/</a>
     </div> -->
     <div class="declare">
       版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
