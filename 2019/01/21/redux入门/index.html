@@ -201,11 +201,11 @@
       <div>
       </div>
     </div>
-    <html><head></head><body><h2 id="一、redux简介">一、redux简介<a class="post-anchor" href="#一、redux简介"></a></h2><p><code>redux是JavaScript状态容器，提供可预测化的状态管理。</code><br><code>它可以运行于不同环境（客户端、服务器和移动端）</code></p>
+    <html><head></head><body><h2 id="一、redux简介">一、redux简介<a class="post-anchor" href="#一、redux简介"></a></h2><p>redux是JavaScript<code>状态容器</code>，提供可预测化的状态管理。<br>它可以运行于不同环境（客户端、服务器和移动端）。</p>
 <h2 id="二、redux-devtools-extension">二、redux-devtools-extension<a class="post-anchor" href="#二、redux-devtools-extension"></a></h2><p>redux的时间旅行调试器可以编辑后实时预览。<br>使用方法：</p>
 <ol>
-<li>npm redux-devtools-extension<figure class="highlight plain"><figcaption><span>{ composeWithDevTools } from 'redux-devtools-extension';```</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs import">```composeWithDevTools(applyMiddleware())<br></code></pre></td></tr></tbody></table></figure></li>
-<li>store内加入行代码<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> store = createStore(<br>  rootReducer,<br>  <span class="hljs-comment">// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()</span><br>);<br></code></pre></td></tr></tbody></table></figure>
+<li>npm redux-devtools-extension<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> { composeWithDevTools } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-devtools-extension'</span>;<br>composeWithDevTools(applyMiddleware())<br></code></pre></td></tr></tbody></table></figure></li>
+<li>store内加入行代码<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> store = createStore(<br>  rootReducer,<br>  <span class="hljs-built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION__ && <span class="hljs-built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION__()<br>);<br></code></pre></td></tr></tbody></table></figure>
 
 </li>
 </ol>
