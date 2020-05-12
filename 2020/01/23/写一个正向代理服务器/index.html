@@ -16,7 +16,7 @@
     <meta name="description" content="" />
     
     <title>
-      标签 - 执白的博客
+      写一个正向代理服务器 - 执白的博客
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -26,6 +26,11 @@
   <meta name="generator" content="Hexo 4.2.0"></head>
   <body>
     <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、概念"><span class="toc-text">一、概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、实现"><span class="toc-text">二、实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、测试"><span class="toc-text">三、测试</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -68,7 +73,7 @@
           分类
         </a>
         
-        <a href="/tags" class="current">
+        <a href="/tags" class="">
           标签
         </a>
         
@@ -118,7 +123,7 @@
             分类
           </a>
           
-          <a href="/tags" class="current">
+          <a href="/tags" class="">
             标签
           </a>
           
@@ -147,113 +152,115 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            标签 - JavaScript
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/05/11/%E5%85%B3%E4%BA%8E%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81/" title="关于函数防抖与函数节流">
-                <span>2020/05/11</span>
-                <span>关于函数防抖与函数节流</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/05/01/%E4%B8%89%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="三种类型的设计模式及其相关术语">
-                <span>2020/05/01</span>
-                <span>三种类型的设计模式及其相关术语</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/23/%E5%86%99%E4%B8%80%E4%B8%AA%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="写一个正向代理服务器">
-                <span>2020/01/23</span>
-                <span>写一个正向代理服务器</span>
-            </a>
-            </article>
-            
-
-
-    
-    </div>
-    </section>
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2019" >
-                2019
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2019/01/21/%E5%85%B3%E4%BA%8E%E8%B7%A8%E5%9F%9F%E5%92%8C%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AE/" title="关于跨域和跨域访问">
-                <span>2019/01/21</span>
-                <span>关于跨域和跨域访问</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2019/01/21/redux%E5%85%A5%E9%97%A8/" title="redux入门">
-                <span>2019/01/21</span>
-                <span>redux入门</span>
-            </a>
-            </article>
-            
-
-
-    
-    </div>
-    </section>
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2018" >
-                2018
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2018/12/14/jQuery%E7%9F%A5%E8%AF%86%E7%82%B9%E5%AD%A6%E4%B9%A0%E6%95%B4%E7%90%86/" title="jQuery知识点学习整理">
-                <span>2018/12/14</span>
-                <span>jQuery知识点学习整理</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <span class="page-number current">1</span>
-</div>
-</div>
+      <div class="title">写一个正向代理服务器</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/01/23</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/后端">后端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/NodeJs">NodeJs</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h2 id="一、概念">一、概念<a class="post-anchor" href="#一、概念"></a></h2><p>正向代理：代理client，用于代理上网<br>反向代理：代理server，用于网站防护、负载均衡</p>
+<h2 id="二、实现">二、实现<a class="post-anchor" href="#二、实现"></a></h2><p>NodeJs代码：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);<br><span class="hljs-keyword">var</span> url = <span class="hljs-built_in">require</span>(<span class="hljs-string">"url"</span>);<br><br>http.createServer(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res</span>)</span>{<br> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"start request:"</span>,req.url);<br><br> <span class="hljs-keyword">var</span> option = url.parse(req.url);<br> option.headers = req.headers;<br><br> <span class="hljs-keyword">var</span> proxyRequest = http.request(option, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">proxyResponse</span>)</span>{<br><br> <br> proxyResponse.on(<span class="hljs-string">"data"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">chunk</span>)</span>{<br> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"proxyResponse length"</span>,chunk.length);<br> });<br> proxyResponse.on(<span class="hljs-string">"end"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<br> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"proxyed request ended"</span>);<br> res.end();<br> })<br><br> res.writeHead(proxyResponse.statusCode,proxyResponse.headers);<br> });<br><br> <br> req.on(<span class="hljs-string">"data"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">chunk</span>)</span>{<br> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"in request length:"</span>,chunk.length);<br> proxyRequest.write(chunk,<span class="hljs-string">"binary"</span>);<br> })<br><br> req.on(<span class="hljs-string">"end"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<br> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"original request ended"</span>);<br> proxyRequest.end();<br> })<br><br>}).listen(<span class="hljs-number">8080</span>);<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="三、测试">三、测试<a class="post-anchor" href="#三、测试"></a></h2><ol>
+<li>启动Node服务器</li>
+<li>设置浏览器的http代理</li>
+<li>打开网页，正常，测试成功</li>
+</ol>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/04/21/scss%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">scss的基本使用总结</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/01/21/%E5%85%B3%E4%BA%8E%E8%B7%A8%E5%9F%9F%E5%92%8C%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AE/">关于跨域和跨域访问</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2020/01/23/%E5%86%99%E4%B8%80%E4%B8%AA%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/">https://bbcfive.github.io/2020/01/23/%E5%86%99%E4%B8%80%E4%B8%AA%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020
