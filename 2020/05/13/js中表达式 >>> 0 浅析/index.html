@@ -16,7 +16,7 @@
     <meta name="description" content="" />
     
     <title>
-      关于函数防抖与函数节流 - 执白的博客
+      js中表达式 &gt;&gt;&gt; 0 浅析 - 执白的博客
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -29,7 +29,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、概念"><span class="toc-text">一、概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、实现原理"><span class="toc-text">二、实现原理</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、-gt-gt-和-gt-gt-gt-区别"><span class="toc-text">一、&gt;&gt; 和 &gt;&gt;&gt; 区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、移位0有什么意义"><span class="toc-text">二、移位0有什么意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Uint32类型是如何转换的"><span class="toc-text">三、Uint32类型是如何转换的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、总结"><span class="toc-text">四、总结</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -155,11 +155,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">关于函数防抖与函数节流</div>
+      <div class="title">js中表达式 >>> 0 浅析</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2020/05/11</span>
+          <span>2020/05/13</span>
         </span>
 
         
@@ -197,20 +197,28 @@
       <div>
       </div>
     </div>
-    <html><head></head><body><h2 id="一、概念">一、概念<a class="post-anchor" href="#一、概念"></a></h2><ol>
-<li><p>函数防抖（debounce）：就是指触发事件后在 n 秒内函数只能执行一次，如果在 n 秒内又触发了事件，则会重新计算函数执行时间。<br>eg：坐公交，需要等最后一个人进入才能关门。每次进入一个人，司机就会多等待几秒再关门。<br>场景：搜索框搜索输入。只需用户最后一次输入完，再发送请求</p>
-</li>
-<li><p>函数节流（throttle）：限制一个函数在一定时间内只能执行一次。<br>eg：坐地铁，过闸机时，每个人进入后3秒后门关闭，等待下一个人进入。<br>场景：滚动加载、表单重复提交</p>
+    <html><head></head><body><p>本文转自：<a href="https://segmentfault.com/a/1190000014613703" target="_blank" rel="noopener">《js中表达式 >>> 0 浅析》</a></p>
+<h2 id="一、-gt-gt-和-gt-gt-gt-区别">一、>> 和 >>> 区别<a class="post-anchor" href="#一、-gt-gt-和-gt-gt-gt-区别"></a></h2><p><code>>>></code>是无符号右移，<code>>></code>是有符号移位</p>
+<p><code>>>有符号移位</code>：该操作符会将第一个操作数向右移动指定的位数。向右被移出的位被丢弃，拷贝最左侧的位以填充左侧</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">-9</span> >> <span class="hljs-number">2</span><br><span class="hljs-number">11111111111111111111111111110111</span>  <span class="hljs-comment">// -9 </span><br>-> <br><span class="hljs-number">11111111111111111111111111111101</span>   <span class="hljs-comment">// -3</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p><code>>>>无符号移位</code>：该操作符会将第一个操作数向右移动指定的位数。向右被移出的位被丢弃，左侧用0填充。因为符号位变成了 0，所以结果总是非负的。（即便右移 0 个比特，结果也是非负的。）</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">9</span> >>> <span class="hljs-number">2</span><br><span class="hljs-number">00000000000000000000000000001001</span>   <span class="hljs-comment">// 9 </span><br>->  <br><span class="hljs-number">00000000000000000000000000000010</span> <span class="hljs-comment">// 2</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>根据文档说明即使移动0位也可以将一个负数变成正数，甚至也可以将一个小数变成整数，将未定义的值转换为0，那到底移动0位是什么意思。</p>
+<h2 id="二、移位0有什么意义">二、移位0有什么意义<a class="post-anchor" href="#二、移位0有什么意义"></a></h2><p>查过一些资料，其中stackoverflow里面有一个高票回答，里面有这么一句话</p>
+<blockquote>
+<p>It doesn’t just convert non-Numbers to Number, it converts them to Numbers that can be expressed as 32-bit unsigned ints.</p>
+</blockquote>
+<p>原来移位操作符在移位前做了两种转换，第一将不是number类型的数据转换为number，第二将number转换为无符号的32bit数据，也就是Uint32类型。这些与移位的位数无关，移位0位主要就是用了js的内部特性做了前两种转换。</p>
+<h2 id="三、Uint32类型是如何转换的">三、Uint32类型是如何转换的<a class="post-anchor" href="#三、Uint32类型是如何转换的"></a></h2><ol>
+<li>如果不能转换为Number，那就为0</li>
+<li>如果为非整数，先转换为整数，参考公式sign(n) ⋅ floor(abs(n))<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ToInteger</span>(<span class="hljs-params">x</span>) </span>{<br>    x = <span class="hljs-built_in">Number</span>(x);<br>    <span class="hljs-keyword">return</span> x < <span class="hljs-number">0</span> ? <span class="hljs-built_in">Math</span>.ceil(x) : <span class="hljs-built_in">Math</span>.floor(x);<br>}<br></code></pre></td></tr></tbody></table></figure></li>
+<li>如果是正数，返回正数，如果是负数，返回负数 + 2的30次方<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">modulo</span>(<span class="hljs-params">a, b</span>) </span>{<br>    <span class="hljs-keyword">return</span> a - <span class="hljs-built_in">Math</span>.floor(a/b)*b;<br>}<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ToUint32</span>(<span class="hljs-params">x</span>) </span>{<br>    <span class="hljs-keyword">return</span> modulo(ToInteger(x), <span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">2</span>, <span class="hljs-number">32</span>));<br>}<br></code></pre></td></tr></tbody></table></figure>
+
 </li>
 </ol>
-<h2 id="二、实现原理">二、实现原理<a class="post-anchor" href="#二、实现原理"></a></h2><p>函数防抖:</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> _.debounce = <span class="hljs-function">(<span class="hljs-params">func, wait</span>) =></span> {<br>  <span class="hljs-keyword">let</span> timer;<br><br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    clearTimeout(timer);<br>    timer = setTimeout(func, wait);<br>  };<br>};<br></code></pre></td></tr></tbody></table></figure>
-<p>函数节流:</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> _.throttle = <span class="hljs-function">(<span class="hljs-params">func, wait</span>) =></span> {<br>  <span class="hljs-keyword">let</span> timer;<br><br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    <span class="hljs-keyword">if</span> (timer) {<br>      <span class="hljs-keyword">return</span>;<br>    }<br><br>    timer = setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>      func();<br>      timer = <span class="hljs-literal">null</span>;<br>    }, wait);<br>  };<br>};<br></code></pre></td></tr></tbody></table></figure>
-<p>or</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> throttle = <span class="hljs-function">(<span class="hljs-params">func, wait</span>) =></span> {<br>  <span class="hljs-keyword">let</span> last = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    <span class="hljs-keyword">const</span> current_time = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();<br>    <span class="hljs-keyword">if</span> (current_time - last > wait) {<br>      func.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);<br>      last = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();<br>    }<br>  };<br>};<br></code></pre></td></tr></tbody></table></figure>
-
-<p>参考：<a href="https://www.jianshu.com/p/f9f6b637fd6c" target="_blank" rel="noopener">《浅析函数防抖与函数节流》</a></p>
+<h2 id="四、总结">四、总结<a class="post-anchor" href="#四、总结"></a></h2><p>x >>> 0本质上就是保证x有意义（为数字类型），且为正整数，在有效的数组范围内（0 ～ 0xFFFFFFFF），且在无意义的情况下缺省值为0。一个小小的表达式，隐藏着着多重的异常处理。</p>
 </body></html>
 
   
@@ -237,12 +245,10 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2020/05/11/%E5%85%B3%E4%BA%8E%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/">关于双向数据绑定</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2020/05/01/%E4%B8%89%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">三种类型的设计模式及其相关术语</a>
+          <a href="/2020/05/13/%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%8A%AB%E6%8C%81%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86/">关于数据劫持与数据代理</a>
         
     </div>
   </div>
@@ -254,7 +260,7 @@
       本文作者：<a href="https://bbcfive.github.io">执白</a>
     </div>
     <!-- <div class="link">
-      永久链接：<a href="https://bbcfive.github.io/2020/05/11/%E5%85%B3%E4%BA%8E%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81/">https://bbcfive.github.io/2020/05/11/%E5%85%B3%E4%BA%8E%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81/</a>
+      永久链接：<a href="https://bbcfive.github.io/2020/05/13/js%E4%B8%AD%E8%A1%A8%E8%BE%BE%E5%BC%8F%20%3E%3E%3E%200%20%E6%B5%85%E6%9E%90/">https://bbcfive.github.io/2020/05/13/js%E4%B8%AD%E8%A1%A8%E8%BE%BE%E5%BC%8F%20%3E%3E%3E%200%20%E6%B5%85%E6%9E%90/</a>
     </div> -->
     <div class="declare">
       版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
