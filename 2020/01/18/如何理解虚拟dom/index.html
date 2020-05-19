@@ -16,7 +16,7 @@
     <meta name="description" content="" />
     
     <title>
-      写一个正向代理服务器 - 执白的博客
+      如何理解虚拟dom - 执白的博客
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -29,7 +29,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、概念"><span class="toc-text">一、概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、实现"><span class="toc-text">二、实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、测试"><span class="toc-text">三、测试</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、DOM对象和JS对象的区别"><span class="toc-text">一、DOM对象和JS对象的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、最终虚拟dom的实现过程："><span class="toc-text">二、最终虚拟dom的实现过程：</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -155,11 +155,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">写一个正向代理服务器</div>
+      <div class="title">如何理解虚拟dom</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2020/01/23</span>
+          <span>2020/01/18</span>
         </span>
 
         
@@ -170,7 +170,7 @@
           <span>
               
                 
-                  <a href="/categories/后端">后端</a>
+                  <a href="/categories/前端">前端</a>
                 
               
           </span>
@@ -187,7 +187,7 @@
                   
                 
                   
-                    <a href="/tags/NodeJs">NodeJs</a>
+                    <a href="/tags/react">react</a>
                   
                 
             </span>
@@ -197,16 +197,20 @@
       <div>
       </div>
     </div>
-    <html><head></head><body><h2 id="一、概念">一、概念<a class="post-anchor" href="#一、概念"></a></h2><p>正向代理：代理client，用于代理上网<br>反向代理：代理server，用于网站防护、负载均衡</p>
-<h2 id="二、实现">二、实现<a class="post-anchor" href="#二、实现"></a></h2><p>NodeJs代码：</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);<br><span class="hljs-keyword">var</span> url = <span class="hljs-built_in">require</span>(<span class="hljs-string">"url"</span>);<br><br>http.createServer(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res</span>)</span>{<br> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"start request:"</span>,req.url);<br><br> <span class="hljs-keyword">var</span> option = url.parse(req.url);<br> option.headers = req.headers;<br><br> <span class="hljs-keyword">var</span> proxyRequest = http.request(option, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">proxyResponse</span>)</span>{<br><br> <br> proxyResponse.on(<span class="hljs-string">"data"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">chunk</span>)</span>{<br> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"proxyResponse length"</span>,chunk.length);<br> });<br> proxyResponse.on(<span class="hljs-string">"end"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<br> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"proxyed request ended"</span>);<br> res.end();<br> })<br><br> res.writeHead(proxyResponse.statusCode,proxyResponse.headers);<br> });<br><br> <br> req.on(<span class="hljs-string">"data"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">chunk</span>)</span>{<br> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"in request length:"</span>,chunk.length);<br> proxyRequest.write(chunk,<span class="hljs-string">"binary"</span>);<br> })<br><br> req.on(<span class="hljs-string">"end"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<br> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"original request ended"</span>);<br> proxyRequest.end();<br> })<br><br>}).listen(<span class="hljs-number">8080</span>);<br></code></pre></td></tr></tbody></table></figure>
-
-<h2 id="三、测试">三、测试<a class="post-anchor" href="#三、测试"></a></h2><ol>
-<li>启动Node服务器</li>
-<li>设置浏览器的http代理</li>
-<li>打开网页，正常，测试成功</li>
+    <html><head></head><body><h2 id="一、DOM对象和JS对象的区别">一、DOM对象和JS对象的区别<a class="post-anchor" href="#一、DOM对象和JS对象的区别"></a></h2><p>DOM对象是浏览器提供的前端api，相对于DOM 对象，原生的 JavaScript 对象处理起来更快，而且更简单。DOM 树上的结构、属性信息我们都可以很容易地用 JavaScript 对象表示出来：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> element = {<br>  tagName: <span class="hljs-string">'ul'</span>, <span class="hljs-comment">// 节点标签名</span><br>  props: { <span class="hljs-comment">// DOM的属性，用一个对象存储键值对</span><br>    id: <span class="hljs-string">'list'</span><br>  },<br>  children: [ <span class="hljs-comment">// 该节点的子节点</span><br>    {<span class="hljs-attr">tagName</span>: <span class="hljs-string">'li'</span>, <span class="hljs-attr">props</span>: {<span class="hljs-attr">class</span>: <span class="hljs-string">'item'</span>}, <span class="hljs-attr">children</span>: [<span class="hljs-string">"Item 1"</span>]},<br>    {<span class="hljs-attr">tagName</span>: <span class="hljs-string">'li'</span>, <span class="hljs-attr">props</span>: {<span class="hljs-attr">class</span>: <span class="hljs-string">'item'</span>}, <span class="hljs-attr">children</span>: [<span class="hljs-string">"Item 2"</span>]},<br>    {<span class="hljs-attr">tagName</span>: <span class="hljs-string">'li'</span>, <span class="hljs-attr">props</span>: {<span class="hljs-attr">class</span>: <span class="hljs-string">'item'</span>}, <span class="hljs-attr">children</span>: [<span class="hljs-string">"Item 3"</span>]},<br>  ]<br>}<br></code></pre></td></tr></tbody></table></figure>
+<p>上面js对应的html写法是：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag"><<span class="hljs-name">ul</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'list'</span>></span><br>  <span class="hljs-tag"><<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">'item'</span>></span>Item 1<span class="hljs-tag"></<span class="hljs-name">li</span>></span><br>  <span class="hljs-tag"><<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">'item'</span>></span>Item 2<span class="hljs-tag"></<span class="hljs-name">li</span>></span><br>  <span class="hljs-tag"><<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">'item'</span>></span>Item 3<span class="hljs-tag"></<span class="hljs-name">li</span>></span><br><span class="hljs-tag"></<span class="hljs-name">ul</span>></span><br></code></pre></td></tr></tbody></table></figure>
+<p>因此，原生的DOM树可以用js对象来表示，反过来，js对象也可以构建出虚拟的DOM树。<br>“这就是所谓的 Virtual DOM 算法。包括几个步骤：</p>
+<ol>
+<li>用 JavaScript 对象结构表示 DOM 树的结构；然后用这个树构建一个真正的 DOM 树，插到文档当中</li>
+<li>当状态变更的时候，重新构造一棵新的对象树。然后用新的树和旧的树进行比较，记录两棵树差异</li>
+<li>把2所记录的差异应用到步骤1所构建的真正的DOM树上，视图就更新了<br>Virtual DOM 本质上就是在 JS 和 DOM 之间做了一个缓存。可以类比 CPU 和硬盘，既然硬盘这么慢，我们就在它们之间加个缓存：既然 DOM 这么慢，我们就在它们 JS 和 DOM 之间加个缓存。CPU（JS）只操作内存（Virtual DOM），最后的时候再把变更写入硬盘（DOM）。”</li>
 </ol>
-<p>参考：<a href="https://zhuanlan.zhihu.com/p/97291270" target="_blank" rel="noopener">《Node.JS实战17：开发一个正向代理服务器》</a></p>
+<p>这是相关的<a href="https://www.zhihu.com/question/29504639" target="_blank" rel="noopener">算法实现</a>。</p>
+<h2 id="二、最终虚拟dom的实现过程：">二、最终虚拟dom的实现过程：<a class="post-anchor" href="#二、最终虚拟dom的实现过程："></a></h2><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 1. 构建虚拟DOM</span><br><span class="hljs-keyword">var</span> tree = el(<span class="hljs-string">'div'</span>, {<span class="hljs-string">'id'</span>: <span class="hljs-string">'container'</span>}, [<br>    el(<span class="hljs-string">'h1'</span>, {<span class="hljs-attr">style</span>: <span class="hljs-string">'color: blue'</span>}, [<span class="hljs-string">'simple virtal dom'</span>]),<br>    el(<span class="hljs-string">'p'</span>, [<span class="hljs-string">'Hello, virtual-dom'</span>]),<br>    el(<span class="hljs-string">'ul'</span>, [el(<span class="hljs-string">'li'</span>)])<br>])<br><br><span class="hljs-comment">// 2. 通过虚拟DOM构建真正的DOM</span><br><span class="hljs-keyword">var</span> root = tree.render()<br><span class="hljs-built_in">document</span>.body.appendChild(root)<br><br><span class="hljs-comment">// 3. 生成新的虚拟DOM</span><br><span class="hljs-keyword">var</span> newTree = el(<span class="hljs-string">'div'</span>, {<span class="hljs-string">'id'</span>: <span class="hljs-string">'container'</span>}, [<br>    el(<span class="hljs-string">'h1'</span>, {<span class="hljs-attr">style</span>: <span class="hljs-string">'color: red'</span>}, [<span class="hljs-string">'simple virtal dom'</span>]),<br>    el(<span class="hljs-string">'p'</span>, [<span class="hljs-string">'Hello, virtual-dom'</span>]),<br>    el(<span class="hljs-string">'ul'</span>, [el(<span class="hljs-string">'li'</span>), el(<span class="hljs-string">'li'</span>)])<br>])<br><br><span class="hljs-comment">// 4. 比较两棵虚拟DOM树的不同</span><br><span class="hljs-keyword">var</span> patches = diff(tree, newTree)<br><br><span class="hljs-comment">// 5. 在真正的DOM元素上应用变更</span><br>patch(root, patches)<br></code></pre></td></tr></tbody></table></figure>
+
+<p>参考文献：<a href="https://www.zhihu.com/question/29504639/answer/73607810" target="_blank" rel="noopener">https://www.zhihu.com/question/29504639/answer/73607810</a></p>
 </body></html>
 
   
@@ -233,12 +237,12 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2020/04/21/scss%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">scss的基本使用总结</a>
+          <a href="/2020/01/18/%E5%85%B3%E4%BA%8Ereact%20hooks/">关于react hooks</a>
         
     </div>
     <div class="item right">
         
-          <a href="/2020/01/20/Object%E7%9A%84%E5%8E%BB%E9%87%8D%E4%B8%8E%E6%8E%92%E5%BA%8F/">Object的去重与排序</a>
+          <a href="/2020/01/17/Js%E5%9F%BA%E7%A1%80%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">Js基础运行机制</a>
         
     </div>
   </div>
@@ -250,7 +254,7 @@
       本文作者：<a href="https://bbcfive.github.io">执白</a>
     </div>
     <!-- <div class="link">
-      永久链接：<a href="https://bbcfive.github.io/2020/01/23/%E5%86%99%E4%B8%80%E4%B8%AA%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/">https://bbcfive.github.io/2020/01/23/%E5%86%99%E4%B8%80%E4%B8%AA%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/</a>
+      永久链接：<a href="https://bbcfive.github.io/2020/01/18/%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9Fdom/">https://bbcfive.github.io/2020/01/18/%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9Fdom/</a>
     </div> -->
     <div class="declare">
       版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      关于react hooks - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、react的组件"><span class="toc-text">一、react的组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、react-hooks——加强版函数组件"><span class="toc-text">二、react hooks——加强版函数组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、状态钩子useState"><span class="toc-text">三、状态钩子useState()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、共享状态钩子useContext"><span class="toc-text">四、共享状态钩子useContext()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献："><span class="toc-text">参考文献：</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">关于react hooks</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/01/18</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/react">react</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h2 id="一、react的组件">一、react的组件<a class="post-anchor" href="#一、react的组件"></a></h2><p>react的核心是组件，react有两种组件类：有状态组件（class）和无状态组件（function）。<br>有状态组件（class）常常使代码变的冗余而复杂，例如下面一个简单的button组件：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Button</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{<br>  <span class="hljs-keyword">constructor</span>() {<br>    <span class="hljs-keyword">super</span>();<br>    <span class="hljs-keyword">this</span>.state = { <span class="hljs-attr">buttonText</span>: <span class="hljs-string">"Click me, please"</span> };<br>    <span class="hljs-keyword">this</span>.handleClick = <span class="hljs-keyword">this</span>.handleClick.bind(<span class="hljs-keyword">this</span>);<br>  }<br>  handleClick() {<br>    <span class="hljs-keyword">this</span>.setState(<span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>      <span class="hljs-keyword">return</span> { <span class="hljs-attr">buttonText</span>: <span class="hljs-string">"Thanks, been clicked!"</span> };<br>    });<br>  }<br>  render() {<br>    <span class="hljs-keyword">const</span> { buttonText } = <span class="hljs-keyword">this</span>.state;<br>    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag"><<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.handleClick}</span>></span>{buttonText}<span class="hljs-tag"></<span class="hljs-name">button</span>></span></span>;<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure>
+<p>可以看出代码已经很重了。</p>
+<p>Redux 的作者 Dan Abramov 总结了组件类的几个缺点。</p>
+<ul>
+<li>大型组件很难拆分和重构，也很难测试。</li>
+<li>业务逻辑分散在组件的各个方法之中，导致重复逻辑或关联逻辑。</li>
+<li>组件类引入了复杂的编程模式，比如 render props 和高阶组件。<br>因此，组件的最佳实现方式应该是函数，而不是类。</li>
+</ul>
+<h2 id="二、react-hooks——加强版函数组件">二、react hooks——加强版函数组件<a class="post-anchor" href="#二、react-hooks——加强版函数组件"></a></h2><p>Hook 这个单词的意思是”钩子”。<br>React Hooks 的意思是，组件尽量写成纯函数，如果需要外部功能和副作用，就用钩子把外部代码”钩”进来。 React Hooks 就是那些钩子。<br>所有的钩子默认使用use前缀命名。<br>比如以下几个常见的钩子：</p>
+<ul>
+<li>useState()</li>
+<li>useContext()</li>
+<li>useReducer()</li>
+<li>useEffect()</li>
+<li>useCallback()</li>
+</ul>
+<h2 id="三、状态钩子useState">三、状态钩子useState()<a class="post-anchor" href="#三、状态钩子useState"></a></h2><p><font color="#FF4500">useState()用于为函数组件引入状态（state）。纯函数不能有状态，所以把状态放在钩子里面。</font><br>经过状态钩子改造后的button代码：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> React, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span>  <span class="hljs-title">Button</span>(<span class="hljs-params"></span>)  </span>{<br>  <span class="hljs-keyword">const</span>  [buttonText, setButtonText] =  useState(<span class="hljs-string">"Click me,   please"</span>);<br><br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleClick</span>(<span class="hljs-params"></span>)  </span>{<br>    <span class="hljs-keyword">return</span> setButtonText(<span class="hljs-string">"Thanks, been clicked!"</span>);<br>  }<br><br>  <span class="hljs-keyword">return</span>  <span class="xml"><span class="hljs-tag"><<span class="hljs-name">button</span>  <span class="hljs-attr">onClick</span>=<span class="hljs-string">{handleClick}</span>></span>{buttonText}<span class="hljs-tag"></<span class="hljs-name">button</span>></span></span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+<p>再看一个例子，钩前组件代码（有状态）：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs html">class Example extends React.Component {<br>  constructor(props) {<br>    super(props);<br>    this.state = {<br>      count: 0<br>    };<br>  }<br><br>  render() {<br>    return (<br>      <span class="hljs-tag"><<span class="hljs-name">div</span>></span><br>        <span class="hljs-tag"><<span class="hljs-name">p</span>></span>You clicked {this.state.count} times<span class="hljs-tag"></<span class="hljs-name">p</span>></span><br>        <span class="hljs-tag"><<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =></span> this.setState({ count: this.state.count + 1 })}><br>          Click me<br>        <span class="hljs-tag"></<span class="hljs-name">button</span>></span><br>      <span class="hljs-tag"></<span class="hljs-name">div</span>></span><br>    );<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure>
+<p>加钩子后的代码（无状态）：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs html">import { useState } from 'react';<br><br>function Example() {<br>  const [count, setCount] = useState(0);<br><br>  return (<br>    <span class="hljs-tag"><<span class="hljs-name">div</span>></span><br>      <span class="hljs-tag"><<span class="hljs-name">p</span>></span>You clicked {count} times<span class="hljs-tag"></<span class="hljs-name">p</span>></span><br>      <span class="hljs-tag"><<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =></span> setCount(count + 1)}><br>        Click me<br>      <span class="hljs-tag"></<span class="hljs-name">button</span>></span><br>    <span class="hljs-tag"></<span class="hljs-name">div</span>></span><br>  );<br>}<br></code></pre></td></tr></tbody></table></figure>
+<p>useState()这个函数接受状态的初始值，作为参数。该函数返回一个数组，数组的第一个成员是一个变量，指向状态的当前值。第二个成员是一个函数，用来更新状态，约定是set前缀加上状态的变量名。</p>
+<h2 id="四、共享状态钩子useContext">四、共享状态钩子useContext()<a class="post-anchor" href="#四、共享状态钩子useContext"></a></h2><p>现在有两个组件 Navbar 和 Messages，我们希望它们之间共享状态。</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag"><<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"App"</span>></span><br>  <span class="hljs-tag"><<span class="hljs-name">Navbar</span>/></span><br>  <span class="hljs-tag"><<span class="hljs-name">Messages</span>/></span><br><span class="hljs-tag"></<span class="hljs-name">div</span>></span><br></code></pre></td></tr></tbody></table></figure>
+<p>第一步就是使用 React Context API，在组件外部建立一个 Context。并封装它：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html">const AppContext = React.createContext({});<br><span class="hljs-tag"><<span class="hljs-name">AppContext.Provider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{{</span></span><br><span class="hljs-tag">  <span class="hljs-attr">username:</span> '<span class="hljs-attr">superawesome</span>'</span><br><span class="hljs-tag">}}></span><br>  <span class="hljs-tag"><<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"App"</span>></span><br>    <span class="hljs-tag"><<span class="hljs-name">Navbar</span> /></span><br>    <span class="hljs-tag"><<span class="hljs-name">Messages</span> /></span><br>  <span class="hljs-tag"></<span class="hljs-name">div</span>></span><br><span class="hljs-tag"></<span class="hljs-name">AppContext.Provider</span>></span><br></code></pre></td></tr></tbody></table></figure>
+<p>上面代码中，AppContext.Provider提供了一个 Context 对象，这个对象可以被子组件共享。<br>Navbar 组件的代码如下：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html">const Navbar = () => {<br>  const { username } = useContext(AppContext);<br>  return (<br>    <span class="hljs-tag"><<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"navbar"</span>></span><br>      <span class="hljs-tag"><<span class="hljs-name">p</span>></span>AwesomeSite<span class="hljs-tag"></<span class="hljs-name">p</span>></span><br>      <span class="hljs-tag"><<span class="hljs-name">p</span>></span>{username}<span class="hljs-tag"></<span class="hljs-name">p</span>></span><br>    <span class="hljs-tag"></<span class="hljs-name">div</span>></span><br>  );<br>}<br></code></pre></td></tr></tbody></table></figure>
+<p>还有许多hooks的示例用法可以参考官网。根据已有的hooks，还可以组合封装，创建出新的hooks来使用。</p>
+<h2 id="参考文献：">参考文献：<a class="post-anchor" href="#参考文献："></a></h2><ol>
+<li><a href="http://www.ruanyifeng.com/blog/2019/09/react-hooks.html" target="_blank" rel="noopener">React Hooks 入门教程</a></li>
+<li><a href="https://www.jianshu.com/p/76901410645a" target="_blank" rel="noopener">React Hooks</a></li>
+</ol>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/01/20/%E8%AE%A1%E7%AE%97%E5%AD%97%E7%AC%A6%E4%B8%AA%E6%95%B0(%E5%9B%9E%E9%A1%BE%E6%AD%A3%E5%88%99%E7%94%A8%E6%B3%95)/">计算字符个数(回顾正则用法)</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/01/18/%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9Fdom/">如何理解虚拟dom</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2020/01/18/%E5%85%B3%E4%BA%8Ereact%20hooks/">https://bbcfive.github.io/2020/01/18/%E5%85%B3%E4%BA%8Ereact%20hooks/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
