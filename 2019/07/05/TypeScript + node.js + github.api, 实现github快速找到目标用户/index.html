@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      TypeScript + node.js + github.api, 实现github快速找到目标用户 - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、TypeScript简介"><span class="toc-text">一、TypeScript简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、项目实现"><span class="toc-text">二、项目实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、其他延展功能"><span class="toc-text">三、其他延展功能</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">TypeScript + node.js + github.api, 实现github快速找到目标用户</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/07/05</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/NodeJs">NodeJs</a>
+                  
+                
+                  
+                    <a href="/tags/TypeScript">TypeScript</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h2 id="一、TypeScript简介">一、TypeScript简介<a class="post-anchor" href="#一、TypeScript简介"></a></h2><ol>
+<li>定义</li>
+</ol>
+<p>（1）Typescript = JavaScript + type + ( some other stuff )</p>
+<p>（2）Typescript需要先被编译成Javascript，而后才能使用</p>
+<ol start="2">
+<li>demo<br>安装typescript：<ul>
+<li>npm install typescript –g</li>
+<li>tsc index.ts</li>
+</ul>
+</li>
+</ol>
+<p>index.ts：</p>
+<blockquote>
+<p>var fn = () => ‘response’</p>
+</blockquote>
+<p>command line：</p>
+<blockquote>
+<p>tsc init</p>
+</blockquote>
+<p>修改tsconfig.json的outDir和rootDir，并增添out目录与src目录<br>修改package.json的scripts为”start”: “tsc && node out/index.js”<br>运行npm start</p>
+<p>结果如下：</p>
+<p><a href="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190705222224250-257052105.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190705222224250-257052105.png" alt="avatar"></a></p>
+<p>此时，src里的index.ts已经被编译至index.js中</p>
+<p>index.js：</p>
+<blockquote>
+<p>var fn = function () { return ‘response’; }</p>
+</blockquote>
+<h2 id="二、项目实现">二、项目实现<a class="post-anchor" href="#二、项目实现"></a></h2><ol>
+<li><p>需求<br>在node环境下，使用ts语言，借用gituhub的api实现对用户的关键信息查询功能</p>
+</li>
+<li><p>目录</p>
+</li>
+</ol>
+<p><a href="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190705222612450-142938930.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190705222612450-142938930.png" alt="avatar"></a></p>
+<ol start="3">
+<li><p>安装库<br>（1）request库<br>npm i @types/request –save-dev<br>npm i request –save<br>（2）lodash库（用于排序）<br>npm i @types/lodash –save-dev<br>npm install lodash –save-dev</p>
+</li>
+<li><p>内容<br>index.ts</p>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> { GithubApiService } <span class="hljs-keyword">from</span> <span class="hljs-string">'./GithubApiService'</span><br><span class="hljs-keyword">import</span> { User } <span class="hljs-keyword">from</span> <span class="hljs-string">'./User'</span><br><span class="hljs-keyword">import</span> { Repo } <span class="hljs-keyword">from</span> <span class="hljs-string">'./Repo'</span>;<br><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> ld <span class="hljs-keyword">from</span> <span class="hljs-string">'lodash'</span>;<br><br><span class="hljs-comment">// node.js内置功能，用于获取第三个参数内容</span><br><span class="hljs-built_in">console</span>.log(process.argv[<span class="hljs-number">2</span>])<br><br><span class="hljs-keyword">let</span> svc: GithubApiService = <span class="hljs-keyword">new</span> GithubApiService();<br><br><span class="hljs-keyword">if</span> (process.argv.length < <span class="hljs-number">3</span>) {<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"请输入用户名"</span>);<br>} <span class="hljs-keyword">else</span> {<br>    svc.getUserInfo(<span class="hljs-string">"bbcfive"</span>, <span class="hljs-function">(<span class="hljs-params">user: User</span>) =></span> {<br>        svc.getRepos(user.login, <span class="hljs-function">(<span class="hljs-params">repos: Repo[]</span>) =></span> {<br>            <span class="hljs-comment">// 按照fork的数量由小到大排列 ps：返回值 * -1 代表由大到小排列</span><br>            <span class="hljs-keyword">let</span> sortedRepos = ld.sortBy(repos, [<span class="hljs-function">(<span class="hljs-params">repo: Repo</span>) =></span> repo.forks_count]);<br>            user.repos = sortedRepos;<br>            <span class="hljs-built_in">console</span>.log(user);<br>        })    <br>    }); <br>}<br></code></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<p>GithubApiService.ts</p>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> request <span class="hljs-keyword">from</span> <span class="hljs-string">'request'</span><br><span class="hljs-keyword">import</span> { User } <span class="hljs-keyword">from</span> <span class="hljs-string">'./User'</span>;<br><span class="hljs-keyword">import</span> { Repo } <span class="hljs-keyword">from</span> <span class="hljs-string">'./Repo'</span>;<br><br><span class="hljs-keyword">const</span> options = {<br>    headers: {<br>        <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'request'</span><br>    },<br>    json: <span class="hljs-literal">true</span><br>}<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> GithubApiService {<br>  getUserInfo(userName:<span class="hljs-built_in">string</span>, callBack: <span class="hljs-function">(<span class="hljs-params">user: User</span>) =></span> <span class="hljs-built_in">any</span>) {<br>    request.get(<br>      <span class="hljs-string">"http://api.github.com/users/"</span> + userName, <br>      options, <br>      (error: <span class="hljs-built_in">any</span>, response: <span class="hljs-built_in">any</span>, body: <span class="hljs-built_in">any</span>) <br>    => {<br>      <span class="hljs-comment">// 写法一</span><br>      <span class="hljs-comment">// let user = new User(JSON.parse(body)); // typeof body == object</span><br>      <span class="hljs-comment">// 写法二 </span><br>      <span class="hljs-keyword">let</span> user: User = <span class="hljs-keyword">new</span> User(body); <span class="hljs-comment">// typeof body == string</span><br>      callBack(user);<br>    })<br>  }<br><br>  getRepos(userName:<span class="hljs-built_in">string</span>, callBack: <span class="hljs-function">(<span class="hljs-params">repos: Repo[]</span>) =></span> <span class="hljs-built_in">any</span>) {<br>    request.get(<br>      <span class="hljs-string">"http://api.github.com/users/"</span> + userName + <span class="hljs-string">"/repos"</span>, <br>      options, <br>      (error: <span class="hljs-built_in">any</span>, response: <span class="hljs-built_in">any</span>, body: <span class="hljs-built_in">any</span>) <br>    => {<br>      <span class="hljs-keyword">let</span> repos: Repo[] = body.map(<span class="hljs-function">(<span class="hljs-params">repo: <span class="hljs-built_in">any</span></span>) =></span> <span class="hljs-keyword">new</span> Repo(repo));<br>      callBack(repos);<br>    })<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>Repo.ts</p>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> Repo {<br>    name: <span class="hljs-built_in">string</span>;<br>    description: <span class="hljs-built_in">string</span>;<br>    url: <span class="hljs-built_in">string</span>;<br>    size: <span class="hljs-built_in">number</span>;<br>    forks_count: <span class="hljs-built_in">number</span>;<br><br>    <span class="hljs-keyword">constructor</span> (<span class="hljs-params">repo: <span class="hljs-built_in">any</span></span>) {<br>        <span class="hljs-keyword">this</span>.name = repo.name;<br>        <span class="hljs-keyword">this</span>.description = repo.description;<br>        <span class="hljs-keyword">this</span>.url = repo.html_url;<br>        <span class="hljs-keyword">this</span>.size = repo.size;<br>        <span class="hljs-keyword">this</span>.forks_count = repo.forks_count;<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>User.ts</p>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> { Repo } <span class="hljs-keyword">from</span> <span class="hljs-string">'./Repo'</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> User {<br>    login: <span class="hljs-built_in">string</span>;<br>    fullName: <span class="hljs-built_in">string</span>;<br>    repoCount: <span class="hljs-built_in">number</span>;<br>    followerCount: <span class="hljs-built_in">number</span>;<br>    repos: Repo[] = [];<br><br>    <span class="hljs-keyword">constructor</span> (<span class="hljs-params">userResponse: <span class="hljs-built_in">any</span></span>) {<br>        <span class="hljs-keyword">this</span>.login = userResponse.login;<br>        <span class="hljs-keyword">this</span>.fullName = userResponse.name;<br>        <span class="hljs-keyword">this</span>.repoCount = userResponse.public_repos;<br>        <span class="hljs-keyword">this</span>.followerCount = userResponse.followers;<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<ol start="5">
+<li>运行<br>因为在index.ts里已经使用nodeJs自带的api，process.argv对npm输入命令做了判断，所以只需要在命令行输入<blockquote>
+<p>npm start bbcfive // “bbcfive”是我的github用户名</p>
+</blockquote>
+</li>
+</ol>
+<p>终端打印结果：</p>
+<p><a href="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190705223534662-1742728754.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190705223534662-1742728754.png" alt="avatar"></a></p>
+<p>可以清晰的看到此用户的github关键信息。</p>
+<h2 id="三、其他延展功能">三、其他延展功能<a class="post-anchor" href="#三、其他延展功能"></a></h2><p>给定一定量的github用户名列表，可以通过此方法循环获取每个用户的关键信息，并作筛选，来获得目标范围用户。</p>
+<p>适用于以下场景：</p>
+<ol>
+<li><p>hr招人</p>
+</li>
+<li><p>找一些很赞的项目</p>
+</li>
+<li><p>社交（毕竟是全球最大的同性交友网站~~）</p>
+</li>
+</ol>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/07/06/Letter%20Combinations%20of%20a%20Phone%20Number/">Letter Combinations of a Phone Number</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/07/02/2019%E5%B9%B46%E6%9C%88%E7%9A%84%E6%80%9D%E8%80%83/">2019年6月的思考</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2019/07/05/TypeScript%20+%20node.js%20+%20github.api,%20%E5%AE%9E%E7%8E%B0github%E5%BF%AB%E9%80%9F%E6%89%BE%E5%88%B0%E7%9B%AE%E6%A0%87%E7%94%A8%E6%88%B7/">https://bbcfive.github.io/2019/07/05/TypeScript%20+%20node.js%20+%20github.api,%20%E5%AE%9E%E7%8E%B0github%E5%BF%AB%E9%80%9F%E6%89%BE%E5%88%B0%E7%9B%AE%E6%A0%87%E7%94%A8%E6%88%B7/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

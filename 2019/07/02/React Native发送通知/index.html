@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      React Native发送通知 - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、使用第三方库做本地-远程消息推送"><span class="toc-text">一、使用第三方库做本地&#x2F;远程消息推送</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、使用极光开发者服务做远程消息推送"><span class="toc-text">二、使用极光开发者服务做远程消息推送</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、APP内消息通知"><span class="toc-text">三、APP内消息通知</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">React Native发送通知</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/07/02</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/移动端">移动端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/React Native">React Native</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h2 id="一、使用第三方库做本地-远程消息推送">一、使用第三方库做本地/远程消息推送<a class="post-anchor" href="#一、使用第三方库做本地-远程消息推送"></a></h2><p>推荐：<a href="https://github.com/zo0r/react-native-push-notification" target="_blank" rel="noopener">https://github.com/zo0r/react-native-push-notification</a></p>
+<p>demo解析：</p>
+<p>AndroidManifest.xml:配置基本权限</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag"><<span class="hljs-name">manifest</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="hljs-tag">    <span class="hljs-attr">package</span>=<span class="hljs-string">"com.example"</span>></span><br><br>    <span class="hljs-tag"><<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.INTERNET"</span> /></span><br>    <span class="hljs-tag"><<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.SYSTEM_ALERT_WINDOW"</span>/></span><br><br>    <span class="hljs-tag"><<span class="hljs-name">application</span></span><br><span class="hljs-tag">      <span class="hljs-attr">android:name</span>=<span class="hljs-string">".MainApplication"</span></span><br><span class="hljs-tag">      <span class="hljs-attr">android:label</span>=<span class="hljs-string">"@string/app_name"</span></span><br><span class="hljs-tag">      <span class="hljs-attr">android:icon</span>=<span class="hljs-string">"@mipmap/ic_launcher"</span></span><br><span class="hljs-tag">      <span class="hljs-attr">android:allowBackup</span>=<span class="hljs-string">"false"</span></span><br><span class="hljs-tag">      <span class="hljs-attr">android:theme</span>=<span class="hljs-string">"@style/AppTheme"</span>></span><br>      <span class="hljs-tag"><<span class="hljs-name">activity</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:name</span>=<span class="hljs-string">".MainActivity"</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:label</span>=<span class="hljs-string">"@string/app_name"</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:configChanges</span>=<span class="hljs-string">"keyboard|keyboardHidden|orientation|screenSize"</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:windowSoftInputMode</span>=<span class="hljs-string">"adjustResize"</span>></span><br>        <span class="hljs-tag"><<span class="hljs-name">intent-filter</span>></span><br>            <span class="hljs-tag"><<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.action.MAIN"</span> /></span><br>            <span class="hljs-tag"><<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.category.LAUNCHER"</span> /></span><br>        <span class="hljs-tag"></<span class="hljs-name">intent-filter</span>></span><br>      <span class="hljs-tag"></<span class="hljs-name">activity</span>></span><br>      <span class="hljs-tag"><<span class="hljs-name">activity</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.facebook.react.devsupport.DevSettingsActivity"</span> /></span><br><br>       <span class="hljs-tag"><<span class="hljs-name">receiver</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.google.android.gms.gcm.GcmReceiver"</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:exported</span>=<span class="hljs-string">"true"</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:permission</span>=<span class="hljs-string">"com.google.android.c2dm.permission.SEND"</span> ></span><br>            <span class="hljs-tag"><<span class="hljs-name">intent-filter</span>></span><br>                <span class="hljs-tag"><<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.google.android.c2dm.intent.RECEIVE"</span> /></span><br>                <span class="hljs-tag"><<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"${applicationId}"</span> /></span><br>            <span class="hljs-tag"></<span class="hljs-name">intent-filter</span>></span><br>        <span class="hljs-tag"></<span class="hljs-name">receiver</span>></span><br><br>        <span class="hljs-tag"><<span class="hljs-name">receiver</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.dieam.reactnativepushnotification.modules.RNPushNotificationPublisher"</span> /></span><br>        <span class="hljs-tag"><<span class="hljs-name">receiver</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.dieam.reactnativepushnotification.modules.RNPushNotificationBootEventReceiver"</span>></span><br>            <span class="hljs-tag"><<span class="hljs-name">intent-filter</span>></span><br>                <span class="hljs-tag"><<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.action.BOOT_COMPLETED"</span> /></span><br>            <span class="hljs-tag"></<span class="hljs-name">intent-filter</span>></span><br>        <span class="hljs-tag"></<span class="hljs-name">receiver</span>></span><br>        <span class="hljs-tag"><<span class="hljs-name">service</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.dieam.reactnativepushnotification.modules.RNPushNotificationRegistrationService"</span>/></span><br>        <span class="hljs-tag"><<span class="hljs-name">service</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.dieam.reactnativepushnotification.modules.RNPushNotificationListenerService"</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:exported</span>=<span class="hljs-string">"false"</span> ></span><br>            <span class="hljs-tag"><<span class="hljs-name">intent-filter</span>></span><br>                <span class="hljs-tag"><<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.google.android.c2dm.intent.RECEIVE"</span> /></span><br>            <span class="hljs-tag"></<span class="hljs-name">intent-filter</span>></span><br>        <span class="hljs-tag"></<span class="hljs-name">service</span>></span><br><br><br>        <span class="hljs-tag"><<span class="hljs-name">meta-data</span>  <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.dieam.reactnativepushnotification.notification_channel_name"</span></span><br><span class="hljs-tag">                    <span class="hljs-attr">android:value</span>=<span class="hljs-string">"Example-Channel"</span>/></span><br>        <span class="hljs-tag"><<span class="hljs-name">meta-data</span>  <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.dieam.reactnativepushnotification.notification_channel_description"</span></span><br><span class="hljs-tag">                    <span class="hljs-attr">android:value</span>=<span class="hljs-string">"Super channel description"</span>/></span><br>        <span class="hljs-tag"><<span class="hljs-name">meta-data</span>  <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.dieam.reactnativepushnotification.notification_color"</span></span><br><span class="hljs-tag">                    <span class="hljs-attr">android:resource</span>=<span class="hljs-string">"@android:color/white"</span>/></span><br>    <span class="hljs-tag"></<span class="hljs-name">application</span>></span><br><br><br>    <span class="hljs-tag"><<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.WAKE_LOCK"</span> /></span><br>    <span class="hljs-tag"><<span class="hljs-name">permission</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:name</span>=<span class="hljs-string">"${applicationId}.permission.C2D_MESSAGE"</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:protectionLevel</span>=<span class="hljs-string">"signature"</span> /></span><br>    <span class="hljs-tag"><<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"${applicationId}.permission.C2D_MESSAGE"</span> /></span><br><br><br>    <span class="hljs-tag"><<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.VIBRATE"</span> /></span><br>    <span class="hljs-tag"><<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.RECEIVE_BOOT_COMPLETED"</span>/></span><br><span class="hljs-tag"></<span class="hljs-name">manifest</span>></span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>NotifService.js:配置各类推送的消息显示</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> PushNotification <span class="hljs-keyword">from</span> <span class="hljs-string">'react-native-push-notification'</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NotifService</span> </span>{<br><br>  <span class="hljs-keyword">constructor</span>(onRegister, onNotification) {<br>    <span class="hljs-keyword">this</span>.configure(onRegister, onNotification);<br><br>    <span class="hljs-keyword">this</span>.lastId = <span class="hljs-number">0</span>;<br>  }<br><br>  configure(onRegister, onNotification, gcm = <span class="hljs-string">""</span>) {<br>    PushNotification.configure({<br>      <span class="hljs-comment">// (optional) Called when Token is generated (iOS and Android)</span><br>      onRegister: onRegister, <span class="hljs-comment">//this._onRegister.bind(this),</span><br><br>      <span class="hljs-comment">// (required) Called when a remote or local notification is opened or received</span><br>      onNotification: onNotification, <span class="hljs-comment">//this._onNotification,</span><br><br>      <span class="hljs-comment">// ANDROID ONLY: GCM Sender ID (optional - not required for local notifications, but is need to receive remote push notifications)</span><br>      senderID: gcm,<br><br>      <span class="hljs-comment">// IOS ONLY (optional): default: all - Permissions to register.</span><br>      permissions: {<br>        alert: <span class="hljs-literal">true</span>,<br>        badge: <span class="hljs-literal">true</span>,<br>        sound: <span class="hljs-literal">true</span><br>      },<br><br>      <span class="hljs-comment">// Should the initial notification be popped automatically</span><br>      <span class="hljs-comment">// default: true</span><br>      popInitialNotification: <span class="hljs-literal">true</span>,<br><br>      <span class="hljs-comment">/**</span><br><span class="hljs-comment">        * (optional) default: true</span><br><span class="hljs-comment">        * - Specified if permissions (ios) and token (android and ios) will requested or not,</span><br><span class="hljs-comment">        * - if not, you must call PushNotificationsHandler.requestPermissions() later</span><br><span class="hljs-comment">        */</span><br>      requestPermissions: <span class="hljs-literal">true</span>,<br>    });<br>  }<br><br>  localNotif() {<br>    <span class="hljs-keyword">this</span>.lastId++;<br>    PushNotification.localNotification({<br>      <span class="hljs-comment">/* Android Only Properties */</span><br>      id: <span class="hljs-string">''</span>+<span class="hljs-keyword">this</span>.lastId, <span class="hljs-comment">// (optional) Valid unique 32 bit integer specified as string. default: Autogenerated Unique ID</span><br>      ticker: <span class="hljs-string">"My Notification Ticker"</span>, <span class="hljs-comment">// (optional)</span><br>      autoCancel: <span class="hljs-literal">true</span>, <span class="hljs-comment">// (optional) default: true</span><br>      largeIcon: <span class="hljs-string">"ic_launcher"</span>, <span class="hljs-comment">// (optional) default: "ic_launcher"</span><br>      smallIcon: <span class="hljs-string">"ic_notification"</span>, <span class="hljs-comment">// (optional) default: "ic_notification" with fallback for "ic_launcher"</span><br>      bigText: <span class="hljs-string">"My big text that will be shown when notification is expanded"</span>, <span class="hljs-comment">// (optional) default: "message" prop</span><br>      subText: <span class="hljs-string">"This is a subText"</span>, <span class="hljs-comment">// (optional) default: none</span><br>      color: <span class="hljs-string">"red"</span>, <span class="hljs-comment">// (optional) default: system default</span><br>      vibrate: <span class="hljs-literal">true</span>, <span class="hljs-comment">// (optional) default: true</span><br>      vibration: <span class="hljs-number">300</span>, <span class="hljs-comment">// vibration length in milliseconds, ignored if vibrate=false, default: 1000</span><br>      tag: <span class="hljs-string">'some_tag'</span>, <span class="hljs-comment">// (optional) add tag to message</span><br>      group: <span class="hljs-string">"group"</span>, <span class="hljs-comment">// (optional) add group to message</span><br>      ongoing: <span class="hljs-literal">false</span>, <span class="hljs-comment">// (optional) set whether this is an "ongoing" notification</span><br><br>      <span class="hljs-comment">/* iOS only properties */</span><br>      alertAction: <span class="hljs-string">'view'</span>, <span class="hljs-comment">// (optional) default: view</span><br>      category: <span class="hljs-literal">null</span>, <span class="hljs-comment">// (optional) default: null</span><br>      userInfo: <span class="hljs-literal">null</span>, <span class="hljs-comment">// (optional) default: null (object containing additional notification data)</span><br><br>      <span class="hljs-comment">/* iOS and Android properties */</span><br>      title: <span class="hljs-string">"Local Notification"</span>, <span class="hljs-comment">// (optional)</span><br>      message: <span class="hljs-string">"My Notification Message"</span>, <span class="hljs-comment">// (required)</span><br>      playSound: <span class="hljs-literal">false</span>, <span class="hljs-comment">// (optional) default: true</span><br>      soundName: <span class="hljs-string">'default'</span>, <span class="hljs-comment">// (optional) Sound to play when the notification is shown. Value of 'default' plays the default sound. </span><br>      number: <span class="hljs-string">'10'</span>, <span class="hljs-comment">// (optional) Valid 32 bit integer specified as string. default: none (Cannot be zero)</span><br>      actions: <span class="hljs-string">'["Yes", "No"]'</span>,  <span class="hljs-comment">// (Android only) See the doc for notification actions to know more</span><br>    });<br>  }<br><br>  scheduleNotif() {<br>    <span class="hljs-keyword">this</span>.lastId++;<br>    PushNotification.localNotificationSchedule({<br>      date: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-built_in">Date</span>.now() + (<span class="hljs-number">30</span> * <span class="hljs-number">1000</span>)), <span class="hljs-comment">// in 30 secs</span><br><br>      <span class="hljs-comment">/* Android Only Properties */</span><br>      id: <span class="hljs-string">''</span>+<span class="hljs-keyword">this</span>.lastId, <span class="hljs-comment">// (optional) Valid unique 32 bit integer specified as string. default: Autogenerated Unique ID</span><br>      ticker: <span class="hljs-string">"My Notification Ticker"</span>, <span class="hljs-comment">// (optional)</span><br>      autoCancel: <span class="hljs-literal">true</span>, <span class="hljs-comment">// (optional) default: true</span><br>      largeIcon: <span class="hljs-string">"ic_launcher"</span>, <span class="hljs-comment">// (optional) default: "ic_launcher"</span><br>      smallIcon: <span class="hljs-string">"ic_notification"</span>, <span class="hljs-comment">// (optional) default: "ic_notification" with fallback for "ic_launcher"</span><br>      bigText: <span class="hljs-string">"My big text that will be shown when notification is expanded"</span>, <span class="hljs-comment">// (optional) default: "message" prop</span><br>      subText: <span class="hljs-string">"This is a subText"</span>, <span class="hljs-comment">// (optional) default: none</span><br>      color: <span class="hljs-string">"blue"</span>, <span class="hljs-comment">// (optional) default: system default</span><br>      vibrate: <span class="hljs-literal">true</span>, <span class="hljs-comment">// (optional) default: true</span><br>      vibration: <span class="hljs-number">300</span>, <span class="hljs-comment">// vibration length in milliseconds, ignored if vibrate=false, default: 1000</span><br>      tag: <span class="hljs-string">'some_tag'</span>, <span class="hljs-comment">// (optional) add tag to message</span><br>      group: <span class="hljs-string">"group"</span>, <span class="hljs-comment">// (optional) add group to message</span><br>      ongoing: <span class="hljs-literal">false</span>, <span class="hljs-comment">// (optional) set whether this is an "ongoing" notification</span><br><br>      <span class="hljs-comment">/* iOS only properties */</span><br>      alertAction: <span class="hljs-string">'view'</span>, <span class="hljs-comment">// (optional) default: view</span><br>      category: <span class="hljs-literal">null</span>, <span class="hljs-comment">// (optional) default: null</span><br>      userInfo: <span class="hljs-literal">null</span>, <span class="hljs-comment">// (optional) default: null (object containing additional notification data)</span><br><br>      <span class="hljs-comment">/* iOS and Android properties */</span><br>      title: <span class="hljs-string">"Scheduled Notification"</span>, <span class="hljs-comment">// (optional)</span><br>      message: <span class="hljs-string">"My Notification Message"</span>, <span class="hljs-comment">// (required)</span><br>      playSound: <span class="hljs-literal">true</span>, <span class="hljs-comment">// (optional) default: true</span><br>      soundName: <span class="hljs-string">'default'</span>, <span class="hljs-comment">// (optional) Sound to play when the notification is shown. Value of 'default' plays the default sound. </span><br>    });<br>  }<br><br>  checkPermission(cbk) {<br>    <span class="hljs-keyword">return</span> PushNotification.checkPermissions(cbk);<br>  }<br><br>  cancelNotif() {<br>    PushNotification.cancelLocalNotifications({<span class="hljs-attr">id</span>: <span class="hljs-string">''</span>+<span class="hljs-keyword">this</span>.lastId});<br>  }<br><br>  cancelAll() {<br>    PushNotification.cancelAllLocalNotifications();<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>App.js:消息显示</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><code class="hljs html">/**<br> * Sample React Native App<br> * https://github.com/facebook/react-native<br> *<br> * @format<br> * @flow<br> */<br><br>import React, { Component } from 'react';<br>import { TextInput, StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';<br>import NotifService from './NotifService';<br>import appConfig from './app.json';<br><br>type Props = {};<br>export default class App extends Component<span class="hljs-tag"><<span class="hljs-name">Props</span>></span> {<br><br>  constructor(props) {<br>    super(props);<br>    this.state = {<br>      senderId: appConfig.senderID<br>    };<br><br>    this.notif = new NotifService(this.onRegister.bind(this), this.onNotif.bind(this));<br>  }<br><br>  render() {<br>    return (<br>      <span class="hljs-tag"><<span class="hljs-name">View</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.container}</span>></span><br>        <span class="hljs-tag"><<span class="hljs-name">Text</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.title}</span>></span>Example app react-native-push-notification<span class="hljs-tag"></<span class="hljs-name">Text</span>></span><br>        <span class="hljs-tag"><<span class="hljs-name">View</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.spacer}</span>></span><span class="hljs-tag"></<span class="hljs-name">View</span>></span><br>        <span class="hljs-tag"><<span class="hljs-name">TextInput</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.textField}</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{this.state.registerToken}</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Register token"</span> /></span><br>        <span class="hljs-tag"><<span class="hljs-name">View</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.spacer}</span>></span><span class="hljs-tag"></<span class="hljs-name">View</span>></span><br><br>        <span class="hljs-tag"><<span class="hljs-name">TouchableOpacity</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.button}</span> <span class="hljs-attr">onPress</span>=<span class="hljs-string">{()</span> =></span> { this.notif.localNotif() }}><span class="hljs-tag"><<span class="hljs-name">Text</span>></span>Local Notification (now)<span class="hljs-tag"></<span class="hljs-name">Text</span>></span><span class="hljs-tag"></<span class="hljs-name">TouchableOpacity</span>></span><br>        <span class="hljs-tag"><<span class="hljs-name">TouchableOpacity</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.button}</span> <span class="hljs-attr">onPress</span>=<span class="hljs-string">{()</span> =></span> { this.notif.scheduleNotif() }}><span class="hljs-tag"><<span class="hljs-name">Text</span>></span>Schedule Notification in 30s<span class="hljs-tag"></<span class="hljs-name">Text</span>></span><span class="hljs-tag"></<span class="hljs-name">TouchableOpacity</span>></span><br>        <span class="hljs-tag"><<span class="hljs-name">TouchableOpacity</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.button}</span> <span class="hljs-attr">onPress</span>=<span class="hljs-string">{()</span> =></span> { this.notif.cancelNotif() }}><span class="hljs-tag"><<span class="hljs-name">Text</span>></span>Cancel last notification (if any)<span class="hljs-tag"></<span class="hljs-name">Text</span>></span><span class="hljs-tag"></<span class="hljs-name">TouchableOpacity</span>></span><br>        <span class="hljs-tag"><<span class="hljs-name">TouchableOpacity</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.button}</span> <span class="hljs-attr">onPress</span>=<span class="hljs-string">{()</span> =></span> { this.notif.cancelAll() }}><span class="hljs-tag"><<span class="hljs-name">Text</span>></span>Cancel all notifications<span class="hljs-tag"></<span class="hljs-name">Text</span>></span><span class="hljs-tag"></<span class="hljs-name">TouchableOpacity</span>></span><br>        <span class="hljs-tag"><<span class="hljs-name">TouchableOpacity</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.button}</span> <span class="hljs-attr">onPress</span>=<span class="hljs-string">{()</span> =></span> { this.notif.checkPermission(this.handlePerm.bind(this)) }}><span class="hljs-tag"><<span class="hljs-name">Text</span>></span>Check Permission<span class="hljs-tag"></<span class="hljs-name">Text</span>></span><span class="hljs-tag"></<span class="hljs-name">TouchableOpacity</span>></span><br><br>        <span class="hljs-tag"><<span class="hljs-name">View</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.spacer}</span>></span><span class="hljs-tag"></<span class="hljs-name">View</span>></span><br>        <span class="hljs-tag"><<span class="hljs-name">TextInput</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.textField}</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{this.state.senderId}</span> <span class="hljs-attr">onChangeText</span>=<span class="hljs-string">{(e)</span> =></span> {this.setState({ senderId: e })}} placeholder="GCM ID" /><br>        <span class="hljs-tag"><<span class="hljs-name">TouchableOpacity</span> </span><br><span class="hljs-tag">          <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.button}</span> </span><br><span class="hljs-tag">          <span class="hljs-attr">onPress</span>=<span class="hljs-string">{()</span> =></span> { this.notif.configure(this.onRegister.bind(this), this.onNotif.bind(this), this.state.senderId) }}><br>          <span class="hljs-tag"><<span class="hljs-name">Text</span>></span>Configure Sender ID<span class="hljs-tag"></<span class="hljs-name">Text</span>></span><br>        <span class="hljs-tag"></<span class="hljs-name">TouchableOpacity</span>></span><br>        {this.state.gcmRegistered && <span class="hljs-tag"><<span class="hljs-name">Text</span>></span>GCM Configured !<span class="hljs-tag"></<span class="hljs-name">Text</span>></span>}<br><br>        <span class="hljs-tag"><<span class="hljs-name">View</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.spacer}</span>></span><span class="hljs-tag"></<span class="hljs-name">View</span>></span><br>      <span class="hljs-tag"></<span class="hljs-name">View</span>></span><br>    );<br>  }<br><br>  onRegister(token) {<br>    Alert.alert("Registered !", JSON.stringify(token));<br>    console.log(token);<br>    this.setState({ registerToken: token.token, gcmRegistered: true });<br>  }<br><br>  onNotif(notif) {<br>    console.log(notif);<br>    Alert.alert(notif.title, notif.message);<br>  }<br><br>  handlePerm(perms) {<br>    Alert.alert("Permissions", JSON.stringify(perms));<br>  }<br>}<br><br><br>const styles = StyleSheet.create({<br>  container: {<br>    flex: 1,<br>    justifyContent: 'center',<br>    alignItems: 'center',<br>    backgroundColor: '#F5FCFF',<br>  },<br>  welcome: {<br>    fontSize: 20,<br>    textAlign: 'center',<br>    margin: 10,<br>  },<br>  button: {<br>    borderWidth: 1,<br>    borderColor: "#000000",<br>    margin: 5,<br>    padding: 5,<br>    width: "70%",<br>    backgroundColor: "#DDDDDD",<br>    borderRadius: 5,<br>  },<br>  textField: {<br>    borderWidth: 1,<br>    borderColor: "#AAAAAA",<br>    margin: 5,<br>    padding: 5,<br>    width: "70%"<br>  },<br>  spacer: {<br>    height: 10,<br>  },<br>  title: {<br>    fontWeight: "bold",<br>    fontSize: 20,<br>    textAlign: "center",<br>  }<br>});<br></code></pre></td></tr></tbody></table></figure>
+
+<p>最终效果：<br><a href="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190702210934792-2045505488.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190702210934792-2045505488.png" alt="avatar"></a></p>
+<h2 id="二、使用极光开发者服务做远程消息推送">二、使用极光开发者服务做远程消息推送<a class="post-anchor" href="#二、使用极光开发者服务做远程消息推送"></a></h2><ol>
+<li><p>官网注册极光开发者账号，并创建应用<br><a href="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190702211959927-1946720837.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190702211959927-1946720837.png" alt="avatar"></a><br><a href="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190702212113386-1610480464.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190702212113386-1610480464.png" alt="avatar"></a></p>
+</li>
+<li><p>安装</p>
+<blockquote>
+<p>npm install jpush-react-native –save<br>npm install jcore-react-native –save</p>
+</blockquote>
+</li>
+<li><p>关联</p>
+<blockquote>
+<p>react-native link jpush-react-native<br>react-native link jcore-react-native</p>
+</blockquote>
+</li>
+<li><p>打开 project/android/app/src/main/java/com/项目名/下的 MainApplication.java 文件，然后加入 JPushPackage</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> cn.jpush.reactnativejpush.JPushPackage; <br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainApplication</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Application</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ReactApplication</span> </span>{<br><span class="hljs-comment">// 设置为 true 将不会弹出 toast</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> SHUTDOWN_TOAST = <span class="hljs-keyword">false</span>;<br>    <span class="hljs-comment">// 设置为 true 将不会打印 log</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> SHUTDOWN_LOG = <span class="hljs-keyword">false</span>;<br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> ReactNativeHost mReactNativeHost = <span class="hljs-keyword">new</span> ReactNativeHost(<span class="hljs-keyword">this</span>) {<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">getUseDeveloperSupport</span><span class="hljs-params">()</span> </span>{<br>      <span class="hljs-keyword">return</span> BuildConfig.DEBUG;<br>    }<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> List<ReactPackage> <span class="hljs-title">getPackages</span><span class="hljs-params">()</span> </span>{<br>      <span class="hljs-keyword">return</span> Arrays.<ReactPackage>asList(<br>            <span class="hljs-keyword">new</span> MainReactPackage(),<br>               <span class="hljs-keyword">new</span> JPushPackage(SHUTDOWN_TOAST, SHUTDOWN_LOG) <br>      );<br>    }<br></code></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>打开 project/android/app/src/main/java/com/项目名/下的MainActivity.java 文件，然后加入 如下代码：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> android.os.Bundle;<br><span class="hljs-keyword">import</span> com.facebook.react.ReactActivity;<br><span class="hljs-keyword">import</span> cn.jpush.android.api.JPushInterface;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ReactActivity</span> </span>{<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>{<br>        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);<br>        JPushInterface.init(<span class="hljs-keyword">this</span>);<br>    }<br> <br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPause</span><span class="hljs-params">()</span> </span>{<br>        <span class="hljs-keyword">super</span>.onPause();<br>        JPushInterface.onPause(<span class="hljs-keyword">this</span>);<br>    }<br> <br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onResume</span><span class="hljs-params">()</span> </span>{<br>        <span class="hljs-keyword">super</span>.onResume();<br>        JPushInterface.onResume(<span class="hljs-keyword">this</span>);<br>    }<br> <br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onDestroy</span><span class="hljs-params">()</span> </span>{<br>        <span class="hljs-keyword">super</span>.onDestroy();<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>使用<br>（1）RN工程代码：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;<br><span class="hljs-keyword">import</span> { Dimensions, Text, Platform, Linking, Alert } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-native"</span>;<br><span class="hljs-keyword">import</span> JPushModule <span class="hljs-keyword">from</span> <span class="hljs-string">'jpush-react-native'</span><br><br><span class="hljs-keyword">const</span> deviceHeight = Dimensions.get(<span class="hljs-string">'window'</span>).height;  <br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Login</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{<br>    <span class="hljs-keyword">constructor</span>(props){<br>        <span class="hljs-keyword">super</span>(props);<br>        <span class="hljs-keyword">this</span>.state = {<br>            <br>        }<br>    }<br><br>    componentDidMount() { <br>    <span class="hljs-comment">/****************************通知 start **************************************************/</span><br>        <span class="hljs-keyword">if</span> (Platform.OS === <span class="hljs-string">'android'</span>) {<br>          JPushModule.initPush()<br>       <span class="hljs-comment">// 新版本必需写回调函数</span><br>          JPushModule.notifyJSDidLoad(<span class="hljs-function"><span class="hljs-params">resultCode</span> =></span> {<br>            <span class="hljs-keyword">if</span> (resultCode === <span class="hljs-number">0</span>) {<br>            }<br>          })<br>        } <span class="hljs-keyword">else</span> {<br>          JPushModule.setupPush()<br>        }<br>        <span class="hljs-comment">// 接收自定义消息</span><br>        <span class="hljs-keyword">this</span>.receiveCustomMsgListener = <span class="hljs-function"><span class="hljs-params">map</span> =></span> {<br>          <span class="hljs-keyword">this</span>.setState({<br>            pushMsg: map.content<br>          })<br>          <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'extras: '</span> + map.extras)<br>        }<br><br>        <span class="hljs-comment">// 接收自定义消息JPushModule.addReceiveCustomMsgListener(this.receiveCustomMsgListener)</span><br>        <span class="hljs-keyword">this</span>.receiveNotificationListener = <span class="hljs-function"><span class="hljs-params">map</span> =></span> {<br>          <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'alertContent: '</span> + map.alertContent)<br>          <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'extras: '</span> + map.extras)<br>        }<br>        <br>        <span class="hljs-comment">// 接收推送通知</span><br>        JPushModule.addReceiveNotificationListener(<span class="hljs-keyword">this</span>.receiveNotificationListener)<br>        <span class="hljs-comment">// 打开通知</span><br>        <span class="hljs-keyword">this</span>.openNotificationListener = <span class="hljs-function"><span class="hljs-params">map</span> =></span> {<br>          <span class="hljs-comment">// console.log('Opening notification!')</span><br>        <span class="hljs-comment">//  console.log('map.extra: ' + map.extras)</span><br>          <span class="hljs-keyword">let</span> webUrl= <span class="hljs-built_in">JSON</span>.parse(map.extras).webUrl<br>          <span class="hljs-keyword">let</span> url = webUrl.replace(<span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">"\/"</span>, <span class="hljs-string">'g'</span>), <span class="hljs-string">"/"</span>)<br>          Linking.canOpenURL(url).then(<span class="hljs-function"><span class="hljs-params">supported</span> =></span> {<br>            <span class="hljs-keyword">if</span> (!supported) {<br>              Alert.alert(<span class="hljs-string">'您的系统不支持打开浏览器！'</span>)<br>            } <span class="hljs-keyword">else</span> {<br>              <span class="hljs-keyword">return</span> Linking.openURL(url);<br>            }<br>          }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =></span> { });<br><br>        }<br><br>        JPushModule.addReceiveOpenNotificationListener(<span class="hljs-keyword">this</span>.openNotificationListener)<br><br>        <span class="hljs-comment">// this.getRegistrationIdListener = registrationId => {</span><br>        <span class="hljs-comment">//   console.log('Device register succeed, registrationId ' + registrationId)</span><br>        <span class="hljs-comment">// }</span><br>        <span class="hljs-comment">// JPushModule.addGetRegistrationIdListener(this.getRegistrationIdListener)</span><br>        <span class="hljs-comment">/****************************通知 end **************************************************/</span><br>      }<br><br>    componentWillUnmount() {<br>        JPushModule.removeReceiveCustomMsgListener(<span class="hljs-keyword">this</span>.receiveCustomMsgListener)<br>        JPushModule.removeReceiveNotificationListener(<span class="hljs-keyword">this</span>.receiveNotificationListener)<br>        JPushModule.removeReceiveOpenNotificationListener(<span class="hljs-keyword">this</span>.openNotificationListener)<br>        <span class="hljs-comment">// JPushModule.removeGetRegistrationIdListener(this.getRegistrationIdListener)</span><br>        <span class="hljs-comment">// console.log('Will clear all notifications')</span><br>        <span class="hljs-comment">// JPushModule.clearAllNotifications()</span><br>    }<br>      <br>    <br><br>    render() {<br>        <span class="hljs-keyword">return</span> (<br>          <Text>push notification test<<span class="hljs-regexp">/Text></span><br><span class="hljs-regexp">        );</span><br><span class="hljs-regexp">    }</span><br><span class="hljs-regexp">}</span><br></code></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<p>（2）极光官网推送<br><a href="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190702212400113-1582534285.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190702212400113-1582534285.png" alt="avatar"></a></p>
+<ol start="7">
+<li>最终效果<br><a href="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190702212603775-2044602527.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190702212603775-2044602527.png" alt="avatar"></a></li>
+</ol>
+<h2 id="三、APP内消息通知">三、APP内消息通知<a class="post-anchor" href="#三、APP内消息通知"></a></h2><p>使用antd组件NoticeBar通告栏：<a href="https://rn.mobile.ant.design/components/notice-bar-cn/" target="_blank" rel="noopener">https://rn.mobile.ant.design/components/notice-bar-cn/</a> 即可</p>
+<p>最终效果：<br><a href="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190702212720490-1019567485.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201907/1549437-20190702212720490-1019567485.png" alt="avatar"></a></p>
+<p>参考：<a href="https://www.cnblogs.com/jackson-zhangjiang/p/9877388.html" target="_blank" rel="noopener">React Native之通知栏消息提示(android) </a> 作者：<a href="https://www.cnblogs.com/jackson-zhangjiang/" target="_blank" rel="noopener">jackson影琪</a></p>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/07/02/2019%E5%B9%B46%E6%9C%88%E7%9A%84%E6%80%9D%E8%80%83/">2019年6月的思考</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/07/02/React%20Native%E8%8E%B7%E5%8F%96%E6%89%8B%E6%9C%BA%E7%9A%84%E5%90%84%E7%A7%8D%E9%AB%98%E5%BA%A6/">React Native获取手机的各种高度</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2019/07/02/React%20Native%E5%8F%91%E9%80%81%E9%80%9A%E7%9F%A5/">https://bbcfive.github.io/2019/07/02/React%20Native%E5%8F%91%E9%80%81%E9%80%9A%E7%9F%A5/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

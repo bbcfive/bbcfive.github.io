@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      RN canvas画布大小之谜 - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、需求"><span class="toc-text">一、需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、问题"><span class="toc-text">二、问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、原因"><span class="toc-text">三、原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、解决"><span class="toc-text">四、解决</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">RN canvas画布大小之谜</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/04/02</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/移动端">移动端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/canvas">canvas</a>
+                  
+                
+                  
+                    <a href="/tags/React Native">React Native</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h2 id="一、需求">一、需求<a class="post-anchor" href="#一、需求"></a></h2><p>在一个高640、宽360的canvas内画一些坐标点。</p>
+<h2 id="二、问题">二、问题<a class="post-anchor" href="#二、问题"></a></h2><p>坐标点只显示了一部分，剩下的点没显示（其坐标属于（640,360）区域）。</p>
+<h2 id="三、原因">三、原因<a class="post-anchor" href="#三、原因"></a></h2><p>canvas默认的画布大小是高150，宽300，这个范围以外的点自然显示不了，因此判断是画布大小的设置有问题。</p>
+<p>设置画布大小的时候，分别用两种方式设置width和height：</p>
+<p>1.style<br>  Canvas 把自己这块地作为默认参数canvas传给handleCanvas</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag"><<span class="hljs-name">Canvas</span> </span><br><span class="hljs-tag">  <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> </span><br><span class="hljs-tag">    <span class="hljs-attr">width:</span> <span class="hljs-attr">360</span>,</span><br><span class="hljs-tag">    <span class="hljs-attr">height:</span> <span class="hljs-attr">640</span>,</span><br><span class="hljs-tag">    <span class="hljs-attr">backgroundColor:</span> '#<span class="hljs-attr">F5FCFF</span>'</span><br><span class="hljs-tag">  }}</span><br><span class="hljs-tag">  <span class="hljs-attr">ref</span>=<span class="hljs-string">{this.handleCanvas}</span></span><br><span class="hljs-tag">/></span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>2.props<br>  Canvas 把自己这块地作为默认参数canvas传给handleCanvas</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag"><<span class="hljs-name">Canvas</span> </span><br><span class="hljs-tag">  <span class="hljs-attr">width</span>=<span class="hljs-string">{360}</span></span><br><span class="hljs-tag">  <span class="hljs-attr">height</span>=<span class="hljs-string">{640}</span></span><br><span class="hljs-tag">  <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> </span><br><span class="hljs-tag">    <span class="hljs-attr">backgroundColor:</span> '#<span class="hljs-attr">F5FCFF</span>'</span><br><span class="hljs-tag">  }}</span><br><span class="hljs-tag">  <span class="hljs-attr">ref</span>=<span class="hljs-string">{this.handleCanvas}</span></span><br><span class="hljs-tag">/></span><br></code></pre></td></tr></tbody></table></figure>
+<p>结果，并没有改变什么…</p>
+<p>深层原因：上述两种方案都仅仅改变的是canvas的props值<br><a href="https://img2018.cnblogs.com/blog/1549437/201904/1549437-20190402094159554-1867370404.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201904/1549437-20190402094159554-1867370404.png" alt="avatar"></a></p>
+<p>而决定画布的大小是attribute值，而非property值，而前两种方案修改的都是property值。attribute值如下图：</p>
+<p><a href="https://img2018.cnblogs.com/blog/1549437/201904/1549437-20190402094649835-2049879035.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201904/1549437-20190402094649835-2049879035.png" alt="avatar"></a></p>
+<p>仍旧是默认的300和150。</p>
+<h2 id="四、解决">四、解决<a class="post-anchor" href="#四、解决"></a></h2><p>用attribute的方法修改attribute</p>
+<p>handleCanvas = (canvas) => {<br>  canvas.height = 640;<br>  canvas.width = 360;<br>  this.setState({ canvas });<br>}<br>结果：<br><a href="https://img2018.cnblogs.com/blog/1549437/201904/1549437-20190402094820623-1207144052.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201904/1549437-20190402094820623-1207144052.png" alt="avatar"></a></p>
+<p>attribute被修改，所有的点正常显示。</p>
+<p>附一篇PC端的canvas解决方案：<a href="https://blog.csdn.net/csm0912/article/details/52963240" target="_blank" rel="noopener">https://blog.csdn.net/csm0912/article/details/52963240</a></p>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/04/02/%E7%94%B1%E4%B8%8A%E4%B8%80%E4%B8%AA%E8%A1%80%E6%A1%88%E5%BC%95%E5%8F%91%E7%9A%84%E5%85%B3%E4%BA%8Eproperty%E5%92%8Cattribute%E5%85%B3%E7%B3%BB%E7%9A%84%E6%80%9D%E8%80%83/">由上一个血案引发的关于property和attribute关系的思考</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/04/01/Chrome%20DevTools%2025%20Tips%20and%20Tricks/">Chrome DevTools - 25 Tips and Tricks</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2019/04/02/RN%20canvas%E7%94%BB%E5%B8%83%E5%A4%A7%E5%B0%8F%E4%B9%8B%E8%B0%9C/">https://bbcfive.github.io/2019/04/02/RN%20canvas%E7%94%BB%E5%B8%83%E5%A4%A7%E5%B0%8F%E4%B9%8B%E8%B0%9C/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      How to do Speech Recognition with Deep Learning - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何用深度学习做语音识别"><span class="toc-text">如何用深度学习做语音识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、将声音转换成比特"><span class="toc-text">一、将声音转换成比特</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、预处理声音数据"><span class="toc-text">二、预处理声音数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、从短声音里识别字符"><span class="toc-text">三、从短声音里识别字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、训练自己的语音识别模型"><span class="toc-text">四、训练自己的语音识别模型</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">How to do Speech Recognition with Deep Learning</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/03/22</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/机器学习">机器学习</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/深度学习">深度学习</a>
+                  
+                
+                  
+                    <a href="/tags/NLP">NLP</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><p>本文译自：<a href="https://medium.com/@ageitgey/machine-learning-is-fun-part-6-how-to-do-speech-recognition-with-deep-learning-28293c162f7a" target="_blank" rel="noopener">https://medium.com/@ageitgey/machine-learning-is-fun-part-6-how-to-do-speech-recognition-with-deep-learning-28293c162f7a</a></p>
+<h2 id="如何用深度学习做语音识别">如何用深度学习做语音识别<a class="post-anchor" href="#如何用深度学习做语音识别"></a></h2><p>Andrew Ng 说语音识别从让人恼怒的不可靠到令人难以置信的有用中间只有4%的距离，是深度学习让这一切成为可能。</p>
+<p>机器学习的过程不总是黑盒，我们将语音记录喂给神经网络，就可以得到纯文本输出。其过程如下如所示：</p>
+<p><a href="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190322091138397-1835593930.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190322091138397-1835593930.png" alt="avatar"></a></p>
+<p>但问题是，每个人发音的习惯不同，同样说‘Hello’，有人语速极快，有人说的很慢。因此建立可靠的识别模型就需要一些小技巧。</p>
+<h2 id="一、将声音转换成比特">一、将声音转换成比特<a class="post-anchor" href="#一、将声音转换成比特"></a></h2><p>我们可以记录声波，然后将其用数字形式表示，并形成二维数组。</p>
+<p>但声音被采集的原始形式是声波，比如下图就是‘Hello’的声音片段。</p>
+<p><a href="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190322092128512-400810288.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190322092128512-400810288.png" alt="avatar"></a></p>
+<p>‘Hello’的声音片段比较复杂，先看一个简单的声音片段：</p>
+<p><a href="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190322092340826-891548890.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190322092340826-891548890.png" alt="avatar"></a></p>
+<p>虽然声音是一维的，但加上时间属性后，我们可以将它转为二维图像。</p>
+<p>这就是“采样”。我们对样本进行每秒千次的阅读便可以准确的记录它的数据。下图是“Hello”的前100个采样数据：</p>
+<p><a href="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190322093158373-1224658461.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190322093158373-1224658461.png" alt="avatar"></a></p>
+<p>但又有一个问题，采样的数据就一定等于原数据吗？</p>
+<p><a href="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190322093850144-1806845001.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190322093850144-1806845001.png" alt="avatar"></a></p>
+<p>理论上来说，只要以我们所需采集的数据最高频的两倍来采集数据，就可以完美呈现近似原音的效果。很多人以为采集数据次数越多，数据点越紧密效果越高，其实这是错误的。</p>
+<h2 id="二、预处理声音数据">二、预处理声音数据<a class="post-anchor" href="#二、预处理声音数据"></a></h2><p>拿到数据后，我们要对其进行预处理，这个过程会面临很多问题。比如，声音片段并不都是纯粹的标准样本，现实环境复杂多变，说话者可能是在嘈杂的环境下讲话，并且伴有严重的连读和口音，这都给语音识别增加了困难。</p>
+<p>首先来看看我们以1/16,000次每秒为间隔采集到的数据：</p>
+<p><a href="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190324164226710-1647111373.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190324164226710-1647111373.png" alt="avatar"></a></p>
+<p>在坐标系里绘制这些点集，可以得到近似原声波的图：</p>
+<p><a href="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190324171437324-418727827.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190324171437324-418727827.png" alt="avatar"></a></p>
+<p>这个声音片段是由不同频率的声音复杂组合而成。为了使它更容易被神经网络处理，我们将其分离出低音部分，再分离出下一个低音部分，以此类推。然后将（从低到高）每个频段（frequency band）中的能量相加，我们就为各个类别的音频片段创建了一个指纹（fingerprint）。就像把一段音乐分离成一个个单独的音符一般。</p>
+<p>这时需要借助傅里叶变换，它将复杂的声波分解为简单的声波，每一份频段所包含的能量不同，将能量相加，就能得到从低音到高音，每个频率范围的重要程度。以每 50hz 为一个频段的话，我们这 20 毫秒的音频所含有的能量从低频到高频就可以表示为下面的列表：</p>
+<p><a href="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190324172529530-75859058.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190324172529530-75859058.png" alt="avatar"></a></p>
+<p>将其绘成声音图谱：</p>
+<p><a href="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190324172628330-82419438.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190324172628330-82419438.png" alt="avatar"></a></p>
+<p>重复这个过程，最终会得到一个频谱图：</p>
+<p><a href="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190324172712760-508131555.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190324172712760-508131555.png" alt="avatar"></a></p>
+<p>这样你能更清楚的发现声音模式，神经网络也更容易接收它。</p>
+<h2 id="三、从短声音里识别字符">三、从短声音里识别字符<a class="post-anchor" href="#三、从短声音里识别字符"></a></h2><p>经过处理的声音数据更容易被训练。将20毫秒的声音切片喂给神经网络，它会输出单个字母：<br><a href="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190324173040888-1925275475.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190324173040888-1925275475.png" alt="avatar"></a></p>
+<p>我们使用循环神经网络来处理数据，它具有预测功能。当我们将每个声音切片都依次喂给循环神经网络后，会得到如下映射：</p>
+<p><a href="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190324173359487-1616698830.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190324173359487-1616698830.png" alt="avatar"></a></p>
+<p>其中每一列的红色块代表了每个声音切片最有可能对应的字母。</p>
+<p>然后我们拿到的数据可能是这样的：</p>
+<ul>
+<li>HHHEE_LL_LLLOOO becomes HE_L_LO</li>
+<li>HHHUU_LL_LLLOOO becomes HU_L_LO</li>
+<li>AAAUU_LL_LLLOOO becomes AU_L_LO</li>
+</ul>
+<p>先去掉下划线：</p>
+<ul>
+<li>HE_L_LO becomes HELLO</li>
+<li>HU_L_LO becomes HULLO</li>
+<li>AU_L_LO becomes AULLO</li>
+</ul>
+<p>剩下的三种可能输出都是神经网络对于声音纯粹的解读。此时我们需要用到自然语言处理的数据库，基于大数据做训练匹配，从而选出出现可能性最大的词。但有时，可能性最大的词也许并不是你想要的结果。因此，此处仍有待完善的地方。</p>
+<h2 id="四、训练自己的语音识别模型">四、训练自己的语音识别模型<a class="post-anchor" href="#四、训练自己的语音识别模型"></a></h2><p>你得克服几乎无穷无尽的挑战：劣质麦克风、背景噪音、混响和回声、口音差异等等。你的训练数据需要囊括这所有的一切，才能确保神经网络可以接受它们。</p>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/03/27/Javascript%E4%B8%AD%E7%9A%84call%E8%AF%A6%E8%A7%A3/">Javascript中的call详解</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/03/21/React%20Native%E4%B8%8E%E5%8E%9F%E7%94%9F%E5%85%B3%E7%B3%BB%E7%90%86%E8%A7%A3%E4%B8%8E%E5%AF%B9%E6%AF%94/">React Native与原生关系理解与对比</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2019/03/22/%E5%A6%82%E4%BD%95%E7%94%A8%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%81%9A%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB/">https://bbcfive.github.io/2019/03/22/%E5%A6%82%E4%BD%95%E7%94%A8%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%81%9A%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

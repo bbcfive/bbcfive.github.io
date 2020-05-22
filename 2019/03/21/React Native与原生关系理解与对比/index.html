@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      React Native与原生关系理解与对比 - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、性能问题"><span class="toc-text">一、性能问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这里，我的理解是，性能一定不如纯原生写的。"><span class="toc-text">这里，我的理解是，性能一定不如纯原生写的。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、我认为的缺点"><span class="toc-text">二、我认为的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、我理解的优点"><span class="toc-text">三、我理解的优点</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">React Native与原生关系理解与对比</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/03/21</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/移动端">移动端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/基础原理">基础原理</a>
+                  
+                
+                  
+                    <a href="/tags/React Native">React Native</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><p>零、关系理解<br><a href="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190321085539705-470359429.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201903/1549437-20190321085539705-470359429.png" alt="avatar"></a></p>
+<p>这个是我对RN和原生关系的理解。简单解释下这个图。</p>
+<p>RN js编写完业务代码后，通过react-native bundle命令，将代码分别编译成一个index.ios.bundle和index.android.bundle文件，当然还是资源文件。然后放到Android、iOS的原生工程里，通过黄色说明块里的示例代码，将js写的所有逻辑业务读成一个View来展示在原生里，当然这个View需要Activity/Fragment/ViewController来承载。然后原生App打开相应承载的页面就可以看到RN写的业务了。所以，正常情况下，对于原生来说，所有的RN页面都是在一个原生页面里的。</p>
+<p>顶部还有有个node_modules，它其实在工程里是一个文件夹，里面存放了所有的js，Android，iOS都需要的一个共同类库以及源码，所有的通信、组件都在这个里面。所以，三个工程里都需要读这个文件夹里的东西，但是我们不用关心具体，这个是由npm来自动下载的。只需要安装文档提示配置好这个文件夹的路径就ok了。</p>
+<h2 id="一、性能问题">一、性能问题<a class="post-anchor" href="#一、性能问题"></a></h2><h4 id="这里，我的理解是，性能一定不如纯原生写的。">这里，我的理解是，性能一定不如纯原生写的。<a class="post-anchor" href="#这里，我的理解是，性能一定不如纯原生写的。"></a></h4><p>关于RN写出来的应用的性能问题其实一直都是所有开发人员所关心的问题。RN一直说的是全都是调用的是原生的控件，所以理论上和原生写的App是不存在性能差异的。</p>
+<p>原生封装的控件，在RN这边以组件的方式来使用。我有一篇文章以WebView为例讲述了一下原生控件和RN组件的关系(React Native Android从源码看WebView 没有OverrideUrl解决办法，以及高度自适应)。用RN调用的所有组件的属性参数都是经过了js到java/objective-c/swift的转换后，才最终渲染成原生封装的控件。而控件在运行中的事件回调也是经过了语言通信，才将信息回调给js。我对语言通信这一块的性能耗时不太了解，但是应该可以肯定的是，本来直接就可以完成的事情，经过了语言转换，肯定是有损耗的。只是Facebook把这个性能做了很大的优化，再加上现在手机硬件的性能越来越强大，所以，在大部分手机上这个损耗可以忽略。</p>
+<h2 id="二、我认为的缺点">二、我认为的缺点<a class="post-anchor" href="#二、我认为的缺点"></a></h2><ul>
+<li><p>能做的事情不如原生灵活。我前面说过，RN用的组件虽然是原生控件，但是是经过原生封装过的控件，有一定的局限性。为了做到跨平台，他并没有把原生该控件的所有属性参数回调都暴露给js端。</p>
+</li>
+<li><p>坑会比原生开发更多。原生开发，特别是Android有很多适配问题要考虑，这些大部分都是经验才能解决的坑，facebook开发人员在封装控件的时候如果没遇到过相关的坑，可能会解决的不彻底，而js那边如果不了解原生的话，可能不能完全明白问题出在哪了。所以，原生会遇到的坑，如果facebook没解决，理论上RN都会遇到。</p>
+</li>
+<li><p>技术栈会要求更高。这个是肯定的，最好是Android/iOS都要有点了解，这样写出来的应用才会更健壮。设计js与原生通信的方案通用性才会更强。问题的排查也会更准确。</p>
+</li>
+</ul>
+<h2 id="三、我理解的优点">三、我理解的优点<a class="post-anchor" href="#三、我理解的优点"></a></h2><p>最后我才来说优点，是因为虽然有前面的确定，但这个技术本身肯定是值得学习和发扬的。</p>
+<ul>
+<li><p>js与原生的通信机制比较完善。注意我说的是比较完善，实际编码过程中还是有很多不如意的地方。但是满足绝大部分业务需求是没问题的。</p>
+</li>
+<li><p>可以支持自定义原生控件给RN用。前面我说到，原生封装的控件如果不能满足你的业务需求，你可以自己封装控件，并选择性的暴露接口给RN用，当然这个适用于较为复杂的业务需求，如果大部分都控件都需要重新封装，还不如直接就原生写了。</p>
+</li>
+<li><p>支持热更新。这无疑是比较重要的一个优点了，开始我就提到，对于原生了来说，重要的是js编译的bundle文件，而热更新的方案也就可以从这点入手。将bundle文件和资源文件打成包，当成一个普通的文件下载，然后让原生指定读取路径就可以了。当然这个需要原生支持。</p>
+</li>
+<li><p>跨平台。这也是一个非常重要的有点了。但是打包iOS，还是需要必须的硬件配置，比如mac电脑。</p>
+</li>
+<li><p>可以让更多的前端开发人员来写App。</p>
+</li>
+</ul>
+<p>作者：Sunny玄子 链接：<a href="https://www.jianshu.com/p/d54bed57b262" target="_blank" rel="noopener">https://www.jianshu.com/p/d54bed57b262</a></p>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/03/22/%E5%A6%82%E4%BD%95%E7%94%A8%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%81%9A%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB/">How to do Speech Recognition with Deep Learning</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/03/21/App%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6%E7%9A%84%E4%BC%98%E5%8C%96%E4%B8%8E%E7%9B%91%E6%8E%A7/">App启动速度的优化与监控</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2019/03/21/React%20Native%E4%B8%8E%E5%8E%9F%E7%94%9F%E5%85%B3%E7%B3%BB%E7%90%86%E8%A7%A3%E4%B8%8E%E5%AF%B9%E6%AF%94/">https://bbcfive.github.io/2019/03/21/React%20Native%E4%B8%8E%E5%8E%9F%E7%94%9F%E5%85%B3%E7%B3%BB%E7%90%86%E8%A7%A3%E4%B8%8E%E5%AF%B9%E6%AF%94/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      css知识体系搭建 - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、选择器"><span class="toc-text">一、选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#属性选择器"><span class="toc-text">属性选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#伪类选择器："><span class="toc-text">伪类选择器：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、属性"><span class="toc-text">二、属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、背景属性"><span class="toc-text">三、背景属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、列表属性"><span class="toc-text">四、列表属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、页面布局"><span class="toc-text">五、页面布局</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#visibility"><span class="toc-text">visibility</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#clip-剪裁图像"><span class="toc-text">clip 剪裁图像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#overflow-设置当对象的内容超过其指定高度及宽度时如何显示内容"><span class="toc-text">overflow  设置当对象的内容超过其指定高度及宽度时如何显示内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#outline-边框轮廓"><span class="toc-text">outline 边框轮廓</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#zoom-缩放比例-：100-150-200"><span class="toc-text">zoom 缩放比例 ：100%&#x2F;150%&#x2F;200%</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#transform-转换，变形"><span class="toc-text">transform 转换，变形</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Transition-平滑过渡"><span class="toc-text">Transition 平滑过渡</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cursor-鼠标的类型形状"><span class="toc-text">cursor 鼠标的类型形状</span></a></li></ol></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">css知识体系搭建</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2018/12/08</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/css">css</a>
+                  
+                
+                  
+                    <a href="/tags/基础知识">基础知识</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><p><a href="https://img2018.cnblogs.com/blog/1549437/201812/1549437-20181208095701469-204932820.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201812/1549437-20181208095701469-204932820.png" alt="avatar"></a></p>
+<h2 id="一、选择器">一、选择器<a class="post-anchor" href="#一、选择器"></a></h2><ol>
+<li><p>基本选择器：</p>
+<ul>
+<li>通用元素选择器</li>
+<li>标签选择器</li>
+<li>类选择器</li>
+<li>id选择器</li>
+</ul>
+</li>
+<li><p>组合选择器：</p>
+<ul>
+<li>多元素组合选择器</li>
+<li>后代元素选择器</li>
+<li>子代元素选择器</li>
+<li>毗邻元素选择器</li>
+</ul>
+</li>
+<li><p>属性选择器：</p>
+<ul>
+<li>[title] & P[title]</li>
+<li>[title=mk]</li>
+<li>[title~=”mk”]</li>
+<li>[title|=mk]</li>
+<li>[title^=Nick]</li>
+<li>[title$=Nick]</li>
+<li>[title*=Nick]</li>
+</ul>
+</li>
+<li><p>伪类选择器：</p>
+<ul>
+<li>link、hover、active、visited</li>
+<li>before、after</li>
+</ul>
+</li>
+</ol>
+<h4 id="属性选择器">属性选择器<a class="post-anchor" href="#属性选择器"></a></h4><p>1.[title] & P[title]</p>
+<p>  设置所有具有title属性的标签元素；<br>  设置所有具有title属性的P标签元素。</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs html">[title]<br>  {<br>    color: yellow;<br>  }<br>  p[title]<br>  {<br>    color: yellow;<br>  }<br><span class="hljs-tag"><<span class="hljs-name">div</span> <span class="hljs-attr">title</span>></span>hello<span class="hljs-tag"></<span class="hljs-name">div</span>></span><br><span class="hljs-tag"><<span class="hljs-name">p</span> <span class="hljs-attr">title</span>></span>hello<span class="hljs-tag"></<span class="hljs-name">p</span>></span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>2.[title=mk]</p>
+<p>  设置所有title属性等于“mk”的标签元素。 </p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html">[title="mk"]<br>  {<br>    color: yellow;<br>  }<br>  <br><span class="hljs-tag"><<span class="hljs-name">p</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"mk"</span>></span>mk<span class="hljs-tag"></<span class="hljs-name">p</span>></span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>3.[title~=”mk”]</p>
+<p>　　设置所有title属性具有多个空格分隔的值、其中一个值等于“mk”的标签元素。</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html">[title~="mk"]<br>  {<br>    color: yellow;<br>  }<br>  <br><span class="hljs-tag"><<span class="hljs-name">p</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"mk Jenny"</span>></span>Mk<span class="hljs-tag"></<span class="hljs-name">p</span>></span><br><span class="hljs-tag"><<span class="hljs-name">p</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Jenny mk"</span>></span>Mk<span class="hljs-tag"></<span class="hljs-name">p</span>></span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>4.[title|=mk]　</p>
+<p>设置所有title属性具有多个连字号分隔（hyphen-separated）的值、其中一个值以”mk”开头的标签元素。</p>
+<p> 例：lang属性：”en”、”en-us”、”en-gb”等等</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html">[title|="mk"]<br>    {<br>        color: yellow;<br>    }<br>  <br><span class="hljs-tag"><<span class="hljs-name">p</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"mk-Jenny"</span>></span>mk<span class="hljs-tag"></<span class="hljs-name">p</span>></span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>5.[title^=Nick]</p>
+<p>　　设置属性值以指定值开头的每个标签元素。</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html">[title^="mk"]<br>  {<br>    color: yellow;<br>  }<br>  <br><span class="hljs-tag"><<span class="hljs-name">p</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"mkJenny"</span>></span>mk<span class="hljs-tag"></<span class="hljs-name">p</span>></span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>6.[title$=Nick]</p>
+<p>　　设置属性值以指定值结尾的每个标签元素。</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html">[title$="mk"]<br>  {<br>    color: yellow;<br>  }<br>  <br><span class="hljs-tag"><<span class="hljs-name">p</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Jenny mk"</span>></span>mk<span class="hljs-tag"></<span class="hljs-name">p</span>></span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>7.[title*=Nick]</p>
+<p>　　设置属性值中包含指定值的每个元素。</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html">[title*="mk"]<br>    {<br>        color: yellow;<br>    }<br>  <br><span class="hljs-tag"><<span class="hljs-name">p</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"SmkJenny"</span>></span>mk<span class="hljs-tag"></<span class="hljs-name">p</span>></span><br></code></pre></td></tr></tbody></table></figure>
+
+<h4 id="伪类选择器：">伪类选择器：<a class="post-anchor" href="#伪类选择器："></a></h4><ol>
+<li><p>link、hover、active、visited</p>
+<ul>
+<li>a:link（未访问的链接状态）,用于定义了常规的链接状态。</li>
+<li>a:hover（鼠标放在链接上的状态）,用于产生视觉效果。</li>
+<li>a:active（在链接上按下鼠标时的状态）。</li>
+<li>a:visited（已访问过的链接状态）,可以看出已经访问过的链接。</li>
+</ul>
+</li>
+<li><p>before、after</p>
+</li>
+</ol>
+<ul>
+<li>P:before 在每个< p >元素的内容之前插入内容;</li>
+<li>P:after 在每个< p >元素的内容之后插入内容。</li>
+</ul>
+<h2 id="二、属性">二、属性<a class="post-anchor" href="#二、属性"></a></h2><ol>
+<li><p>color </p>
+<ul>
+<li>HEX（十六进制色：color: #FFFF00 –> 缩写：#FF0）</li>
+<li>RGBA（红绿蓝透明度，A是透明度在0~1之间取值。使用方式：color:rgba(255,255,0,0.5)）</li>
+<li>HSL（CSS3有效,H表示色调，S表示饱和度，L表示亮度，使用方式：color:hsl(360,100%,50%)）</li>
+<li>HSLA（和HSL相似，A表示Alpha透明度，取值0~1之间。）</li>
+</ul>
+</li>
+</ol>
+<p>transparent</p>
+<ul>
+<li>全透明，使用方式：color: transparent</li>
+</ul>
+<ol start="2">
+<li><p>文本属性:</p>
+<p>white-space: 设置元素中空白的处理方式</p>
+<ul>
+<li>normal：默认处理方式。</li>
+<li>pre：保留空格，当文字超出边界时不换行</li>
+<li>nowrap：不保留空格，强制在同一行内显示所有文本，直到文本结束或者碰到br标签</li>
+<li>pre-wrap：保留空格，当文字碰到边界时换行</li>
+<li>pre-line：不保留空格，保留文字的换行，当文字碰到边界时换行</li>
+</ul>
+<p>direction: 规定文本的方向 </p>
+<ul>
+<li>ltr 默认，文本方向从左到右。</li>
+<li>rtl 文本方向从右到左。</li>
+</ul>
+<p>vertical-align: 文本所在行高的垂直对齐方式</p>
+<ul>
+<li>baseline 默认</li>
+<li>sub 垂直对齐文本的下标，和< sub >标签一样的效果</li>
+<li>super 垂直对齐文本的上标，和< sup >标签一样的效果</li>
+<li>top 对象的顶端与所在容器的顶端对齐</li>
+<li>text-top 对象的顶端与所在行文字顶端对齐</li>
+<li>middle 元素对象基于基线垂直对齐</li>
+<li>bottom 对象的底端与所在行的文字底部对齐</li>
+<li>text-bottom 对象的底端与所在行文字的底端对齐</li>
+</ul>
+<p>text-indent: 文本缩进</p>
+<p>letter-spacing: 添加字母之间的空白</p>
+<p>word-spacing: 添加每个单词之间的空白</p>
+<p>text-transform: 属性控制文本的大小写</p>
+<ul>
+<li>capitalize 文本中的每个单词以大写字母开头。</li>
+<li>uppercase 定义仅有大写字母。</li>
+<li>lowercase 定义仅有小写字母。</li>
+</ul>
+<p>text-overflow: 文本溢出样式</p>
+<ul>
+<li>clip 修剪文本。</li>
+<li>ellipsis 显示省略符号…来代表被修剪的文本。</li>
+<li>string 使用给定的字符串来代表被修剪的文本</li>
+</ul>
+<p>text-decoration: 文本的装饰</p>
+<ul>
+<li>none 默认。</li>
+<li>underline 下划线。</li>
+<li>overline 上划线。</li>
+<li>line-through 中线。</li>
+</ul>
+<p>text-shadow：文本阴影</p>
+<ul>
+<li>第一个参数是左右位置</li>
+<li>第二个参数是上下位置</li>
+<li>第三个参数是虚化效果</li>
+<li>第四个参数是颜色</li>
+<li>text-shadow: 5px 5px 5px #888;</li>
+</ul>
+<p>word-wrap：自动换行</p>
+<ul>
+<li>word-wrap: break-word;</li>
+</ul>
+<p>去掉li前的点：li{list-style：none}</p>
+</li>
+</ol>
+<h2 id="三、背景属性">三、背景属性<a class="post-anchor" href="#三、背景属性"></a></h2><p>background-position 设置背景图像的位置坐标</p>
+<ul>
+<li>background-position: center center; 图片置中，x轴center，y轴center</li>
+<li>1px -195px  截取图片某部分，分别代表坐标x，y轴</li>
+</ul>
+<p>background-repeat 设置背景图像不重复平铺</p>
+<ul>
+<li>no-repeat 设置图像不重复，常用</li>
+<li>round 自动缩放直到适应并填充满整个容器</li>
+<li>space 以相同的间距平铺且填充满整个容器</li>
+</ul>
+<p>background-attachment 背景图像是否固定或者随着页面的其余部分滚动</p>
+<p>background 简写</p>
+<ul>
+<li>background: url(“o_ns.png”) no-repeat 0 -196px;</li>
+<li>background: url(“o_ns.png”) no-repeat center bottom 15px;</li>
+<li>background: url(“o_ns.png”) no-repeat left 30px bottom 15px;</li>
+</ul>
+<h2 id="四、列表属性">四、列表属性<a class="post-anchor" href="#四、列表属性"></a></h2><p>list-style-type: 列表项标志的类型</p>
+<ul>
+<li>none 去除标志</li>
+<li>decimal-leading-zero;  02.</li>
+<li>square;  方框</li>
+<li>circle;  空心圆</li>
+<li>upper-alph; & disc; 实心圆</li>
+</ul>
+<p>list-style-image：将图象设置为列表项标志</p>
+<p>list-style-position：列表项标志的位置</p>
+<ul>
+<li>inside</li>
+<li>outside</li>
+</ul>
+<h2 id="五、页面布局">五、页面布局<a class="post-anchor" href="#五、页面布局"></a></h2><h4 id="visibility">visibility<a class="post-anchor" href="#visibility"></a></h4><ul>
+<li>collapse 当在表格元素中使用时，此值可删除一行或一列，不会影响表格的布局。</li>
+</ul>
+<h4 id="clip-剪裁图像">clip 剪裁图像<a class="post-anchor" href="#clip-剪裁图像"></a></h4><p>rect 剪裁定位元素：</p>
+<ul>
+<li>auto 默认值，无剪切</li>
+<li>上-右-下-左（顺时针）的顺序提供四个偏移值</li>
+<li>区域外的部分是透明的</li>
+<li>必须指定 position:absolute;</li>
+<li>例：clip:rect(0px,60px,200px,0px);</li>
+</ul>
+<h4 id="overflow-设置当对象的内容超过其指定高度及宽度时如何显示内容">overflow  设置当对象的内容超过其指定高度及宽度时如何显示内容<a class="post-anchor" href="#overflow-设置当对象的内容超过其指定高度及宽度时如何显示内容"></a></h4><ul>
+<li>visible 默认值，内容不会被修剪，会呈现在元素框之外。</li>
+<li>hidden 内容会被修剪，并且其余内容是不可见的。</li>
+<li>scroll 内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。</li>
+<li>auto 如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。</li>
+</ul>
+<h4 id="outline-边框轮廓">outline 边框轮廓<a class="post-anchor" href="#outline-边框轮廓"></a></h4><ul>
+<li>outline-width 轮廓宽度</li>
+<li>outline-color 轮廓颜色</li>
+<li>outline-style 轮廓样式</li>
+</ul>
+<h4 id="zoom-缩放比例-：100-150-200">zoom 缩放比例 ：100%/150%/200%<a class="post-anchor" href="#zoom-缩放比例-：100-150-200"></a></h4><h4 id="transform-转换，变形">transform 转换，变形<a class="post-anchor" href="#transform-转换，变形"></a></h4><ul>
+<li>origin 定义旋转基点（left top center right bottom 坐标值）    transform-origin: 50px 50px; transform-origin: left;。</li>
+<li>rotate 旋转            transform:rotate(50deg) 旋转角度可以为负数，需要先定义origin。</li>
+<li>skew  扭曲             transform:skew(50deg,50deg)  分别为相对x轴倾斜,相对y轴倾斜。</li>
+<li>scale  缩放             transform:scale(2,3) 横向放大2倍，纵向放大3倍；transform:scale(2) 横竖都放大2倍。 </li>
+<li>translate 移动        transform:translate(50px, 50px) 分别为相对x轴移动,相对y轴移动</li>
+</ul>
+<h4 id="Transition-平滑过渡">Transition 平滑过渡<a class="post-anchor" href="#Transition-平滑过渡"></a></h4><ul>
+<li>transition-property：           变换的属性（none(没有属性改变)、all(所有属性改变)、具体属性）</li>
+<li>transition-duration：           变换持续时间</li>
+<li>transition-timing-function： 变换的速率（ease:(逐渐变慢)、linear:(匀速)、ease-in:(加速)、ease-out:(减速)、ease-in-out:(加速然后减速)、cubic-bezier:(自定义时间曲线））</li>
+<li>transition-delay：               变换延迟时间</li>
+<li>transition：                        缩写</li>
+</ul>
+<h4 id="cursor-鼠标的类型形状">cursor 鼠标的类型形状<a class="post-anchor" href="#cursor-鼠标的类型形状"></a></h4><p>url: 自定义光标</p>
+<p>Auto: 默认</p>
+<p>  Default: 默认<br>  e-resize<br>  ne-resize<br>  nw-resize<br>  n-resize<br>  se-resize<br>  sw-resize<br>  s-resize<br>  w-resize<br>  Crosshair<br>  Pointer<br>  Move<br>  text<br>  wait<br>  help</p>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2018/12/09/%E5%B0%81%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8cookie/">封装和使用cookie（内含彩蛋）</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2018/12/08/Dom%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">Dom节点操作</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2018/12/08/css%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E6%90%AD%E5%BB%BA/">https://bbcfive.github.io/2018/12/08/css%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E6%90%AD%E5%BB%BA/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

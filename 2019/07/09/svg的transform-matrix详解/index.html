@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      svg的transform-matrix详解 - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、svg-transform的种类"><span class="toc-text">一、svg transform的种类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、用matrix表达前三者"><span class="toc-text">二、用matrix表达前三者</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#matrix接口样式：matrix-a-b-c-d-e-f"><span class="toc-text">matrix接口样式：matrix(a,b,c,d,e,f)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对应矩阵："><span class="toc-text">对应矩阵：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#矩阵："><span class="toc-text">矩阵：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#写法：matrix-1-0-0-1-tx-ty"><span class="toc-text">写法：matrix(1,0,0,1,tx,ty)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#矩阵：-1"><span class="toc-text">矩阵：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#写法：matrix-sx-0-0-sy-0-0"><span class="toc-text">写法：matrix(sx,0,0,sy,0,0)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#矩阵：-2"><span class="toc-text">矩阵：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#写法：matrix-cos-a-sin-a-sin-a-cos-a-0-0"><span class="toc-text">写法：matrix(cos(a), sin(a), -sin(a), cos(a), 0, 0)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#矩阵"><span class="toc-text">矩阵</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#写法：matrix-cos-a-sin-a-sin-a-cos-a-cx-×-cos-a-cy-×-sin-a-cx-tx-cx-×-sin-a-cy-×-cos-a-cy-ty"><span class="toc-text">写法：matrix(cos(a), sin(a), -sin(a), cos(a),  -cx × cos(a) + cy × sin(a) + cx + tx, -cx × sin(a) - cy × cos(a) + cy + ty)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#矩阵：-3"><span class="toc-text">矩阵：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#写法：matrix-1-0-tan-a-1-0-0"><span class="toc-text">写法：matrix(1, 0, tan(a), 1, 0, 0)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#矩阵：-4"><span class="toc-text">矩阵：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#写法：matrix-1-tan-a-0-1-0-0"><span class="toc-text">写法：matrix(1, tan(a), 0, 1, 0, 0)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对应矩阵：-1"><span class="toc-text">对应矩阵：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#写法：matrix-cos-a-sin-a-sin-a-cos-a-cx-×-cos-a-cy-×-sin-a-cx-tx-cx-×-sin-a-cy-×-cos-a-cy-ty-1"><span class="toc-text">写法：matrix(cos(a), sin(a), -sin(a), cos(a), -cx × cos(a) + cy × sin(a) + cx + tx, -cx × sin(a) - cy × cos(a) + cy + ty)</span></a></li></ol></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">svg的transform-matrix详解</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/07/09</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/svg">svg</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h2 id="一、svg-transform的种类">一、svg transform的种类<a class="post-anchor" href="#一、svg-transform的种类"></a></h2><p>translate（平移）<br>skew（倾斜）<br>rotate（旋转）<br>scale（缩放）<br>matrix（矩阵操作，可涵盖前四者，威力十分强大）</p>
+<h2 id="二、用matrix表达前三者">二、用matrix表达前三者<a class="post-anchor" href="#二、用matrix表达前三者"></a></h2><h4 id="matrix接口样式：matrix-a-b-c-d-e-f">matrix接口样式：matrix(a,b,c,d,e,f)<a class="post-anchor" href="#matrix接口样式：matrix-a-b-c-d-e-f"></a></h4><h4 id="对应矩阵：">对应矩阵：<a class="post-anchor" href="#对应矩阵："></a></h4><p>a  c  e<br>b  d  f<br>0  0  1</p>
+<ol>
+<li>Translate(tx, ty) </li>
+</ol>
+<h4 id="矩阵：">矩阵：<a class="post-anchor" href="#矩阵："></a></h4><p>1  0  tx<br>0  1  ty<br>0  0  1</p>
+<h4 id="写法：matrix-1-0-0-1-tx-ty">写法：matrix(1,0,0,1,tx,ty)<a class="post-anchor" href="#写法：matrix-1-0-0-1-tx-ty"></a></h4><ol start="2">
+<li>Scale(sx, sy)</li>
+</ol>
+<h4 id="矩阵：-1">矩阵：<a class="post-anchor" href="#矩阵：-1"></a></h4><p>sx  0   0<br>0   sy  0<br>0   0   1</p>
+<h4 id="写法：matrix-sx-0-0-sy-0-0">写法：matrix(sx,0,0,sy,0,0)<a class="post-anchor" href="#写法：matrix-sx-0-0-sy-0-0"></a></h4><ol start="3">
+<li>Rotate(a) </li>
+</ol>
+<h4 id="矩阵：-2">矩阵：<a class="post-anchor" href="#矩阵：-2"></a></h4><p>cos(a)  -sin(a)  0<br>sin(a)  cos(a)   0<br>0       0        1</p>
+<h4 id="写法：matrix-cos-a-sin-a-sin-a-cos-a-0-0">写法：matrix(cos(a), sin(a), -sin(a), cos(a), 0, 0)<a class="post-anchor" href="#写法：matrix-cos-a-sin-a-sin-a-cos-a-0-0"></a></h4><p>3+. Rotate(a, cx, cy) </p>
+<h4 id="矩阵">矩阵<a class="post-anchor" href="#矩阵"></a></h4><p>cos(a)  -sin(a)  -cx × cos(a) + cy × sin(a) + cx<br>sin(a)   cos(a)  -cx × sin(a) - cy × cos(a) + cy<br>0        0       1</p>
+<h4 id="写法：matrix-cos-a-sin-a-sin-a-cos-a-cx-×-cos-a-cy-×-sin-a-cx-tx-cx-×-sin-a-cy-×-cos-a-cy-ty">写法：matrix(cos(a), sin(a), -sin(a), cos(a),  -cx × cos(a) + cy × sin(a) + cx + tx, -cx × sin(a) - cy × cos(a) + cy + ty)<a class="post-anchor" href="#写法：matrix-cos-a-sin-a-sin-a-cos-a-cx-×-cos-a-cy-×-sin-a-cx-tx-cx-×-sin-a-cy-×-cos-a-cy-ty"></a></h4><ol start="4">
+<li>skew(skewX, skewY)</li>
+</ol>
+<p>4.1 skewX</p>
+<h4 id="矩阵：-3">矩阵：<a class="post-anchor" href="#矩阵：-3"></a></h4><p>1  tan(a)    0<br>0     1      0<br>0     0      1</p>
+<h4 id="写法：matrix-1-0-tan-a-1-0-0">写法：matrix(1, 0, tan(a), 1, 0, 0)<a class="post-anchor" href="#写法：matrix-1-0-tan-a-1-0-0"></a></h4><p>4.2 skewY</p>
+<h4 id="矩阵：-4">矩阵：<a class="post-anchor" href="#矩阵：-4"></a></h4><p>1         0     0<br>tan(a)    1     0<br>0         0     1</p>
+<h4 id="写法：matrix-1-tan-a-0-1-0-0">写法：matrix(1, tan(a), 0, 1, 0, 0)<a class="post-anchor" href="#写法：matrix-1-tan-a-0-1-0-0"></a></h4><ol start="5">
+<li>如果你的使用包含旋转，缩放，平移等多种</li>
+</ol>
+<p>例如：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><g transform=<span class="hljs-string">"translate(20, 50) scale(1, 1) rotate(-30 10 25)"</span>><br></code></pre></td></tr></tbody></table></figure>
+
+<h4 id="对应矩阵：-1">对应矩阵：<a class="post-anchor" href="#对应矩阵：-1"></a></h4><p>cos(a)  -sin(a)  -cx × cos(a) + cy × sin(a) + cx + tx<br>sin(a)   cos(a)  -cx × sin(a) - cy × cos(a) + cy + ty<br>0        0       1</p>
+<h4 id="写法：matrix-cos-a-sin-a-sin-a-cos-a-cx-×-cos-a-cy-×-sin-a-cx-tx-cx-×-sin-a-cy-×-cos-a-cy-ty-1">写法：matrix(cos(a), sin(a), -sin(a), cos(a), -cx × cos(a) + cy × sin(a) + cx + tx, -cx × sin(a) - cy × cos(a) + cy + ty)<a class="post-anchor" href="#写法：matrix-cos-a-sin-a-sin-a-cos-a-cx-×-cos-a-cy-×-sin-a-cx-tx-cx-×-sin-a-cy-×-cos-a-cy-ty-1"></a></h4><p>以上式为例: matrix(0.866, -0.5 0.5 0.866 8.84 58.35).</p>
+<p>此处scale为1，因此不考虑。如果scale不为一（scale (sx, sy)），则：</p>
+<p>matrix (sx × cos(a), sy × sin(a), -sx × sin(a), sy × cos(a), (-cx × cos(a) + cy × sin(a) + cx) × sx + tx, (-cx × sin(a) - cy × cos(a) + cy) × sy + ty)</p>
+<p>最后，在js中的格式为：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js">svgItem.setAttribute(<span class="hljs-string">'transform'</span>, <span class="hljs-string">`matrix(</span><br><span class="hljs-string">  <span class="hljs-subst">${sx * <span class="hljs-built_in">Math</span>.cos(a)}</span>,</span><br><span class="hljs-string">  <span class="hljs-subst">${sy * <span class="hljs-built_in">Math</span>.sin(a)}</span>,</span><br><span class="hljs-string">  <span class="hljs-subst">${-sx * <span class="hljs-built_in">Math</span>.sin(-a)}</span>,</span><br><span class="hljs-string">  <span class="hljs-subst">${sy * <span class="hljs-built_in">Math</span>.cos(a)}</span>,</span><br><span class="hljs-string">  <span class="hljs-subst">${(-cx * <span class="hljs-built_in">Math</span>.cos(a) + cy * <span class="hljs-built_in">Math</span>.sin(a) + cx) * sx + <span class="hljs-built_in">Math</span>.floor(tx)}</span>,</span><br><span class="hljs-string">  <span class="hljs-subst">${(-cx * <span class="hljs-built_in">Math</span>.sin(a) - cy * <span class="hljs-built_in">Math</span>.cos(a) + cy) * sy + <span class="hljs-built_in">Math</span>.floor(ty)}</span>)`</span><br>);<br></code></pre></td></tr></tbody></table></figure></body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/07/09/svg%E4%B8%8Ecanvas%E7%9A%84%E8%AF%AD%E6%B3%95%E5%BD%A2%E5%BC%8F%E5%8C%BA%E5%88%AB/">svg与canvas的语法形式区别</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/07/07/chemistry%202%20%E5%8D%95%E4%BD%8D%E3%80%81%E5%9F%BA%E6%9C%AC%E5%AE%9A%E5%BE%8B%E4%B8%8E%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8/">chemistry 2 单位、基本定律与元素周期表</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2019/07/09/svg%E7%9A%84transform-matrix%E8%AF%A6%E8%A7%A3/">https://bbcfive.github.io/2019/07/09/svg%E7%9A%84transform-matrix%E8%AF%A6%E8%A7%A3/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      技术选型 -- 绘图 DrawGraphics - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">技术选型 -- 绘图 DrawGraphics</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/08/12</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/基础原理">基础原理</a>
+                  
+                
+                  
+                    <a href="/tags/canvas">canvas</a>
+                  
+                
+                  
+                    <a href="/tags/svg">svg</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><p>本文是对<a href="http://www.shuyun.com/?p=23717" target="_blank" rel="noopener">流程图形化 Node & Flow— 流程图 技术选择与抽象设计(作者：雷文宇)</a>一文的批注解读。</p>
+<p>Web实现图形方式有3种：纯DOM节点、SVG矢量图和Canvas方式。纯DOM节点这种方式是一个基于旧版本浏览器，非主流Web绘图方式，并且性能不高的。当现主流的实现方式有两种：SVG和Canvas，SVG矢量DOM节点绘制技术，由于其类似于DOM的工作方式，所有绘制出的图形都是以DOM节点的形态存在的。<font color="#FF4500">当图形不复杂并且单位面积内所需要绘制的节点数少的时候</font>，它的效率很高实现代价最小。而Canvas是最典型的像素绘制技术，也就是位图(Bitmap)绘制技术。它基础就是通过算法去绘制所有的点，<font color="#FF4500">当图形复杂且有堆叠时</font>，它的效率会比较高。值得注意的是，<font color="#FF4500">当显示区域越大时，也就是分辨率越大时，它所需要的性能资源也就越多</font>。</p>
+<p>SVG是基于盒模型的每一次绘制都有可能改变文档节点之间的关系，<font color="#FF4500"><strong>不太适用绘制真正的矢量场景</strong></font>。典型的例子就是画布的缩放。使用SVG方式缩放画布，只能改变画布的大小（就是改变画布坐标系单位与标准参考坐标系的<font color="#FF4500">比率</font>）。虽然，SVG节点本身不会失真（因为，SVG节点自身是个矢量图）。<font color="#FF4500">但SVG内的节点图标，或者其它非矢量元素都会随着自己的参考坐标系变化而失真（所以需要所有节点图标或其他元素作同比例缩放-transform）</font>。即使所有的节点都用矢量图形。也会有一个更严重的问题就是，SVG画布缩放最终看到的结果就是所有的东西都变大了，或者变小了。<font color="#FF4500">节点间的关系并不会随着缩放产生变化</font>。比如，当节点很多的时候。你想看一下全局的流程执行情况，于是就把画布缩小，这时你就会发现，所有东西都变小了，甚至线也变小了，节点也小的都看不清楚了。如果可以像地图那样进行矢量缩放，就可以解决这个问题。也就是在不同的缩放情况下，只突出最想表现的东西或者节点关系。<font color="#FF4500">还有一点，缩放并不会改变图元的真正x，y，所以依赖图元坐标而判断的点击事件也需要对图元坐标乘以相应缩放比例。</font></p>
+<p>想要做到矢量缩放，就要使用矢量缩放算法。这是绘图技术的基础算法。由于要实时绘制（屏幕更新技术的绘制也能做到非实时）节点关系。这样的工作很不适合在以解析文档描述为基础的DOM形态节点上完成。因为，DOM文档是解释性的，性能本来就不高。它的主要还是突出静态块的关系。</p>
+<p>HTML5推出了一个更适合绘图的技术Canvas。什么是Canvas。官方的解释是：元素提供了一个空白绘图区域，可以使用 APIs （比如 Canvas 2D 或 WebGL）来绘制图形。这个区域是专门用来绘制图形的。并且，提供了专门的API来完成更高效的绘制。从兼容性的角度看。Canvas完全不用考虑在不同设备或不同浏览器的表现差异。因为，Canvas的绘制是基于像素与算法的。<font color="#FF4500">本质上说，如果你要绘制图形。在任何设备上你能使用的单位都是基于像素的（当然，你可以通过单位换算转化成你要的任何长度单位）。Canvas没有节点的概念，所有的业务逻辑节点，都是算法上的节点，不是像DOM节点那样的文档节点</font>。既然节点都是逻辑上，这样算法可优化的途径就变的非常多了。本质上在Canvas上画图就是在计算像素或坐标点的集合。是线性的几何绘制，会比单纯的盒子模型来的更直接。<br>现在很多浏览器都专门针对Canvas绘图进行了性能优化。甚至可以直接使用目标设备上的GPU资源。Canvas这种绘图方式，很早就有了。各种图形技术细节也已经很成熟。所以，Canvas一定是绘图的最佳方式。</p>
+<p>以Canvas方式绘图的库很多。比如D3JS、PaperJS、RaphaelJS、GoJS等。也有很多已经对流程图进行基础封装的库。大多都是开源的。</p>
+<p>绘图方式的重构肯定是不可逃避的。SVG只是一个过度方式。Canvas才是最终解决绘图问题的途径。</p>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/08/21/chemistry%203%20%E5%8C%96%E5%AD%A6%E5%B7%A5%E7%A8%8B/">chemistry 3 化学工程</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/07/30/svg%E5%88%86%E5%9B%BE%E5%B1%82%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F/">svg分图层显示图像</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2019/08/12/%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%20--%20%E7%BB%98%E5%9B%BE%20DrawGraphics/">https://bbcfive.github.io/2019/08/12/%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%20--%20%E7%BB%98%E5%9B%BE%20DrawGraphics/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

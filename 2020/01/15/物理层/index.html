@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      物理层 - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、基本概念"><span class="toc-text">一、基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、数据通信的基础知识"><span class="toc-text">二、数据通信的基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、信道复用-multiplexing-技术"><span class="toc-text">三、信道复用(multiplexing)技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、宽带接入技术"><span class="toc-text">四、宽带接入技术</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">物理层</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/01/15</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/网络">网络</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/基础原理">基础原理</a>
+                  
+                
+                  
+                    <a href="/tags/物理层">物理层</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h2 id="一、基本概念">一、基本概念<a class="post-anchor" href="#一、基本概念"></a></h2><p>物理层解决如何在链接各种计算机的传输媒体上传输数据比特流，而不是指具体的传输媒体。<br>物理层的主要任务：确定传输媒体的接口的一些特性，即：<br>机械特性：例如接口形状，大小，引线数量<br>电气特性：例如规定电压范围(-5V-5V)<br>功能特性：例如规定-5V上0，+5V是1<br>过程特性：也称规程特性，规定建立连接时各个相关部件的工作步骤</p>
+<h2 id="二、数据通信的基础知识">二、数据通信的基础知识<a class="post-anchor" href="#二、数据通信的基础知识"></a></h2><ol>
+<li><p>典型的数据通信模型：字符=》比特流=》模拟信号=》比特流=》字符<br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115201108610-1583680217.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115201108610-1583680217.png" alt="avatar"></a></p>
+</li>
+<li><p>信号(signal)——数据的电气或电磁的表现<br>模拟信号——代表信息的参数的取值是连续的。（波）<br>数字信号——代表信息的参数的取值是离散的。（比特）<br>码元(code)——在使用时间域的波形表示数字信号时，代表不同离散数值的基本波形。</p>
+</li>
+<li><p>信道——向一个方向传输信息的媒体<br>通信线路往往包含一条发送信息的信道和一条接收信息的信道。<br>单向通信(单工通信)——只能有一个方向的同学，没有反向交互。<br>双向交替通信(半双工通信)——通信的双方都可以发送信息，但是不能双方同时发送或接收。<br>双向同时通信(全双工通信)——通信的双发可以同时发送和接收。</p>
+</li>
+<li><p>基带(baseband)信号和带通(base pass)信号<br>基带信号(基本频率信号)：来自信源的信号。<br>带通信号：把基带信号经过载波调制后，把信号的频率范围迁移到较高的频段以便在信道中传输。<br>因此在传输距离较近时，采用基带传输方式(衰减不大，信号内容不会变化)。传输距离较远时，采用带通传输方式，例如从计算机到监视器，打印机等外设的信号。</p>
+</li>
+<li><p>对基带数字信号的几种调制方法<br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115203505253-674427835.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115203505253-674427835.png" alt="avatar"></a></p>
+</li>
+<li><p>常用的编码方式<br>单极性不归零编码：只使用一个电压值，高电平表示1，低电平表示0.<br>双极性不归零编码：用幅值相等的正负电平表示二进制数1和0.<br>单极性归零编码：发送码1时高电平在整个码元期间只持续一段时间，其余时间返回零电平。<br>双极性归零编码：正负零三个电平，信号本事携带同步信息。<br><a href="https://img-blog.csdnimg.cn/202001021251409.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2l3YW5kZXJ1,size_16,color_FFFFFF,t_70" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img-blog.csdnimg.cn/202001021251409.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2l3YW5kZXJ1,size_16,color_FFFFFF,t_70" alt="avatar"></a></p>
+</li>
+<li><p>曼彻斯特编码与差分曼彻斯特编码<br>曼彻斯特编码：单极性编码的缺点是没有办法区分此时是没有信号，还是有信号。<br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115210117907-1030126533.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115210117907-1030126533.png" alt="avatar"></a></p>
+</li>
+</ol>
+<p>差分曼彻斯特编码：抗干扰能力比曼彻斯特编码更强。bit与bit之间有信号跳变，表示下一个bit为0，bit与bit之间没有信号跳变，表示下一个bit为1。<br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115210139751-971023797.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115210139751-971023797.png" alt="avatar"></a></p>
+<ol start="8">
+<li>奈氏准则与香农公式<br>奈氏准则：没有信号干扰，码元的传输速率有上限<br>香农公式：有信号干扰，无差错传输速率<br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115204127673-1397007066.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115204127673-1397007066.png" alt="avatar"></a></li>
+</ol>
+<h2 id="三、信道复用-multiplexing-技术">三、信道复用(multiplexing)技术<a class="post-anchor" href="#三、信道复用-multiplexing-技术"></a></h2><p>复用：<br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115210917163-1082184641.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115210917163-1082184641.png" alt="avatar"></a></p>
+<p>不复用：<br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115210957960-1086283445.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115210957960-1086283445.png" alt="avatar"></a></p>
+<ol>
+<li><p>频分复用(FDM: frequency division multiplexing)<br>根据信号传输频率的不同完成多信号同时传递任务。<br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115211356888-451684851.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115211356888-451684851.png" alt="avatar"></a></p>
+</li>
+<li><p>时分复用(TDM: time division multiplexing)<br>根据信号传输时间的不同完成多信号同时传递任务。<br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115211624995-2022874931.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115211624995-2022874931.png" alt="avatar"></a><br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115211750832-476745276.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115211750832-476745276.png" alt="avatar"></a></p>
+</li>
+</ol>
+<p>时分复用可能会造成线路资源的浪费，由于计算机数据的突发性质，用户对分配到的子信道的利用率一般不高。<br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115211808177-120701275.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115211808177-120701275.png" alt="avatar"></a></p>
+<ol start="3">
+<li><p>统计时分复用(STDM: statistic TDM)<br>给信号位加标记，从而减少空白传输，提升效率。<br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115211844107-328236205.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115211844107-328236205.png" alt="avatar"></a></p>
+</li>
+<li><p>波分复用(WDM: wavelength division multiplexing)<br>根据信号传输光波波长的不同完成多信号同时传递任务。<br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115212051127-2071365871.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115212051127-2071365871.png" alt="avatar"></a></p>
+</li>
+</ol>
+<h2 id="四、宽带接入技术">四、宽带接入技术<a class="post-anchor" href="#四、宽带接入技术"></a></h2><ol>
+<li>非对称数字用户链路ADSL<br>使用电话线。用数字技术对现有的模拟电话用户线进行改造(xDSL)，把0-4kHz留给传统电话使用，把原来没有利用的高频谱段留给用户上网使用。<br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115212505743-436106082.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115212505743-436106082.png" alt="avatar"></a></li>
+</ol>
+<p>基于ADSL的接入网组成如下图：<br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115212524342-1255468948.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115212524342-1255468948.png" alt="avatar"></a></p>
+<ol start="2">
+<li><p>DMT(离散多音调)技术<br>采用频分复用，把40kHz以上一直到1.1MHz的高频谱划分为徐队子信道，其中25个子信道用于上行信道，249个子信道用于下行信道(因为下载的情景多于上传)。每个子信道占据4kHz的带宽，并使用不同的载波进行数字调制。这种做法相当于在一对用户线上使用许多小的调制解调器并行地传输数据。</p>
+</li>
+<li><p>光纤同轴混合网HFC(Hybrid Fiber Coax)<br>HFC网是在目前覆盖范围很广的有线电视网CATV基础上开发的一种居民宽带接入网。除了可以传送CATV外，还可以提供电话/数据/和其它宽带交互型业务。现有CATV网是树形拓扑结构的同轴电缆网络，它采用模拟技术的频分复用对电视节目进行单向传输。HFC需要对CATV网进行改造。<br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115212736370-652601475.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115212736370-652601475.png" alt="avatar"></a><br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115213018620-1777789697.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115213018620-1777789697.png" alt="avatar"></a></p>
+</li>
+<li><p>FTT技术(光纤到XX技术)<br>光纤到家技术(Fiber to the home):光纤一直铺设到用户家庭(155MB/s)。<br>光纤到大楼技术(Fiber to the building):光纤进入大楼后就转为电信号，然后用电缆或双绞线分配到各用户。<br>光纤到路边技术(Fiber to the curb):从路边到各用户可以使用星形结构的双绞线作为传输媒体(155MB/s)。</p>
+</li>
+</ol>
+<p>参考文献：</p>
+<ol>
+<li><a href="https://www.bilibili.com/video/av9876107?p=14" target="_blank" rel="noopener">https://www.bilibili.com/video/av9876107?p=14</a></li>
+<li><a href="https://blog.csdn.net/iwanderu/article/details/103802457" target="_blank" rel="noopener">https://blog.csdn.net/iwanderu/article/details/103802457</a></li>
+</ol>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/01/16/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">数据链路层</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/01/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/">计算机网络概述</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2020/01/15/%E7%89%A9%E7%90%86%E5%B1%82/">https://bbcfive.github.io/2020/01/15/%E7%89%A9%E7%90%86%E5%B1%82/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

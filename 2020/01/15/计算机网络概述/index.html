@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      计算机网络概述 - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、常见网络"><span class="toc-text">一、常见网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、IP地址和MAC地址"><span class="toc-text">二、IP地址和MAC地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、OSI模型"><span class="toc-text">三、OSI模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#OSI参考模型对网络排错的意义：排查问题按从下往上的顺序排查；"><span class="toc-text">OSI参考模型对网络排错的意义：排查问题按从下往上的顺序排查；</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、应用程序数据在互联网上传输的封装过程"><span class="toc-text">四、应用程序数据在互联网上传输的封装过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、计算机网络的性能"><span class="toc-text">五、计算机网络的性能</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">计算机网络概述</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/01/15</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/网络">网络</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/基础原理">基础原理</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h2 id="一、常见网络">一、常见网络<a class="post-anchor" href="#一、常见网络"></a></h2><p>范围由小到大：局域网(LAN)、广域网(WAN)、万维网(WWW)</p>
+<h2 id="二、IP地址和MAC地址">二、IP地址和MAC地址<a class="post-anchor" href="#二、IP地址和MAC地址"></a></h2><p>IP地址(Internet Protocol Address)：IP协议提供的一种统一的地址格式，为互联网上的每一个网络和每一台主机提供的逻辑地址。由所在网段的网络设备指定。<br>MAC地址(Media Access Address)：网络设备的物理地址，也称为“局域网地址”。出厂时指定，本机自带。</p>
+<h2 id="三、OSI模型">三、OSI模型<a class="post-anchor" href="#三、OSI模型"></a></h2><p>应用层——所有能产生网络流量的程序<br>表示层——在传输之前是否进行加密或压缩处理，二进制或ASCII码表示<br>会话层——查木马，netstat -n<br>传输层——可靠传输，不可靠传输，流量控制，避免用塞<br>网络层——负责选择最佳路径，规划IP地址(ipv4和ipv6变化只会影响网络层)<br>数据链路层——封装成帧，透明传输，差错校验<br>物理层——定义网络设备接口的物理标准</p>
+<h4 id="OSI参考模型对网络排错的意义：排查问题按从下往上的顺序排查；">OSI参考模型对网络排错的意义：排查问题按从下往上的顺序排查；<a class="post-anchor" href="#OSI参考模型对网络排错的意义：排查问题按从下往上的顺序排查；"></a></h4><p>1.物理层：查看链接状态，发送和接收的数据包；<br>2.数据链路层：Mac地址冲突，ADSL欠费，两端的接口网速没有协商一致，计算机连接到错误的VLAN(虚拟互联网)中；<br>3.网络层：配置错误的IP地址，子网掩码，网关；<br>4.应用层：应用程序配置错误。<br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115195135207-501094428.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115195135207-501094428.png" alt="avatar"></a></p>
+<h2 id="四、应用程序数据在互联网上传输的封装过程">四、应用程序数据在互联网上传输的封装过程<a class="post-anchor" href="#四、应用程序数据在互联网上传输的封装过程"></a></h2><p><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115195342945-340229121.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115195342945-340229121.png" alt="avatar"></a><br><a href="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115195449506-268228539.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/i-beta/1549437/202001/1549437-20200115195449506-268228539.png" alt="avatar"></a></p>
+<h2 id="五、计算机网络的性能">五、计算机网络的性能<a class="post-anchor" href="#五、计算机网络的性能"></a></h2><ol>
+<li>速率，连接在计算机网络上的主机在数字信道上传送数据位数的速率，单位是b/s, kb/s, Mb/s, Gb/s。</li>
+<li>带宽，数据通信领域中，数字信道所能传送的最高数据率，单位是b/s, kb/s, Mb/s, Gb/s。常见的是Mpbs。</li>
+<li>吞吐量，在单位时间内通过某个网络的数据量，单位是b/s, Mb/s。</li>
+<li>时延，包括发送时延，传播时延，处理时延，排队时延。发送时延等于数据块长度(bit)除以信道带宽(bit/s). 更快的发送速度意味着波长越短，链路上的数据量更大；更快的传播速度意味着在网线中更快的传播速度。</li>
+<li>时延X带宽(时延带宽积)，有多少数据正在线路上。</li>
+<li>往返时间(RTT, Round-Trip Time)，从发送方发送数据开始，到发送方收到接收方确认数据的时间。例如ping一下。</li>
+<li>利用率，信道利用率：有数据通过的时间/总时间<br>网络利用率：信道利用率的加权平均<br>网络当前时延D = 网络空闲时时延D0 / (1 - 信道利用率U)</li>
+</ol>
+<p>参考文献：</p>
+<ol>
+<li><a href="https://www.bilibili.com/video/av9876107?p=1" target="_blank" rel="noopener">https://www.bilibili.com/video/av9876107?p=1</a></li>
+<li><a href="https://blog.csdn.net/iwanderu/article/details/103795715" target="_blank" rel="noopener">https://blog.csdn.net/iwanderu/article/details/103795715</a></li>
+</ol>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/01/15/%E7%89%A9%E7%90%86%E5%B1%82/">物理层</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/09/01/Valid%20Parentheses/">Valid Parentheses</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2020/01/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/">https://bbcfive.github.io/2020/01/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      svg与canvas的语法形式区别 - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、创建概念"><span class="toc-text">一、创建概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、语法区别"><span class="toc-text">二、语法区别</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">svg与canvas的语法形式区别</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/07/09</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/canvas">canvas</a>
+                  
+                
+                  
+                    <a href="/tags/svg">svg</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><p>因为网上关于svg和canvas的区别大多是性能上的，关于语法形式的区别资料很少，还有很多错误…导致转换时查资料花了不少时间，因此整理一下，方便对比学习，少走弯路。</p>
+<h2 id="一、创建概念">一、创建概念<a class="post-anchor" href="#一、创建概念"></a></h2><p>canvas是创建出一个画布（ctx），然后一直往画布里添加元素，所以只需要往节点树里添加一次即可；<br>svg是每创建一个元素，就生成一个新的dom节点，因此每次创建后都要添加节点至节点树。</p>
+<h2 id="二、语法区别">二、语法区别<a class="post-anchor" href="#二、语法区别"></a></h2><ol>
+<li>初始化背景布<br>canvas<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> canvas = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'canvas'</span>);<br><span class="hljs-keyword">let</span> ctx = canvas.getContext(<span class="hljs-string">"2d"</span>);<br>canvas.style.width = <span class="hljs-string">'100%'</span>;<br>canvas.style.height = <span class="hljs-string">'100%'</span>;<br>canvas.id = <span class="hljs-string">'canvasOverview'</span>;<br><span class="hljs-comment">// 添加至主节点</span><br><span class="hljs-keyword">this</span>.divMain.appendChild(canvas);<br></code></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<p>svg</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> nameSpace = <span class="hljs-string">'http://www.w3.org/2000/svg'</span>;<br><span class="hljs-keyword">let</span> svgChart = <span class="hljs-built_in">document</span>.createElementNS(nameSpace,<span class="hljs-string">'svg'</span>);<br>svgChart.setAttribute(<span class="hljs-string">'width'</span>, <span class="hljs-string">'100%'</span>);<br>svgChart.setAttribute(<span class="hljs-string">'height'</span>, <span class="hljs-string">'100%'</span>);<br>svgChart.id = <span class="hljs-string">'svgChart'</span>;<br><span class="hljs-comment">// 添加至主节点</span><br><span class="hljs-keyword">this</span>.divMain.appendChild(svgChart);<br></code></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>绘制元素<br>（1）image<br>canvas<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">ctx.drawImage(_this.image, _this.x, _this.y, _this.width, _this.height);<br></code></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<p>Svg</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js">Let svgImage = <span class="hljs-built_in">document</span>.createElementNS(nameSpace, <span class="hljs-string">"image"</span>);<br>svgImage.setAttribute(<span class="hljs-string">"href"</span>, _this.image.src);<br>svgImage.setAttribute(<span class="hljs-string">"x"</span>, -_this.x);     <br>svgImage.setAttribute(<span class="hljs-string">"y"</span>, -_this.y);<br>svgImage.setAttribute(<span class="hljs-string">"width"</span>, _this.width);<br>svgImage.setAttribute(<span class="hljs-string">"height"</span>, _this.height);<br><span class="hljs-comment">// 添加至节点树</span><br>svgChart.appendChild(svgImage);<br></code></pre></td></tr></tbody></table></figure>
+
+<p>（2）text<br>Canvas</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">ctx.fillStyle = “white”<br>ctx.fillText(_this.text, _this.x + _this.width / <span class="hljs-number">2</span>, _this.y + _this.height / <span class="hljs-number">2</span>);<br>ctx.textAlign = <span class="hljs-string">"left"</span> <span class="hljs-comment">// right, center</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>svg</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js">Let svgText = <span class="hljs-built_in">document</span>.createElementNS(nameSpace, <span class="hljs-string">"text"</span>);<br>svgText.setAttribute(<span class="hljs-string">"fill"</span>, “white”);<br>svgText.textContent = _this.text;<br>svgText.setAttribute(<span class="hljs-string">"x"</span>, _this.x + _this.width / <span class="hljs-number">2</span> );   <br>svgText.setAttribute(<span class="hljs-string">"y"</span>, _this.y + _this.height / <span class="hljs-number">2</span> );<br>svgText.setAttribute(<span class="hljs-string">"text-anchor"</span>, <span class="hljs-string">"start"</span>); <span class="hljs-comment">// end, middle</span><br><span class="hljs-comment">// 添加至节点树</span><br>svgChart.appendChild(svgText);<br></code></pre></td></tr></tbody></table></figure>
+
+<p>（3）image transform<br>Canvas</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">ctx.translate(_this.x, _this.y);<br>ctx.translate(_this.width / <span class="hljs-number">2</span>, _this.height / <span class="hljs-number">2</span>);<br>ctx.rotate(_this.rotate * <span class="hljs-built_in">Math</span>.PI / <span class="hljs-number">180</span>);<br></code></pre></td></tr></tbody></table></figure>
+
+<p>Svg</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs svg">let transformImage = document.createElementNS(nameSpace, "image"); <br>transformImage.setAttribute('transform', `matrix(<br>    ${Math.cos(_this.rotate * Math.PI / 180)},<br>    ${Math.sin(_this.rotate * Math.PI / 180)},<br>    ${-Math.sin(_this.rotate * Math.PI / 180)},<br>    ${Math.cos(_this.rotate * Math.PI / 180)},<br>    ${Math.floor(_this.x + _this.width / 2)},<br>    ${Math.floor(_this.y + _this.height / 2)})`<br>);<br>// 添加至节点树<br>svgChart.appendChild(transformImage);<br></code></pre></td></tr></tbody></table></figure>
+
+<p>（4）line<br>Canvas</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">ctx.beginPath();<br>ctx.moveTo(<span class="hljs-keyword">this</span>.startX, <span class="hljs-keyword">this</span>.startY);<br>ctx.lineTo(<span class="hljs-keyword">this</span>.endX, <span class="hljs-keyword">this</span>.endY);<br>ctx.closePath();<br>ctx.stroke();<br>ctx.restore();<br></code></pre></td></tr></tbody></table></figure>
+
+<p>Svg</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> line = <span class="hljs-built_in">document</span>.createElementNS(nameSpace, <span class="hljs-string">"path"</span>);<br><span class="hljs-keyword">let</span> linePath = <span class="hljs-string">"M "</span> + <span class="hljs-keyword">this</span>.startX + <span class="hljs-string">" "</span> + <span class="hljs-keyword">this</span>.startY + <span class="hljs-string">" "</span> + <span class="hljs-string">"L "</span> + <span class="hljs-keyword">this</span>.endX + <span class="hljs-string">" "</span> + <span class="hljs-keyword">this</span>.endY + <span class="hljs-string">" "</span> + <span class="hljs-string">"Z"</span>;<br>line.setAttribute(<span class="hljs-string">"d"</span>, linePath);<br>line.setAttribute(<span class="hljs-string">"stroke-width"</span>, <span class="hljs-keyword">this</span>.lineWidth);<br><span class="hljs-comment">// 添加至节点树</span><br>svgChart.appendChild(line);<br></code></pre></td></tr></tbody></table></figure>
+
+<p>（5）circle<br>Canvas</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js">ctx.fillStyle = <span class="hljs-string">'#017db6'</span>;<br>ctx.save();<br>ctx.fillStyle = <span class="hljs-string">"#6fc88f"</span>;<br>ctx.beginPath();<br><span class="hljs-comment">//ctx.arc(this.pointX, this.pointY, this.radius, 0, Math.PI * 2);</span><br>ctx.arc(<span class="hljs-keyword">this</span>.pointX, <span class="hljs-keyword">this</span>.pointY, <span class="hljs-keyword">this</span>.lineWidth / <span class="hljs-number">2</span> - <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">Math</span>.PI * <span class="hljs-number">2</span>);<br>ctx.closePath();<br>ctx.fill();<br>ctx.restore();<br></code></pre></td></tr></tbody></table></figure>
+
+<p>Svg</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> circle = <span class="hljs-built_in">document</span>.createElementNS(nameSpace, <span class="hljs-string">"circle"</span>);<br>circle.setAttribute(<span class="hljs-string">"fill"</span>, <span class="hljs-string">"#6fc88f"</span>);<br>circle.setAttribute(<span class="hljs-string">"cx"</span>, <span class="hljs-keyword">this</span>.pointX);<br>circle.setAttribute(<span class="hljs-string">"cy"</span>, <span class="hljs-keyword">this</span>.pointY);<br>circle.setAttribute(<span class="hljs-string">"r"</span>, <span class="hljs-keyword">this</span>.lineWidth / <span class="hljs-number">2</span> - <span class="hljs-number">1</span>);<br><span class="hljs-comment">// 添加至节点树</span><br>svgChart.appendChild(circle);<br></code></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>清除画布<br>canvas<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">ctx.clearRect(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, _this.canvas.width, _this.canvas.height);<br></code></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<p>svg</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> svgWrap = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"divMain"</span>);<br><span class="hljs-keyword">let</span> beforeSVG = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"svgChart"</span>);<br><span class="hljs-keyword">if</span> (beforeSVG) {<br>  svgWrap.removeChild(beforeSVG);<br>}<br></code></pre></td></tr></tbody></table></figure></body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/07/11/mac%E6%96%87%E4%BB%B6%E6%98%BE%E7%A4%BA%E7%9A%84%E4%B8%80%E4%B8%AA%E7%A5%9E%E5%9D%91/">mac文件显示的一个神坑</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/07/09/svg%E7%9A%84transform-matrix%E8%AF%A6%E8%A7%A3/">svg的transform-matrix详解</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2019/07/09/svg%E4%B8%8Ecanvas%E7%9A%84%E8%AF%AD%E6%B3%95%E5%BD%A2%E5%BC%8F%E5%8C%BA%E5%88%AB/">https://bbcfive.github.io/2019/07/09/svg%E4%B8%8Ecanvas%E7%9A%84%E8%AF%AD%E6%B3%95%E5%BD%A2%E5%BC%8F%E5%8C%BA%E5%88%AB/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

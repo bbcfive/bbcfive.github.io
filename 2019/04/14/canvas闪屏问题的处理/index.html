@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      canvas闪屏问题的处理 - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、问题描述"><span class="toc-text">一、问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、原因"><span class="toc-text">二、原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、解决"><span class="toc-text">三、解决</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">canvas闪屏问题的处理</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/04/14</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/canvas">canvas</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h2 id="一、问题描述">一、问题描述<a class="post-anchor" href="#一、问题描述"></a></h2><p>在画canvas时，遇到屏幕瞬间空白的情况（大约1~2帧），造成用户体验不好。</p>
+<h2 id="二、原因">二、原因<a class="post-anchor" href="#二、原因"></a></h2><p>canvas的绘图过程是：先擦出整个画布；然后浏览器到达重绘时间点后，在空白的canvas上作画；xx毫秒后，这一帧动画上的所有元件完成绘画。</p>
+<p>那么，当采用setTimeout或setInterval等与浏览器重绘频率不同步的计时器对画布进行绘图时，很可能上一帧的元件内容还没被完全画出来时，不精准的计时器已经驱动着擦除画布开始下一帧绘画；以及这一帧绘画已经结束，但不精准的计时器还没到指定刷新时间，所以此时会出现明显空白，也即“闪屏”。</p>
+<h2 id="三、解决">三、解决<a class="post-anchor" href="#三、解决"></a></h2><p>双缓冲理论：闪烁是图形编程的一个常见问题。需要多重复杂绘制操作的图形操作会导致呈现的图像闪烁或具有其他不可接受的外观。双缓冲的使用解决这些问题。双缓冲使用内存缓冲区来解决由多重绘制操作造成的闪烁问题。当启用双缓冲时，所有绘制操作首先呈现到内存缓冲区，而不是屏幕上的绘图图面。所有绘制操作完成后，内存缓冲区直接复制到与其关联的绘图图面。因为在屏幕上只执行一个图形操作，所以消除了由复杂绘制操作造成的图像闪烁。</p>
+<p>即，先创建一个cacheCanvas执行计算绘制的操作，当下一帧刷新时，直接将cacheCanvas的内容drawImage到真正的canvas上，这么做既能有效规避闪屏，又能减缓卡顿情况。</p>
+<p>示例代码：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><code class="hljs html">var testBox = function(){<br>  var canvas = document.getElementById("cas"),<br>  ctx = canvas.getContext('2d'),<br>  borderWidth = 2,<br>  Balls = [];<br>  var ball = function(x , y , vx , vy , useCache){<br>    this.x = x;<br>    this.y = y;<br>    this.vx = vx;<br>    this.vy = vy;<br>    this.r = getZ(getRandom(20,40));<br>    this.color = [];<br>    this.cacheCanvas = document.createElement("canvas");<br>    this.cacheCtx = this.cacheCanvas.getContext("2d");<br>    this.cacheCanvas.width = 2*this.r;<br>    this.cacheCanvas.height = 2*this.r;<br>    var num = getZ(this.r/borderWidth);<br>    for(var j=0;j<span class="hljs-tag"><<span class="hljs-name">num;j++){</span></span><br><span class="hljs-tag">      <span class="hljs-attr">this.color.push</span>(</span><br><span class="hljs-tag">        "<span class="hljs-attr">rgba</span>("+<span class="hljs-attr">getZ</span>(<span class="hljs-attr">getRandom</span>(<span class="hljs-attr">0</span>,<span class="hljs-attr">255</span>))+",</span><br><span class="hljs-tag">        "+<span class="hljs-attr">getZ</span>(<span class="hljs-attr">getRandom</span>(<span class="hljs-attr">0</span>,<span class="hljs-attr">255</span>))+",</span><br><span class="hljs-tag">        "+<span class="hljs-attr">getZ</span>(<span class="hljs-attr">getRandom</span>(<span class="hljs-attr">0</span>,<span class="hljs-attr">255</span>))+",<span class="hljs-attr">1</span>)");</span><br><span class="hljs-tag">    }</span><br><span class="hljs-tag">    <span class="hljs-attr">this.useCache</span> = <span class="hljs-string">useCache;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">if</span>(<span class="hljs-attr">useCache</span>){</span><br><span class="hljs-tag">      <span class="hljs-attr">this.cache</span>();</span><br><span class="hljs-tag">    }</span><br><span class="hljs-tag">  }</span><br><span class="hljs-tag"></span><br><span class="hljs-tag">  <span class="hljs-attr">function</span> <span class="hljs-attr">getZ</span>(<span class="hljs-attr">num</span>){</span><br><span class="hljs-tag">    <span class="hljs-attr">var</span> <span class="hljs-attr">rounded</span>;</span><br><span class="hljs-tag">    <span class="hljs-attr">rounded</span> = <span class="hljs-string">(0.5</span> + <span class="hljs-attr">num</span>) | <span class="hljs-attr">0</span>;</span><br><span class="hljs-tag">    // <span class="hljs-attr">A</span> <span class="hljs-attr">double</span> <span class="hljs-attr">bitwise</span> <span class="hljs-attr">not.</span></span><br><span class="hljs-tag">    <span class="hljs-attr">rounded</span> = <span class="hljs-string">~~</span> (<span class="hljs-attr">0.5</span> + <span class="hljs-attr">num</span>);</span><br><span class="hljs-tag">    // <span class="hljs-attr">Finally</span>, <span class="hljs-attr">a</span> <span class="hljs-attr">left</span> <span class="hljs-attr">bitwise</span> <span class="hljs-attr">shift.</span></span><br>    rounded = (0.5 + num) << 0;<br>    return rounded;<br>  }<br><br>  ball.prototype = {<br>    paint:function(ctx){<br>      if(!this.useCache){<br>        ctx.save();<br>        var j=0;<br>        ctx.lineWidth = borderWidth;<br>        for(var i=1;i<span class="hljs-tag"><<span class="hljs-name">this.r;i+=borderWidth){</span></span><br><span class="hljs-tag">          <span class="hljs-attr">ctx.beginPath</span>();</span><br><span class="hljs-tag">          <span class="hljs-attr">ctx.strokeStyle</span> = <span class="hljs-string">this.color[j];</span></span><br><span class="hljs-tag">          <span class="hljs-attr">ctx.arc</span>(<span class="hljs-attr">this.x</span> , <span class="hljs-attr">this.y</span> , <span class="hljs-attr">i</span> , <span class="hljs-attr">0</span> , <span class="hljs-attr">2</span>*<span class="hljs-attr">Math.PI</span>);</span><br><span class="hljs-tag">          <span class="hljs-attr">ctx.stroke</span>();</span><br><span class="hljs-tag">          <span class="hljs-attr">j</span>++;</span><br><span class="hljs-tag">        }</span><br><span class="hljs-tag">        <span class="hljs-attr">ctx.restore</span>();</span><br><span class="hljs-tag">      } <span class="hljs-attr">else</span>{</span><br><span class="hljs-tag">        <span class="hljs-attr">ctx.drawImage</span>(<span class="hljs-attr">this.cacheCanvas</span> , <span class="hljs-attr">this.x-this.r</span> , <span class="hljs-attr">this.y-this.r</span>);</span><br><span class="hljs-tag">      }</span><br><span class="hljs-tag">    },</span><br><span class="hljs-tag"></span><br><span class="hljs-tag">    <span class="hljs-attr">cache:function</span>(){</span><br><span class="hljs-tag">      <span class="hljs-attr">this.cacheCtx.save</span>();</span><br><span class="hljs-tag">      <span class="hljs-attr">var</span> <span class="hljs-attr">j</span>=<span class="hljs-string">0;</span></span><br><span class="hljs-tag">      <span class="hljs-attr">this.cacheCtx.lineWidth</span> = <span class="hljs-string">borderWidth;</span></span><br>      for(var i=1;i<this.r;i+=borderWidth){<br>        this.cacheCtx.beginPath();<br>        this.cacheCtx.strokeStyle = this.color[j];<br>        this.cacheCtx.arc(this.r , this.r , i , 0 , 2*Math.PI);<br>        this.cacheCtx.stroke();<br>        j++;<br>      }<br>      this.cacheCtx.restore();<br>    },<br><br>    move:function(){<br>      this.x += this.vx;<br>      this.y += this.vy;<br>      if(this.x>(canvas.width-this.r)||this.x<span class="hljs-tag"><<span class="hljs-name">this.r){</span></span><br>        this.x=this.x<this.r?this.r:(canvas.width-this.r);<br>        this.vx = -this.vx;<br>      }<br>      if(this.y>(canvas.height-this.r)||this.y<span class="hljs-tag"><<span class="hljs-name">this.r){</span></span><br>        this.y=this.y<this.r?this.r:(canvas.height-this.r);<br>        this.vy = -this.vy;<br>      }<br><br>      this.paint(ctx);<br>    }<br>  }<br><br>  var Game = {<br>    init:function(){<br>      for(var i=0;i<span class="hljs-tag"><<span class="hljs-name">1000;i++){</span></span><br><span class="hljs-tag">        <span class="hljs-attr">var</span> <span class="hljs-attr">b</span> = <span class="hljs-string">new</span> <span class="hljs-attr">ball</span>(</span><br><span class="hljs-tag">          <span class="hljs-attr">getRandom</span>(<span class="hljs-attr">0</span>,<span class="hljs-attr">canvas.width</span>) , </span><br><span class="hljs-tag">          <span class="hljs-attr">getRandom</span>(<span class="hljs-attr">0</span>,<span class="hljs-attr">canvas.height</span>) , </span><br><span class="hljs-tag">          <span class="hljs-attr">getRandom</span>(<span class="hljs-attr">-10</span> , <span class="hljs-attr">10</span>) ,  </span><br><span class="hljs-tag">          <span class="hljs-attr">getRandom</span>(<span class="hljs-attr">-10</span> , <span class="hljs-attr">10</span>) , </span><br><span class="hljs-tag">          <span class="hljs-attr">true</span>)</span><br><span class="hljs-tag">        <span class="hljs-attr">Balls.push</span>(<span class="hljs-attr">b</span>);</span><br><span class="hljs-tag">      }</span><br><span class="hljs-tag">    },</span><br><span class="hljs-tag"></span><br><span class="hljs-tag">    <span class="hljs-attr">update:function</span>(){</span><br><span class="hljs-tag">      <span class="hljs-attr">ctx.clearRect</span>(<span class="hljs-attr">0</span>,<span class="hljs-attr">0</span>,<span class="hljs-attr">canvas.width</span>,<span class="hljs-attr">canvas.height</span>);</span><br>      for(var i=0;i<Balls.length;i++){<br>        Balls[i].move();<br>      }<br>    },<br><br>    loop:function(){<br>      var _this = this;<br>      this.update();<br>      RAF(function(){<br>        _this.loop();<br>      })<br>    },<br><br>    start:function(){<br>      this.init();<br>      this.loop();<br>    }<br>  }<br><br>  window.RAF = (function(){<br>    return window.requestAnimationFrame<br>    || window.webkitRequestAnimationFrame<br>    || window.mozRequestAnimationFrame<br>    || window.oRequestAnimationFrame<br>    || window.msRequestAnimationFrame<br>    || function (callback) {window.setTimeout(callback, 1000 / 60); };<br>  })();<br><br>  return Game;<br>}();<br><br>function getRandom(a , b){<br>  return Math.random()*(b-a)+a;<br>}<br><br>window.onload = function(){<br>  testBox.start();<br>}<br></code></pre></td></tr></tbody></table></figure>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/04/16/RN%20canvas%E7%BC%A9%E6%94%BE%E5%A4%84%E7%90%86/">RN canvas缩放处理</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/04/12/React%20Native%E4%B8%AD%E7%9A%84%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95%E6%98%AF%E4%B8%8D%E5%8F%AF%E9%9D%A0%E7%9A%84/">React Native中的远程调试是不可靠的</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2019/04/14/canvas%E9%97%AA%E5%B1%8F%E9%97%AE%E9%A2%98%E7%9A%84%E5%A4%84%E7%90%86/">https://bbcfive.github.io/2019/04/14/canvas%E9%97%AA%E5%B1%8F%E9%97%AE%E9%A2%98%E7%9A%84%E5%A4%84%E7%90%86/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

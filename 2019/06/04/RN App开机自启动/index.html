@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      RN App开机自启动 - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、目录"><span class="toc-text">一、目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、xml配置"><span class="toc-text">二、xml配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、com-rnproject"><span class="toc-text">三、com.rnproject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、踩坑"><span class="toc-text">四、踩坑</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">RN App开机自启动</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/06/04</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/移动端">移动端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/React Native">React Native</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><p>RN的最后都逃不开原生…</p>
+<h2 id="一、目录">一、目录<a class="post-anchor" href="#一、目录"></a></h2><p><a href="https://img2018.cnblogs.com/blog/1549437/201906/1549437-20190604205646632-1967275900.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201906/1549437-20190604205646632-1967275900.png" alt="avatar"></a></p>
+<h2 id="二、xml配置">二、xml配置<a class="post-anchor" href="#二、xml配置"></a></h2><figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag"><<span class="hljs-name">manifest</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="hljs-tag">  <span class="hljs-attr">package</span>=<span class="hljs-string">"com.rnproject"</span></span><br><span class="hljs-tag">  <span class="hljs-attr">android:installLocation</span>=<span class="hljs-string">"internalOnly"</span> // 限定仅安装在手机内存（而非<span class="hljs-attr">SD</span>卡）里</span><br><span class="hljs-tag">  <span class="hljs-attr">android:permission</span>=<span class="hljs-string">"android.permission.RECEIVE_BOOT_COMPLETED"</span> // 给到接收系统广播权限</span><br><span class="hljs-tag">  ></span><br><br>  <span class="hljs-tag"><<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.INTERNET"</span> /></span><br>  <span class="hljs-tag"><<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.SYSTEM_ALERT_WINDOW"</span>/></span><br>  <span class="hljs-tag"><<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.CAMERA"</span> /></span><br>  <span class="hljs-tag"><<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.WRITE_EXTERNAL_STORAGE"</span>/></span>  <br>  <span class="hljs-tag"><<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.RECEIVE_BOOT_COMPLETED"</span> /></span>  // 给到接收系统广播权限<br><br>  <span class="hljs-tag"><<span class="hljs-name">application</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:name</span>=<span class="hljs-string">".MainApplication"</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:label</span>=<span class="hljs-string">"@string/app_name"</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:icon</span>=<span class="hljs-string">"@mipmap/ic_launcher"</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:roundIcon</span>=<span class="hljs-string">"@mipmap/ic_launcher_round"</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:allowBackup</span>=<span class="hljs-string">"false"</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:theme</span>=<span class="hljs-string">"@style/AppTheme"</span>></span><br>    <span class="hljs-tag"><<span class="hljs-name">activity</span></span><br><span class="hljs-tag">      <span class="hljs-attr">android:name</span>=<span class="hljs-string">".MainActivity"</span></span><br><span class="hljs-tag">      <span class="hljs-attr">android:label</span>=<span class="hljs-string">"@string/app_name"</span></span><br><span class="hljs-tag">      <span class="hljs-attr">android:configChanges</span>=<span class="hljs-string">"keyboard|keyboardHidden|orientation|screenSize"</span> // 使用键盘时不挤压屏幕</span><br><span class="hljs-tag">      <span class="hljs-attr">android:windowSoftInputMode</span>=<span class="hljs-string">"adjustResize"</span></span><br><span class="hljs-tag">      <span class="hljs-attr">android:noHistory</span>=<span class="hljs-string">"true"</span> // 退出程序（离开屏幕）时即清除历史</span><br><span class="hljs-tag">      <span class="hljs-attr">android:excludeFromRecents</span>=<span class="hljs-string">"true"</span> // 退出程序（离开屏幕）时即从最近任务列表中移除</span><br><span class="hljs-tag">      ></span><br>      <span class="hljs-tag"><<span class="hljs-name">intent-filter</span>></span><br>          <span class="hljs-tag"><<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.action.MAIN"</span> /></span><br>          <span class="hljs-tag"><<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.category.LAUNCHER"</span> /></span><br>      <span class="hljs-tag"></<span class="hljs-name">intent-filter</span>></span><br>    <span class="hljs-tag"></<span class="hljs-name">activity</span>></span><br>    <span class="hljs-tag"><<span class="hljs-name">activity</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.facebook.react.devsupport.DevSettingsActivity"</span> /></span><br>    <span class="hljs-tag"><<span class="hljs-name">receiver</span></span><br><span class="hljs-tag">      <span class="hljs-attr">android:name</span>=<span class="hljs-string">".BootBroadcastReceiver"</span> </span><br><span class="hljs-tag">      <span class="hljs-attr">android:enabled</span>=<span class="hljs-string">"true"</span> </span><br><span class="hljs-tag">      <span class="hljs-attr">android:exported</span>=<span class="hljs-string">"true"</span>></span><br>        <span class="hljs-tag"><<span class="hljs-name">intent-filter</span>></span><br>            <span class="hljs-comment"><!--注册开机广播地址--></span><br>            <span class="hljs-tag"><<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.action.BOOT_COMPLETED"</span>/></span> // 监听系统开机广播<br>            <span class="hljs-tag"><<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.action.ACTION_BOOT_COMPLETED"</span>/></span>            <br>            <span class="hljs-tag"><<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.category.HOME"</span> /></span><br>            <span class="hljs-comment"><!-- <data android:scheme="file"/> --></span><br>        <span class="hljs-tag"></<span class="hljs-name">intent-filter</span>></span>  <br>        <span class="hljs-tag"><<span class="hljs-name">intent-filter</span>></span><br>            <span class="hljs-tag"><<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.action.MEDIA_MOUNTED"</span>/></span> // 监听媒体广播，当检测到有SD卡进入/出时会触发此广播<br>            <span class="hljs-tag"><<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.action.MEDIA_UNMOUNTED"</span>/></span> // 作用同上<br>            <span class="hljs-tag"><<span class="hljs-name">data</span> <span class="hljs-attr">android:scheme</span>=<span class="hljs-string">"file"</span>></span><br>            <span class="hljs-tag"></<span class="hljs-name">data</span>></span><br>        <span class="hljs-tag"></<span class="hljs-name">intent-filter</span>></span>        <br>    <span class="hljs-tag"></<span class="hljs-name">receiver</span>></span>   <br>  <span class="hljs-tag"></<span class="hljs-name">application</span>></span><br><span class="hljs-tag"></<span class="hljs-name">manifest</span>></span><br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="三、com-rnproject">三、com.rnproject<a class="post-anchor" href="#三、com-rnproject"></a></h2><p>BootBroadcastReceiver.java</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.rnproject; <br><br><span class="hljs-keyword">import</span> android.content.BroadcastReceiver;  <br><br><span class="hljs-keyword">import</span> android.content.Context;  <br><br><span class="hljs-keyword">import</span> android.content.Intent;  <br><br><span class="hljs-keyword">import</span> android.util.Log;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BootBroadcastReceiver</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BroadcastReceiver</span> </span>{<br><br>    <span class="hljs-comment">// 系统启动完成   </span><br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String ACTION = <span class="hljs-string">"android.intent.action.BOOT_COMPLETED"</span>;<br>    <br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onReceive</span><span class="hljs-params">(Context context, Intent intent)</span> </span>{<br>        <br>        Log.d(<span class="hljs-string">"BootBroadcastReceiver"</span>, intent.getAction()); <br><br>        <span class="hljs-comment">// 当收听到的事件是“BOOT_COMPLETED”时，就创建并启动相应的Activity和Service     </span><br>        <span class="hljs-keyword">if</span> (intent.getAction().equals(ACTION)) {    <br>            Intent activityIntent = <span class="hljs-keyword">new</span> Intent(context, MainActivity<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;    <span class="hljs-comment">// 开机启动的Activity</span><br>            activityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);<br>            <span class="hljs-comment">// 启动Activity     </span><br>            context.startActivity(activityIntent);<br>        }    <br>    }<br><br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="四、踩坑">四、踩坑<a class="post-anchor" href="#四、踩坑"></a></h2><p>查遍了网上的各种方法，配置了所有权限并规避了所有网页已提到问题，仍不能成功自启动….</p>
+<p><a href="https://stackoverflow.com/questions/56352895/how-to-receive-the-boot-completed-broadcast-in-my-react-native-app" target="_blank" rel="noopener">为此还贡献了StackOverflow上的首问…</a></p>
+<p>终于在大神的指导下，发现android8.0以上有些功能不再支持，因此需要降低targetSdkVersion至25以下…</p>
+<p>以及，android3.0之后，谷歌为防止垃圾app自启动，做了一些限制，因此app需要在非stopped state情况下才能运行，即打开app，并确定它在你的任务列表里（不要删除进程），它才能开机自启动…</p>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/06/07/react-native-webview%E7%A6%81%E6%AD%A2%E7%BC%A9%E6%94%BE/">react-native-webview禁止缩放</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/06/03/%E8%B5%84%E6%96%99%E6%96%87%E7%8C%AE/">app好文</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2019/06/04/RN%20App%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8/">https://bbcfive.github.io/2019/06/04/RN%20App%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

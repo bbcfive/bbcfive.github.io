@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      express组件学习 - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、express"><span class="toc-text">一、express</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、请求与响应"><span class="toc-text">二、请求与响应</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、路由参数"><span class="toc-text">三、路由参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、查询字符串"><span class="toc-text">四、查询字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、post请求和postman工具"><span class="toc-text">五、post请求和postman工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、上传文件"><span class="toc-text">六、上传文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、模板引擎"><span class="toc-text">七、模板引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、中间件"><span class="toc-text">八、中间件</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">express组件学习</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/01/05</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/后端">后端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/NodeJs">NodeJs</a>
+                  
+                
+                  
+                    <a href="/tags/express">express</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h2 id="一、express">一、express<a class="post-anchor" href="#一、express"></a></h2><p>可以做：web application、api…</p>
+<p>特性：</p>
+<ul>
+<li>适合写简单的路由系统</li>
+<li>集成很多模板引擎</li>
+<li>中间件系统</li>
+</ul>
+<h2 id="二、请求与响应">二、请求与响应<a class="post-anchor" href="#二、请求与响应"></a></h2><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);<br><br><span class="hljs-keyword">var</span> app = express();<br><br><span class="hljs-comment">//据说第二个参数是一个中间件方法</span><br>app.get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>{<br>  <span class="hljs-comment">//学会查api来学习更多知识，学会学习官方api文档</span><br>  <span class="hljs-keyword">var</span> resObj = req.method;<br>  <span class="hljs-comment">//send可以发送字符串、json（包含自动stringify）对象和数组</span><br>  res.send(resObj);<br>})<br><br>app.listen(<span class="hljs-number">3000</span>);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'listening to port 3000'</span>);<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="三、路由参数">三、路由参数<a class="post-anchor" href="#三、路由参数"></a></h2><p>server.js</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);<br><br><span class="hljs-keyword">var</span> app = express();<br><br>app.get(<span class="hljs-string">'/profile/:id/user/:name'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>{<br>  <span class="hljs-built_in">console</span>.dir(req.params);<br>  res.send(<span class="hljs-string">'you requested to a profile page with the name of '</span> + req.params.name);<br>})<br><br>app.listen(<span class="hljs-number">3000</span>);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'listening to port 3000'</span>);<br></code></pre></td></tr></tbody></table></figure>
+
+<p>terminal<br><a href="https://img2018.cnblogs.com/blog/1549437/201901/1549437-20190105190545773-462007949.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201901/1549437-20190105190545773-462007949.png" alt="avatar"></a></p>
+<p>chrome<br><a href="https://img2018.cnblogs.com/blog/1549437/201901/1549437-20190105190611177-1351317061.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201901/1549437-20190105190611177-1351317061.png" alt="avatar"></a></p>
+<h2 id="四、查询字符串">四、查询字符串<a class="post-anchor" href="#四、查询字符串"></a></h2><p>server.js</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">app.get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>{<br>  <span class="hljs-built_in">console</span>.dir(req.query);<br>  res.send(<span class="hljs-string">'home page:'</span> + req.query.find);<br>})<br></code></pre></td></tr></tbody></table></figure>
+
+<p>terminal<br><a href="https://img2018.cnblogs.com/blog/1549437/201901/1549437-20190105194552576-1647382851.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201901/1549437-20190105194552576-1647382851.png" alt="avatar"></a></p>
+<p>chrome<br><a href="https://img2018.cnblogs.com/blog/1549437/201901/1549437-20190105194612080-1192770150.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201901/1549437-20190105194612080-1192770150.png" alt="avatar"></a></p>
+<h2 id="五、post请求和postman工具">五、post请求和postman工具<a class="post-anchor" href="#五、post请求和postman工具"></a></h2><p>同时处理x-www-form和json</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);<br><span class="hljs-keyword">var</span> bodyparser = <span class="hljs-built_in">require</span>(<span class="hljs-string">'body-parser'</span>);<br><br><span class="hljs-keyword">var</span> app = express();<br><br><span class="hljs-comment">//create application/json parser</span><br><span class="hljs-keyword">var</span> jsonParser = bodyparser.json();<br><br><span class="hljs-comment">//create application/x-www-form-urlencoded parser</span><br><span class="hljs-keyword">var</span> urlencodedParser = bodyparser.urlencoded({ <span class="hljs-attr">extended</span>: <span class="hljs-literal">false</span>})<br><br>app.post(<span class="hljs-string">'/'</span>, urlencodedParser,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{<br>  <span class="hljs-built_in">console</span>.dir(req.body);<br>  res.send(req.body.name);<br>})<br><br>app.post(<span class="hljs-string">'/upload'</span>, jsonParser, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{<br>  <span class="hljs-built_in">console</span>.dir(req.body);<br>  res.send(req.body.name);<br>})<br></code></pre></td></tr></tbody></table></figure>
+
+<p>参考链接：github/express/body-parser</p>
+<h2 id="六、上传文件">六、上传文件<a class="post-anchor" href="#六、上传文件"></a></h2><p>form.html</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag"><<span class="hljs-name">body</span>></span><br>  <span class="hljs-tag"><<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"/upload"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">"multipart/form-data"</span>></span><br>    <span class="hljs-tag"><<span class="hljs-name">h2</span>></span>单图上传<span class="hljs-tag"></<span class="hljs-name">h2</span>></span><br>    <span class="hljs-tag"><<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"logo"</span>></span><br>    <span class="hljs-tag"><<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"submit"</span>></span><br>  <span class="hljs-tag"></<span class="hljs-name">form</span>></span><br><span class="hljs-tag"></<span class="hljs-name">body</span>></span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>server.js</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);<br><span class="hljs-keyword">var</span> bodyparser = <span class="hljs-built_in">require</span>(<span class="hljs-string">'body-parser'</span>);<br><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);<br><span class="hljs-keyword">var</span> multer = <span class="hljs-built_in">require</span>(<span class="hljs-string">'multer'</span>);<br><span class="hljs-keyword">var</span> upload = multer({ <span class="hljs-attr">dest</span>: <span class="hljs-string">'uploads/'</span>});<br><span class="hljs-keyword">var</span> app = express();<br><br><span class="hljs-comment">//create application/json parser</span><br><span class="hljs-keyword">var</span> jsonParser = bodyparser.json();<br><br><span class="hljs-comment">//create application/x-www-form-urlencoded parser</span><br><span class="hljs-keyword">var</span> urlencodedParser = bodyparser.urlencoded({ <span class="hljs-attr">extended</span>: <span class="hljs-literal">false</span>})<br><br>app.get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>{<br>  <span class="hljs-built_in">console</span>.dir(req.query);<br>  res.send(<span class="hljs-string">'home page:'</span> + req.query.find);<br>})<br><br>app.get(<span class="hljs-string">'/form'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>{<br>  <span class="hljs-keyword">var</span> form = fs.readFileSync(<span class="hljs-string">'./form.html'</span>, { <span class="hljs-attr">encoding</span>: <span class="hljs-string">'utf8'</span>});<br>  res.send(form);<br>})<br><br>app.post(<span class="hljs-string">'/'</span>, urlencodedParser,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{<br>  <span class="hljs-built_in">console</span>.dir(req.body);<br>  res.send(req.body.name);<br>})<br><br>app.post(<span class="hljs-string">'/upload'</span>, upload.single(<span class="hljs-string">'logo'</span>),<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{<br>  res.send({<span class="hljs-string">'ret_code'</span>: <span class="hljs-number">0</span>});<br>})<br><br>app.listen(<span class="hljs-number">3000</span>);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'listening to port 3000'</span>);<br></code></pre></td></tr></tbody></table></figure>
+<p>结构变化<br><a href="https://img2018.cnblogs.com/blog/1549437/201901/1549437-20190105205545633-1640494161.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2018.cnblogs.com/blog/1549437/201901/1549437-20190105205545633-1640494161.png" alt="avatar"></a></p>
+<p>参考链接：github/express/multer</p>
+<p>tips:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">app.get(<span class="hljs-string">'/form'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>{<br>  <span class="hljs-keyword">var</span> form = fs.readFileSync(<span class="hljs-string">'./form.html'</span>, { <span class="hljs-attr">encoding</span>: <span class="hljs-string">'utf8'</span>});<br>  res.send(form);<br>})<br></code></pre></td></tr></tbody></table></figure>
+
+<p>等价于</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">app.get(<span class="hljs-string">'/form'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>{<br>  res.sendFile(__dirname + <span class="hljs-string">'/form.html'</span>);<br>})<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="七、模板引擎">七、模板引擎<a class="post-anchor" href="#七、模板引擎"></a></h2><p>引入</p>
+<p>app.set(‘view engine’, ‘ejs’);</p>
+<p>使用</p>
+<p>server.js</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">app.get(<span class="hljs-string">'/form/:name'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>{<br>  <span class="hljs-keyword">var</span> person = req.params.name;<br>  res.render(<span class="hljs-string">'form'</span>, { <span class="hljs-attr">person</span>: person});<br>  res.sendFile(__dirname + <span class="hljs-string">'/form.html'</span>);<br>})<br></code></pre></td></tr></tbody></table></figure>
+
+<p>form.ejs</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag"><<span class="hljs-name">h1</span>></span><span class="hljs-tag"><<span class="hljs-name">%=</span> <span class="hljs-attr">person</span> %></span><span class="hljs-tag"></<span class="hljs-name">h1</span>></span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>遍历数组</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag"><<span class="hljs-name">ul</span>></span><br>  <span class="hljs-tag"><<span class="hljs-name">%=</span> <span class="hljs-attr">data.hobbie.forEach</span>(<span class="hljs-attr">function</span>(<span class="hljs-attr">item</span>){ %></span><br>    <span class="hljs-tag"><<span class="hljs-name">li</span>></span><br>      <span class="hljs-tag"><<span class="hljs-name">%=</span> <span class="hljs-attr">item</span> %></span><br>    <span class="hljs-tag"></<span class="hljs-name">li</span>></span><br>  <span class="hljs-tag"><<span class="hljs-name">%=</span> }) %></span><br><span class="hljs-tag"></<span class="hljs-name">ul</span>></span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>公用模板</p>
+<p>使用</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag"><<span class="hljs-name">%-</span> <span class="hljs-attr">include</span>('<span class="hljs-attr">partials</span>/<span class="hljs-attr">header.ejs</span>') <span class="hljs-attr">-</span>%></span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>渲染</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">app.get(<span class="hljs-string">'/about'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>{<br>    <span class="hljs-keyword">var</span> data = {<span class="hljs-attr">age</span>: <span class="hljs-number">29</span>, <span class="hljs-attr">job</span>: <span class="hljs-string">'programmer'</span>, <span class="hljs-attr">hobbie</span>: [<span class="hljs-string">'eating'</span>, <span class="hljs-string">'fighting'</span>, <span class="hljs-string">'fishing'</span>]};<br>    res.render(<span class="hljs-string">'about'</span>, { <span class="hljs-attr">data</span>: data});<br>})<br></code></pre></td></tr></tbody></table></figure>
+<p>参考链接：ejs.co、pug</p>
+<h2 id="八、中间件">八、中间件<a class="post-anchor" href="#八、中间件"></a></h2><p>解释：请求与响应之间的处理过程是中间件发挥作用的地方。</p>
+<p>好处：共用模块、全局性的操作</p>
+<p>类型：</p>
+<ul>
+<li>应用级中间件</li>
+<li>路由级中间件</li>
+<li>错误层次中间件</li>
+<li>内置中间件</li>
+<li>第三方中间件</li>
+</ul>
+<p>执行顺序</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js">app.use(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, next</span>)</span>{<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'1'</span>);<br>  next();<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'3'</span>);<br>})<br><br>app.use(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, next</span>)</span>{<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'2'</span>);<br>})<br></code></pre></td></tr></tbody></table></figure>
+
+<p>路由中间件</p>
+<p>server.js</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> indexRouter = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./routes/index.js'</span>);<br><span class="hljs-keyword">var</span> userRouter = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./routes/user.js'</span>);<br><br>app.use(<span class="hljs-string">'/'</span>, indexRouter);<br>app.use(<span class="hljs-string">'/users'</span>, userRouter);<br></code></pre></td></tr></tbody></table></figure>
+
+<p>./route/index.js</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);<br><br><span class="hljs-keyword">var</span> router = express.Router();<br><br>router.get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, next</span>) </span>{<br>  res.send(<span class="hljs-string">'root'</span>);<br>})<br><br><span class="hljs-built_in">module</span>.exports = router;<br></code></pre></td></tr></tbody></table></figure>
+
+<p>./route/user.js</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);<br><br><span class="hljs-keyword">var</span> router = express.Router();<br><br>router.get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, next</span>) </span>{<br>  res.send(<span class="hljs-string">'user'</span>);<br>})<br><br><span class="hljs-built_in">module</span>.exports = router;<br></code></pre></td></tr></tbody></table></figure>
+
+<p>体会：用中间件写路由的好处</p>
+<p>参考链接：express/using-middleware</p>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/01/06/express%E5%AE%9E%E7%8E%B0todolist/">express实现todolist</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/01/05/nodejs%E7%B9%81%E7%90%90%E5%9C%B0%E8%87%AA%E5%BB%BA%E8%B7%AF%E7%94%B1/">nodejs繁琐地自建路由</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2019/01/05/express%E7%BB%84%E4%BB%B6%E5%AD%A6%E4%B9%A0/">https://bbcfive.github.io/2019/01/05/express%E7%BB%84%E4%BB%B6%E5%AD%A6%E4%B9%A0/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
