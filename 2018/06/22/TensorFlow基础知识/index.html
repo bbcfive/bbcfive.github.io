@@ -16,7 +16,7 @@
     <meta name="description" content="" />
     
     <title>
-      tensorflow基础知识 - 执白的博客
+      TensorFlow基础知识 - 执白的博客
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -155,7 +155,7 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">tensorflow基础知识</div>
+      <div class="title">TensorFlow基础知识</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
@@ -187,7 +187,7 @@
                   
                 
                   
-                    <a href="/tags/tensorflow">tensorflow</a>
+                    <a href="/tags/TensorFlow">TensorFlow</a>
                   
                 
             </span>
@@ -201,7 +201,7 @@
 <figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf<br><br>matrix1 = tf.constant([[<span class="hljs-number">3</span>, <span class="hljs-number">3</span>]])<br>matrix2 = tf.constant([[<span class="hljs-number">2</span>],[<span class="hljs-number">2</span>]])<br>product = tf.matmul(matrix1, matrix2)  <span class="hljs-comment"># matrix multiply np.dot(m1, m2)</span><br><br><span class="hljs-comment"># method 1</span><br>sess = tf.Session()<br>result = sess.run(product)<br>print(result)<br>sess.close()<br><br><span class="hljs-comment"># method 2</span><br><span class="hljs-keyword">with</span> tf.Session() <span class="hljs-keyword">as</span> sess:<br>  result2 = sess.run(product)<br>  print(result2)<br></code></pre></td></tr></tbody></table></figure>
 
 <h2 id="二、Variables">二、Variables<a class="post-anchor" href="#二、Variables"></a></h2><p>定义一个变量并使其做自加操作</p>
-<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf<br><br>state = tf.Variable(<span class="hljs-number">0</span>, name=<span class="hljs-string">'counter'</span>)<br><br>one = tf.constant(<span class="hljs-number">1</span>)<br><br>new_value = tf.add(state, one)<br>update = tf.assign(state, new_value)<br><br>init = tf.global_variables_initializer()<br><br><span class="hljs-keyword">with</span> tf.Session() <span class="hljs-keyword">as</span> sess:<br>  sess.run(init)<br>  <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):<br>    sess.run(update)<br>    print(sess.run(state))<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf<br><br>state = tf.Variable(<span class="hljs-number">0</span>, name=<span class="hljs-string">'counter'</span>)<br><br>one = tf.constant(<span class="hljs-number">1</span>)<br><br>new_value = tf.add(state, one)<br>update = tf.assign(state, new_value)<br><br><span class="hljs-comment"># tf.initialize_all_variables() no long valid from</span><br><span class="hljs-comment"># 2017-03-02 if using tensorflow >= 0.12</span><br><span class="hljs-keyword">if</span> int((tf.__version__).split(<span class="hljs-string">'.'</span>)[<span class="hljs-number">1</span>]) < <span class="hljs-number">12</span> <span class="hljs-keyword">and</span> int((tf.__version__).split(<span class="hljs-string">'.'</span>)[<span class="hljs-number">0</span>]) < <span class="hljs-number">1</span>:<br>  init = tf.initialize_all_variables()<br><span class="hljs-keyword">else</span>:<br>  init = tf.global_variables_initializer()<br><br><span class="hljs-keyword">with</span> tf.Session() <span class="hljs-keyword">as</span> sess:<br>  sess.run(init)<br>  <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):<br>    sess.run(update)<br>    print(sess.run(state))<br></code></pre></td></tr></tbody></table></figure>
 
 <h2 id="三、placeholder">三、placeholder<a class="post-anchor" href="#三、placeholder"></a></h2><p>变量占位符，使用placeholder定义，并不用给出确切值，而后feed_dict准确数据</p>
 <figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf<br><br>input1 = tf.placeholder(tf.float32)<br>input2 = tf.placeholder(tf.float32)<br>output = tf.multiply(input1, input2)<br><br><span class="hljs-keyword">with</span> tf.Session() <span class="hljs-keyword">as</span> sess:<br>  print(sess.run(output, feed_dict={input1: [<span class="hljs-number">7.</span>], input2: [<span class="hljs-number">2.</span>]}))<br></code></pre></td></tr></tbody></table></figure>
@@ -233,7 +233,7 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2018/11/13/hello-world/">Hello World</a>
+          <a href="/2018/06/23/TensorFlow%E5%BB%BA%E9%80%A0%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">TensorFlow建造神经网络</a>
         
     </div>
     <div class="item right">
@@ -248,7 +248,7 @@
       本文作者：<a href="https://bbcfive.github.io">执白</a>
     </div>
     <!-- <div class="link">
-      永久链接：<a href="https://bbcfive.github.io/2018/06/22/tf%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">https://bbcfive.github.io/2018/06/22/tf%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</a>
+      永久链接：<a href="https://bbcfive.github.io/2018/06/22/TensorFlow%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">https://bbcfive.github.io/2018/06/22/TensorFlow%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</a>
     </div> -->
     <div class="declare">
       版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
