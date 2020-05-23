@@ -16,7 +16,7 @@
     <meta name="description" content="" />
     
     <title>
-      标签 - 执白的博客
+      函数过拟合 - 执白的博客
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -26,6 +26,11 @@
   <meta name="generator" content="Hexo 4.2.0"></head>
   <body>
     <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、什么是过拟合"><span class="toc-text">一、什么是过拟合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、如何避免过拟合"><span class="toc-text">二、如何避免过拟合</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -68,7 +73,7 @@
           分类
         </a>
         
-        <a href="/tags" class="current">
+        <a href="/tags" class="">
           标签
         </a>
         
@@ -118,7 +123,7 @@
             分类
           </a>
           
-          <a href="/tags" class="current">
+          <a href="/tags" class="">
             标签
           </a>
           
@@ -147,78 +152,115 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            标签 - TensorFlow
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2018" >
-                2018
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2018/06/24/TensorFlow%E8%BF%87%E6%8B%9F%E5%90%88/" title="函数过拟合">
-                <span>2018/06/24</span>
-                <span>函数过拟合</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2018/06/24/TensorFlow%E7%9A%84classification/" title="Classification">
-                <span>2018/06/24</span>
-                <span>Classification</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2018/06/23/Tensorboard%E5%8F%AF%E8%A7%86%E5%8C%96/" title="Tensorboard可视化">
-                <span>2018/06/23</span>
-                <span>Tensorboard可视化</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2018/06/23/TensorFlow%E5%BB%BA%E9%80%A0%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" title="TensorFlow建造神经网络">
-                <span>2018/06/23</span>
-                <span>TensorFlow建造神经网络</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2018/06/22/TensorFlow%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="TensorFlow基础知识">
-                <span>2018/06/22</span>
-                <span>TensorFlow基础知识</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <span class="page-number current">1</span>
-</div>
-</div>
+      <div class="title">函数过拟合</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2018/06/24</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/机器学习">机器学习</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/python">python</a>
+                  
+                
+                  
+                    <a href="/tags/TensorFlow">TensorFlow</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h2 id="一、什么是过拟合">一、什么是过拟合<a class="post-anchor" href="#一、什么是过拟合"></a></h2><p>简单来说就是机器学习过于追求训练误差小而导致函数的实际误差过大、泛化能力差问题。</p>
+<h2 id="二、如何避免过拟合">二、如何避免过拟合<a class="post-anchor" href="#二、如何避免过拟合"></a></h2><ol>
+<li>L1，L2..regularization<br>y = Wx<br>L1: cost = (Wx - real y)^2 + abs(W)<br>L1: cost = (Wx - real y)^2 + abs(W)^2</li>
+</ol>
+<p>这样一来机器学习的训练误差不仅要考虑数据的弥合度(Wx - real y)，还需要加上数据的偏移度(abs(W))，可以起到防止过拟合的效果。</p>
+<ol start="2">
+<li>Dropout regularization<br>随机的丢掉一些神经元，提高函数预测的泛化能力。</li>
+</ol>
+<p>本文是对<a href="https://morvanzhou.github.io/tutorials/" target="_blank" rel="noopener">周沫凡</a>同学tf课程的学习笔记记录。</p>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2018/11/13/hello-world/">Hello World</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2018/06/24/TensorFlow%E7%9A%84classification/">Classification</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2018/06/24/TensorFlow%E8%BF%87%E6%8B%9F%E5%90%88/">https://bbcfive.github.io/2018/06/24/TensorFlow%E8%BF%87%E6%8B%9F%E5%90%88/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020

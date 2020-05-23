@@ -16,7 +16,7 @@
     <meta name="description" content="" />
     
     <title>
-      Hello World - 执白的博客
+      Classification - 执白的博客
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -29,7 +29,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#link"><span class="toc-text">link</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#list"><span class="toc-text">list</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#avatar"><span class="toc-text">avatar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#font-color"><span class="toc-text">font-color</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#font-bold"><span class="toc-text">font-bold</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#斜体"><span class="toc-text">斜体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#table"><span class="toc-text">table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表格对其"><span class="toc-text">表格对其</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Classification与Regression的区别"><span class="toc-text">一、Classification与Regression的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、训练mnist数据"><span class="toc-text">二、训练mnist数据</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -155,82 +155,53 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">Hello World</div>
+      <div class="title">Classification</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2018/11/13</span>
+          <span>2018/06/24</span>
         </span>
 
         
 
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/机器学习">机器学习</a>
+                
+              
+          </span>
+        </span>
         
         
-        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/python">python</a>
+                  
+                
+                  
+                    <a href="/tags/TensorFlow">TensorFlow</a>
+                  
+                
+            </span>
+          </span>
+         
       </div>
       <div>
       </div>
     </div>
-    <html><head></head><body><h2 id="Quick-Start">Quick Start<a class="post-anchor" href="#Quick-Start"></a></h2><h3 id="Create-a-new-post">Create a new post<a class="post-anchor" href="#Create-a-new-post"></a></h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">"My New Post"</span><br></code></pre></td></tr></tbody></table></figure>
+    <html><head></head><body><h2 id="一、Classification与Regression的区别">一、Classification与Regression的区别<a class="post-anchor" href="#一、Classification与Regression的区别"></a></h2><p>Regression输出的是一个值，比如预测的房价1.5万/平；Classification输出的两个值，比如[0.27,0.73]代表27%的可能性是A，73%的可能性是B。</p>
+<h2 id="二、训练mnist数据">二、训练mnist数据<a class="post-anchor" href="#二、训练mnist数据"></a></h2><figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf<br><span class="hljs-keyword">from</span> tensorflow.examples.tutorials.mnist <span class="hljs-keyword">import</span> input_data<br><span class="hljs-comment"># number 1 to 10 data</span><br>mnist = input_data.read_data_sets(<span class="hljs-string">'MNIST_data'</span>, one_hot=<span class="hljs-literal">True</span>)<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_layer</span><span class="hljs-params">(inputs, in_size, out_size, activation_function=None,)</span>:</span><br>  <span class="hljs-comment"># add one more layer and return the output of this layer</span><br>  Weights = tf.Variable(tf.random_normal([in_size, out_size]))<br>  biases = tf.Variable(tf.zeros([<span class="hljs-number">1</span>, out_size]) + <span class="hljs-number">0.1</span>,)<br>  Wx_plus_b = tf.matmul(inputs, Weights) + biases<br>  <span class="hljs-keyword">if</span> activation_function <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>    outputs = Wx_plus_b<br>  <span class="hljs-keyword">else</span>:<br>    outputs = activation_function(Wx_plus_b,)<br>  <span class="hljs-keyword">return</span> outputs<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">compute_accuracy</span><span class="hljs-params">(v_xs, v_ys)</span>:</span><br>  <span class="hljs-keyword">global</span> prediction<br>  y_pre = sess.run(prediction, feed_dict={xs: v_xs})<br>  correct_prediction = tf.equal(tf.argmax(y_pre,<span class="hljs-number">1</span>), tf.argmax(v_ys,<span class="hljs-number">1</span>))<br>  accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))<br>  result = sess.run(accuracy, feed_dict={xs: v_xs, ys: v_ys})<br>  <span class="hljs-keyword">return</span> result<br><br><span class="hljs-comment"># define placeholder for inputs to network</span><br>xs = tf.placeholder(tf.float32, [<span class="hljs-literal">None</span>, <span class="hljs-number">784</span>]) <span class="hljs-comment"># 28x28</span><br>ys = tf.placeholder(tf.float32, [<span class="hljs-literal">None</span>, <span class="hljs-number">10</span>])<br><br><span class="hljs-comment"># add output layer</span><br>prediction = add_layer(xs, <span class="hljs-number">784</span>, <span class="hljs-number">10</span>,  activation_function=tf.nn.softmax)<br><br><span class="hljs-comment"># the error between prediction and real data</span><br>cross_entropy = tf.reduce_mean(<br>  -tf.reduce_sum(ys * tf.log(prediction),<br>  reduction_indices=[<span class="hljs-number">1</span>])) <span class="hljs-comment"># loss</span><br>train_step = tf.train.GradientDescentOptimizer(<span class="hljs-number">0.5</span>).minimize(cross_entropy)<br><br>sess = tf.Session()<br><span class="hljs-comment"># important step</span><br><span class="hljs-comment"># tf.initialize_all_variables() no long valid from</span><br><span class="hljs-comment"># 2017-03-02 if using tensorflow >= 0.12</span><br><span class="hljs-keyword">if</span> int((tf.__version__).split(<span class="hljs-string">'.'</span>)[<span class="hljs-number">1</span>]) < <span class="hljs-number">12</span> <span class="hljs-keyword">and</span> int((tf.__version__).split(<span class="hljs-string">'.'</span>)[<span class="hljs-number">0</span>]) < <span class="hljs-number">1</span>:<br>  init = tf.initialize_all_variables()<br><span class="hljs-keyword">else</span>:<br>  init = tf.global_variables_initializer()<br>sess.run(init)<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1000</span>):<br>  batch_xs, batch_ys = mnist.train.next_batch(<span class="hljs-number">100</span>)<br>  sess.run(train_step, feed_dict={xs: batch_xs, ys: batch_ys})<br>  <span class="hljs-keyword">if</span> i % <span class="hljs-number">50</span> == <span class="hljs-number">0</span>:<br>    print(compute_accuracy(<br>      mnist.test.images, mnist.test.labels))<br></code></pre></td></tr></tbody></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server">Run server<a class="post-anchor" href="#Run-server"></a></h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></tbody></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files">Generate static files<a class="post-anchor" href="#Generate-static-files"></a></h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></tbody></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites">Deploy to remote sites<a class="post-anchor" href="#Deploy-to-remote-sites"></a></h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></tbody></table></figure>
-
-<h2 id="link">link<a class="post-anchor" href="#link"></a></h2><p><a href="/My-New-Post">Home</a></p>
-<h2 id="list">list<a class="post-anchor" href="#list"></a></h2><ul>
-<li><a href="/hexo-theme-book-demo/test/hexo-unit-test/categories">Categories</a></li>
-<li><a href="/hexo-theme-book-demo/test/hexo-unit-test/elements">Elements</a></li>
-<li><a href="/hexo-theme-book-demo/test/hexo-unit-test/excerpts">Excerpts</a></li>
-<li><a href="/hexo-theme-book-demo/test/hexo-unit-test/gallery-post">Gallery Post</a></li>
-</ul>
-<h2 id="avatar">avatar<a class="post-anchor" href="#avatar"></a></h2><p><a href data-caption="avatar" data-fancybox="images"><img src alt="avatar"></a></p>
-<h2 id="font-color">font-color<a class="post-anchor" href="#font-color"></a></h2><p><font color="#FF4500">balabala</font></p>
-<h2 id="font-bold">font-bold<a class="post-anchor" href="#font-bold"></a></h2><p><strong>balabala</strong></p>
-<h2 id="斜体">斜体<a class="post-anchor" href="#斜体"></a></h2><p><em>balabala</em></p>
-<h2 id="table">table<a class="post-anchor" href="#table"></a></h2><table>
-<thead>
-<tr>
-<th>对象</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>抽象工厂</td>
-<td>创建若干类系列的一个实例，无需详述具体的类</td>
-</tr>
-<tr>
-<td>生成器</td>
-<td>从表示中分离对象构建；总是创建相同类型的对象</td>
-</tr>
-<tr>
-<td>原型</td>
-<td>用于复制或克隆完全初始化的实例</td>
-</tr>
-<tr>
-<td>单例</td>
-<td>一个类在全局访问节点只有唯一一个实例</td>
-</tr>
-</tbody></table>
-<h2 id="表格对其">表格对其<a class="post-anchor" href="#表格对其"></a></h2><table>
-<thead>
-<tr>
-<th align="center">希伯来文(Hebrew)</th>
-<th align="center">希腊文(Greek)</th>
-<th align="center">英语(English)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">弥赛亚(Messiah)</td>
-<td align="center">基督(Christ)</td>
-<td align="center">受膏者(the anointed one)</td>
-</tr>
-</tbody></table>
+<p>本文是对<a href="https://morvanzhou.github.io/tutorials/" target="_blank" rel="noopener">周沫凡</a>同学tf课程的学习笔记记录。</p>
 </body></html>
 
   
@@ -257,12 +228,12 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2018/11/29/js%E5%88%A4%E6%96%AD%E5%80%BC%E6%98%AF%E5%90%A6%E6%98%AF%E6%95%B0%E5%AD%97/">js判断值是否是数字</a>
+          <a href="/2018/06/24/TensorFlow%E8%BF%87%E6%8B%9F%E5%90%88/">函数过拟合</a>
         
     </div>
     <div class="item right">
         
-          <a href="/2018/06/24/TensorFlow%E8%BF%87%E6%8B%9F%E5%90%88/">函数过拟合</a>
+          <a href="/2018/06/23/Tensorboard%E5%8F%AF%E8%A7%86%E5%8C%96/">Tensorboard可视化</a>
         
     </div>
   </div>
@@ -274,7 +245,7 @@
       本文作者：<a href="https://bbcfive.github.io">执白</a>
     </div>
     <!-- <div class="link">
-      永久链接：<a href="https://bbcfive.github.io/2018/11/13/hello-world/">https://bbcfive.github.io/2018/11/13/hello-world/</a>
+      永久链接：<a href="https://bbcfive.github.io/2018/06/24/TensorFlow%E7%9A%84classification/">https://bbcfive.github.io/2018/06/24/TensorFlow%E7%9A%84classification/</a>
     </div> -->
     <div class="declare">
       版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
