@@ -16,7 +16,7 @@
     <meta name="description" content="" />
     
     <title>
-      js中表达式 &gt;&gt;&gt; 0 浅析 - 执白的博客
+      graphQL入门-1 - 执白的博客
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -29,7 +29,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、-gt-gt-和-gt-gt-gt-区别"><span class="toc-text">一、&gt;&gt; 和 &gt;&gt;&gt; 区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、移位0有什么意义"><span class="toc-text">二、移位0有什么意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Uint32类型是如何转换的"><span class="toc-text">三、Uint32类型是如何转换的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、总结"><span class="toc-text">四、总结</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、简介"><span class="toc-text">一、简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、环境配置"><span class="toc-text">二、环境配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、hello-world"><span class="toc-text">三、hello world</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、使用"><span class="toc-text">四、使用</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -155,11 +155,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">js中表达式 >>> 0 浅析</div>
+      <div class="title">graphQL入门-1</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2020/05/13</span>
+          <span>2020/06/03</span>
         </span>
 
         
@@ -183,11 +183,7 @@
             <span>
                 
                   
-                    <a href="/tags/JavaScript">JavaScript</a>
-                  
-                
-                  
-                    <a href="/tags/基础原理">基础原理</a>
+                    <a href="/tags/graphQL">graphQL</a>
                   
                 
             </span>
@@ -197,28 +193,12 @@
       <div>
       </div>
     </div>
-    <html><head></head><body><p>本文转自：<a href="https://segmentfault.com/a/1190000014613703" target="_blank" rel="noopener">《js中表达式 >>> 0 浅析》</a></p>
-<h2 id="一、-gt-gt-和-gt-gt-gt-区别">一、>> 和 >>> 区别<a class="post-anchor" href="#一、-gt-gt-和-gt-gt-gt-区别"></a></h2><p><code>>>></code>是无符号右移，<code>>></code>是有符号移位</p>
-<p><code>>>有符号移位</code>：该操作符会将第一个操作数向右移动指定的位数。向右被移出的位被丢弃，拷贝最左侧的位以填充左侧</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">-9</span> >> <span class="hljs-number">2</span><br><span class="hljs-number">11111111111111111111111111110111</span>  <span class="hljs-comment">// -9 </span><br>-> <br><span class="hljs-number">11111111111111111111111111111101</span>   <span class="hljs-comment">// -3</span><br></code></pre></td></tr></tbody></table></figure>
+    <html><head></head><body><h2 id="一、简介">一、简介<a class="post-anchor" href="#一、简介"></a></h2><p>GraphQL是一种新的API标准，它提供了一种更高效、强大和灵活的数据提供方式。<br>GraphQL是api的查询语言，而不是数据库。<br>可以在使用API的任何环境中有效使用，我们可以理解为GraphQL是基于API之上的一层封装，目的是为了更好，更灵活的适用于业务的需求变化。</p>
+<h2 id="二、环境配置">二、环境配置<a class="post-anchor" href="#二、环境配置"></a></h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm init<br>npm install express graphql express-graphql -s<br></code></pre></td></tr></tbody></table></figure>
 
-<p><code>>>>无符号移位</code>：该操作符会将第一个操作数向右移动指定的位数。向右被移出的位被丢弃，左侧用0填充。因为符号位变成了 0，所以结果总是非负的。（即便右移 0 个比特，结果也是非负的。）</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">9</span> >>> <span class="hljs-number">2</span><br><span class="hljs-number">00000000000000000000000000001001</span>   <span class="hljs-comment">// 9 </span><br>->  <br><span class="hljs-number">00000000000000000000000000000010</span> <span class="hljs-comment">// 2</span><br></code></pre></td></tr></tbody></table></figure>
+<h2 id="三、hello-world">三、hello world<a class="post-anchor" href="#三、hello-world"></a></h2><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);<br><span class="hljs-keyword">const</span> {buildSchema} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'graphql'</span>);<br><span class="hljs-keyword">const</span> graphqlHTTP = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express-graphql'</span>);<br><br><span class="hljs-comment">// 定义schema，查询和类型</span><br><span class="hljs-keyword">const</span> schema = buildSchema(<span class="hljs-string">`</span><br><span class="hljs-string">  type Account {</span><br><span class="hljs-string">    name: String</span><br><span class="hljs-string">    age: Int</span><br><span class="hljs-string">    sex: String</span><br><span class="hljs-string">    department: String</span><br><span class="hljs-string">  }</span><br><span class="hljs-string">  type Query {</span><br><span class="hljs-string">    hello: String</span><br><span class="hljs-string">    accountName: String</span><br><span class="hljs-string">    age: Int</span><br><span class="hljs-string">    account: Account</span><br><span class="hljs-string">  }</span><br><span class="hljs-string">`</span>);<br><br><span class="hljs-comment">// 定义查询对应的处理器</span><br><span class="hljs-keyword">const</span> root = {<br>  hello: <span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">'hello world'</span>;<br>  },<br>  accountName: <span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">'irene'</span>;<br>  },<br>  age: <span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">18</span>;<br>  },<br>  account: <span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    <span class="hljs-keyword">return</span> {<br>      name: <span class="hljs-string">'mark'</span>,<br>      age: <span class="hljs-number">18</span>,<br>      sex: <span class="hljs-string">'male'</span>,<br>      department: <span class="hljs-string">'school'</span><br>    }<br>  }<br>}<br><br><span class="hljs-keyword">const</span> app = express();<br><br>app.use(<span class="hljs-string">'/graphql'</span>, graphqlHTTP({<br>  schema: schema,<br>  rootValue: root,<br>  graphiql: <span class="hljs-literal">true</span><br>}))<br><br>app.listen(<span class="hljs-number">3000</span>);<br></code></pre></td></tr></tbody></table></figure>
 
-<p>根据文档说明即使移动0位也可以将一个负数变成正数，甚至也可以将一个小数变成整数，将未定义的值转换为0，那到底移动0位是什么意思。</p>
-<h2 id="二、移位0有什么意义">二、移位0有什么意义<a class="post-anchor" href="#二、移位0有什么意义"></a></h2><p>查过一些资料，其中stackoverflow里面有一个高票回答，里面有这么一句话</p>
-<blockquote>
-<p>It doesn’t just convert non-Numbers to Number, it converts them to Numbers that can be expressed as 32-bit unsigned ints.</p>
-</blockquote>
-<p>原来移位操作符在移位前做了两种转换，第一将不是number类型的数据转换为number，第二将number转换为无符号的32bit数据，也就是Uint32类型。这些与移位的位数无关，移位0位主要就是用了js的内部特性做了前两种转换。</p>
-<h2 id="三、Uint32类型是如何转换的">三、Uint32类型是如何转换的<a class="post-anchor" href="#三、Uint32类型是如何转换的"></a></h2><ol>
-<li>如果不能转换为Number，那就为0</li>
-<li>如果为非整数，先转换为整数，参考公式sign(n) ⋅ floor(abs(n))<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ToInteger</span>(<span class="hljs-params">x</span>) </span>{<br>    x = <span class="hljs-built_in">Number</span>(x);<br>    <span class="hljs-keyword">return</span> x < <span class="hljs-number">0</span> ? <span class="hljs-built_in">Math</span>.ceil(x) : <span class="hljs-built_in">Math</span>.floor(x);<br>}<br></code></pre></td></tr></tbody></table></figure></li>
-<li>如果是正数，返回正数，如果是负数，返回负数 + 2的30次方<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">modulo</span>(<span class="hljs-params">a, b</span>) </span>{<br>    <span class="hljs-keyword">return</span> a - <span class="hljs-built_in">Math</span>.floor(a/b)*b;<br>}<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ToUint32</span>(<span class="hljs-params">x</span>) </span>{<br>    <span class="hljs-keyword">return</span> modulo(ToInteger(x), <span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">2</span>, <span class="hljs-number">32</span>));<br>}<br></code></pre></td></tr></tbody></table></figure>
-
-</li>
-</ol>
-<h2 id="四、总结">四、总结<a class="post-anchor" href="#四、总结"></a></h2><p>x >>> 0本质上就是保证x有意义（为数字类型），且为正整数，在有效的数组范围内（0 ～ 0xFFFFFFFF），且在无意义的情况下缺省值为0。一个小小的表达式，隐藏着着多重的异常处理。</p>
+<h2 id="四、使用">四、使用<a class="post-anchor" href="#四、使用"></a></h2><p>用node启动本文件，在localhost:3000/graphql中可以看到运行界面。</p>
 </body></html>
 
   
@@ -245,12 +225,12 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2020/06/03/graphQL%E5%85%A5%E9%97%A8-1/">graphQL入门-1</a>
+          <a href="/2020/06/03/graphQL%E5%85%A5%E9%97%A8-2/">从客户端访问graphQL</a>
         
     </div>
     <div class="item right">
         
-          <a href="/2020/05/13/%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%8A%AB%E6%8C%81%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86/">关于数据劫持与数据代理</a>
+          <a href="/2020/05/13/js%E4%B8%AD%E8%A1%A8%E8%BE%BE%E5%BC%8F%20%3E%3E%3E%200%20%E6%B5%85%E6%9E%90/">js中表达式 >>> 0 浅析</a>
         
     </div>
   </div>
@@ -262,7 +242,7 @@
       本文作者：<a href="https://bbcfive.github.io">执白</a>
     </div>
     <!-- <div class="link">
-      永久链接：<a href="https://bbcfive.github.io/2020/05/13/js%E4%B8%AD%E8%A1%A8%E8%BE%BE%E5%BC%8F%20%3E%3E%3E%200%20%E6%B5%85%E6%9E%90/">https://bbcfive.github.io/2020/05/13/js%E4%B8%AD%E8%A1%A8%E8%BE%BE%E5%BC%8F%20%3E%3E%3E%200%20%E6%B5%85%E6%9E%90/</a>
+      永久链接：<a href="https://bbcfive.github.io/2020/06/03/graphQL%E5%85%A5%E9%97%A8-1/">https://bbcfive.github.io/2020/06/03/graphQL%E5%85%A5%E9%97%A8-1/</a>
     </div> -->
     <div class="declare">
       版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！

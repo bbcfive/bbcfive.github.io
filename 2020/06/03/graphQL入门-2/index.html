@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      从客户端访问graphQL - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、新建入口页面"><span class="toc-text">一、新建入口页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、配置静态文件"><span class="toc-text">二、配置静态文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、graphql-js"><span class="toc-text">三、graphql.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、使用"><span class="toc-text">四、使用</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">从客户端访问graphQL</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/06/03</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/graphQL">graphQL</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h2 id="一、新建入口页面">一、新建入口页面<a class="post-anchor" href="#一、新建入口页面"></a></h2><p>在主目录下建立public/index.html文件</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta"><!DOCTYPE <span class="hljs-meta-keyword">html</span>></span><br><span class="hljs-tag"><<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>></span><br><span class="hljs-tag"><<span class="hljs-name">head</span>></span><br>  <span class="hljs-tag"><<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>></span><br>  <span class="hljs-tag"><<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>></span><br>  <span class="hljs-tag"><<span class="hljs-name">title</span>></span>Document<span class="hljs-tag"></<span class="hljs-name">title</span>></span><br><span class="hljs-tag"></<span class="hljs-name">head</span>></span><br><span class="hljs-tag"><<span class="hljs-name">body</span>></span><br>  <span class="hljs-tag"><<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"getData()"</span>></span>获取数据<span class="hljs-tag"></<span class="hljs-name">button</span>></span><br><span class="hljs-tag"></<span class="hljs-name">body</span>></span><br><span class="hljs-tag"><<span class="hljs-name">script</span>></span><br><span class="actionscript">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getData</span><span class="hljs-params">()</span> </span>{</span><br><span class="actionscript">    <span class="hljs-keyword">const</span> query = `</span><br><span class="javascript">      query Account($username: <span class="hljs-built_in">String</span>, <span class="hljs-attr">$city</span>: <span class="hljs-built_in">String</span>) {</span><br>        account(username: $username) {<br>          name<br>          age<br>          sex<br>          salary(city: $city)<br>        }<br>      }<br>    `<br><br><span class="actionscript">    <span class="hljs-keyword">const</span> variables = {username: <span class="hljs-string">'four'</span>, city: <span class="hljs-string">'chongqing'</span>}</span><br><br><span class="actionscript">    fetch(<span class="hljs-string">'/graphql'</span>, {</span><br><span class="actionscript">      method: <span class="hljs-string">'POST'</span>,</span><br>      headers: {<br><span class="actionscript">        <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>,</span><br><span class="actionscript">        <span class="hljs-string">'Accept'</span>: <span class="hljs-string">'application/json'</span>,</span><br>      },<br><span class="actionscript">      <span class="hljs-comment">// JSON.stringify <=> JSON.parse</span></span><br><span class="javascript">      body: <span class="hljs-built_in">JSON</span>.stringify({</span><br>        query,<br>        variables: variables,<br>      })<br>    })<br><span class="javascript">    .then(<span class="hljs-function"><span class="hljs-params">res</span> =></span> res.json())</span><br><span class="javascript">    .then(<span class="hljs-function"><span class="hljs-params">data</span> =></span> <span class="hljs-built_in">console</span>.log(data));</span><br>  }<br><span class="hljs-tag"></<span class="hljs-name">script</span>></span><br><span class="hljs-tag"></<span class="hljs-name">html</span>></span><br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="二、配置静态文件">二、配置静态文件<a class="post-anchor" href="#二、配置静态文件"></a></h2><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">app.use(express.static(<span class="hljs-string">'public'</span>))<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="三、graphql-js">三、graphql.js<a class="post-anchor" href="#三、graphql-js"></a></h2><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);<br><span class="hljs-keyword">const</span> {buildSchema} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'graphql'</span>);<br><span class="hljs-keyword">const</span> graphqlHTTP = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express-graphql'</span>);<br><br><span class="hljs-keyword">const</span> schema = buildSchema(<span class="hljs-string">`</span><br><span class="hljs-string">  type Account {</span><br><span class="hljs-string">    name: String</span><br><span class="hljs-string">    age: Int</span><br><span class="hljs-string">    sex: String</span><br><span class="hljs-string">    department: String</span><br><span class="hljs-string">    salary(city: String): Int</span><br><span class="hljs-string">  }</span><br><span class="hljs-string">  type Query {</span><br><span class="hljs-string">    getClassMates(classNo: Int!): [String]</span><br><span class="hljs-string">    account(username: String): Account</span><br><span class="hljs-string">  }</span><br><span class="hljs-string">`</span>);<br><br><span class="hljs-keyword">const</span> root = {<br>  getClassMates({ classNo }) {<br>    <span class="hljs-keyword">const</span> obj = {<br>      <span class="hljs-number">31</span>: [<span class="hljs-string">'h'</span>, <span class="hljs-string">'l'</span>, <span class="hljs-string">'c'</span>],<br>      <span class="hljs-number">61</span>: [<span class="hljs-string">'m'</span>, <span class="hljs-string">'n'</span>, <span class="hljs-string">'j'</span>]<br>    }<br>    <span class="hljs-keyword">return</span> obj[classNo];<br>  },<br>  account({ username }) {<br>    <span class="hljs-keyword">const</span> name = username;<br>    <span class="hljs-keyword">const</span> sex = <span class="hljs-string">'female'</span>;<br>    <span class="hljs-keyword">const</span> age = <span class="hljs-number">18</span>;<br>    <span class="hljs-keyword">const</span> department = <span class="hljs-string">'school'</span>;<br>    <span class="hljs-keyword">const</span> salary = <span class="hljs-function">(<span class="hljs-params">{city}</span>) =></span> {<br>      <span class="hljs-keyword">if</span>(city == <span class="hljs-string">"beijing"</span> || city == <span class="hljs-string">"shanghai"</span> || city == <span class="hljs-string">"guangzhou"</span> || city == <span class="hljs-string">"shenzhen"</span>) {<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">10000</span>;<br>      } <br>      <span class="hljs-keyword">return</span> <span class="hljs-number">3000</span>;<br>    }<br>    <span class="hljs-keyword">return</span> {<br>      name,<br>      sex,<br>      age,<br>      department,<br>      salary<br>    }<br>  }<br>}<br><br><span class="hljs-keyword">const</span> app = express();<br><br>app.use(<span class="hljs-string">'/graphql'</span>, graphqlHTTP({<br>  schema: schema,<br>  rootValue: root,<br>  graphiql: <span class="hljs-literal">true</span><br>}))<br><br>app.use(express.static(<span class="hljs-string">'public'</span>))<br><br>app.listen(<span class="hljs-number">3000</span>);<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="四、使用">四、使用<a class="post-anchor" href="#四、使用"></a></h2><p>node启动本文件后，在本地页面内的网络请求中可以看到相关数据。</p>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/06/03/graphQL%E5%85%A5%E9%97%A8-3/">mutation</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/06/03/graphQL%E5%85%A5%E9%97%A8-1/">graphQL入门-1</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2020/06/03/graphQL%E5%85%A5%E9%97%A8-2/">https://bbcfive.github.io/2020/06/03/graphQL%E5%85%A5%E9%97%A8-2/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

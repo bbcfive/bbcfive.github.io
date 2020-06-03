@@ -16,7 +16,7 @@
     <meta name="description" content="" />
     
     <title>
-      js中表达式 &gt;&gt;&gt; 0 浅析 - 执白的博客
+      middleware - 执白的博客
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -29,7 +29,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、-gt-gt-和-gt-gt-gt-区别"><span class="toc-text">一、&gt;&gt; 和 &gt;&gt;&gt; 区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、移位0有什么意义"><span class="toc-text">二、移位0有什么意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Uint32类型是如何转换的"><span class="toc-text">三、Uint32类型是如何转换的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、总结"><span class="toc-text">四、总结</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用中间件进行权限的控制"><span class="toc-text">使用中间件进行权限的控制</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -155,11 +155,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">js中表达式 >>> 0 浅析</div>
+      <div class="title">middleware</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2020/05/13</span>
+          <span>2020/06/03</span>
         </span>
 
         
@@ -183,11 +183,7 @@
             <span>
                 
                   
-                    <a href="/tags/JavaScript">JavaScript</a>
-                  
-                
-                  
-                    <a href="/tags/基础原理">基础原理</a>
+                    <a href="/tags/graphQL">graphQL</a>
                   
                 
             </span>
@@ -197,29 +193,7 @@
       <div>
       </div>
     </div>
-    <html><head></head><body><p>本文转自：<a href="https://segmentfault.com/a/1190000014613703" target="_blank" rel="noopener">《js中表达式 >>> 0 浅析》</a></p>
-<h2 id="一、-gt-gt-和-gt-gt-gt-区别">一、>> 和 >>> 区别<a class="post-anchor" href="#一、-gt-gt-和-gt-gt-gt-区别"></a></h2><p><code>>>></code>是无符号右移，<code>>></code>是有符号移位</p>
-<p><code>>>有符号移位</code>：该操作符会将第一个操作数向右移动指定的位数。向右被移出的位被丢弃，拷贝最左侧的位以填充左侧</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">-9</span> >> <span class="hljs-number">2</span><br><span class="hljs-number">11111111111111111111111111110111</span>  <span class="hljs-comment">// -9 </span><br>-> <br><span class="hljs-number">11111111111111111111111111111101</span>   <span class="hljs-comment">// -3</span><br></code></pre></td></tr></tbody></table></figure>
-
-<p><code>>>>无符号移位</code>：该操作符会将第一个操作数向右移动指定的位数。向右被移出的位被丢弃，左侧用0填充。因为符号位变成了 0，所以结果总是非负的。（即便右移 0 个比特，结果也是非负的。）</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">9</span> >>> <span class="hljs-number">2</span><br><span class="hljs-number">00000000000000000000000000001001</span>   <span class="hljs-comment">// 9 </span><br>->  <br><span class="hljs-number">00000000000000000000000000000010</span> <span class="hljs-comment">// 2</span><br></code></pre></td></tr></tbody></table></figure>
-
-<p>根据文档说明即使移动0位也可以将一个负数变成正数，甚至也可以将一个小数变成整数，将未定义的值转换为0，那到底移动0位是什么意思。</p>
-<h2 id="二、移位0有什么意义">二、移位0有什么意义<a class="post-anchor" href="#二、移位0有什么意义"></a></h2><p>查过一些资料，其中stackoverflow里面有一个高票回答，里面有这么一句话</p>
-<blockquote>
-<p>It doesn’t just convert non-Numbers to Number, it converts them to Numbers that can be expressed as 32-bit unsigned ints.</p>
-</blockquote>
-<p>原来移位操作符在移位前做了两种转换，第一将不是number类型的数据转换为number，第二将number转换为无符号的32bit数据，也就是Uint32类型。这些与移位的位数无关，移位0位主要就是用了js的内部特性做了前两种转换。</p>
-<h2 id="三、Uint32类型是如何转换的">三、Uint32类型是如何转换的<a class="post-anchor" href="#三、Uint32类型是如何转换的"></a></h2><ol>
-<li>如果不能转换为Number，那就为0</li>
-<li>如果为非整数，先转换为整数，参考公式sign(n) ⋅ floor(abs(n))<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ToInteger</span>(<span class="hljs-params">x</span>) </span>{<br>    x = <span class="hljs-built_in">Number</span>(x);<br>    <span class="hljs-keyword">return</span> x < <span class="hljs-number">0</span> ? <span class="hljs-built_in">Math</span>.ceil(x) : <span class="hljs-built_in">Math</span>.floor(x);<br>}<br></code></pre></td></tr></tbody></table></figure></li>
-<li>如果是正数，返回正数，如果是负数，返回负数 + 2的30次方<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">modulo</span>(<span class="hljs-params">a, b</span>) </span>{<br>    <span class="hljs-keyword">return</span> a - <span class="hljs-built_in">Math</span>.floor(a/b)*b;<br>}<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ToUint32</span>(<span class="hljs-params">x</span>) </span>{<br>    <span class="hljs-keyword">return</span> modulo(ToInteger(x), <span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">2</span>, <span class="hljs-number">32</span>));<br>}<br></code></pre></td></tr></tbody></table></figure>
-
-</li>
-</ol>
-<h2 id="四、总结">四、总结<a class="post-anchor" href="#四、总结"></a></h2><p>x >>> 0本质上就是保证x有意义（为数字类型），且为正整数，在有效的数组范围内（0 ～ 0xFFFFFFFF），且在无意义的情况下缺省值为0。一个小小的表达式，隐藏着着多重的异常处理。</p>
-</body></html>
+    <html><head></head><body><h2 id="使用中间件进行权限的控制">使用中间件进行权限的控制<a class="post-anchor" href="#使用中间件进行权限的控制"></a></h2><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);<br><span class="hljs-keyword">const</span> {buildSchema} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'graphql'</span>);<br><span class="hljs-keyword">const</span> graphqlHTTP = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express-graphql'</span>);<br><br><span class="hljs-comment">// 定义schema，查询和类型</span><br><span class="hljs-keyword">const</span> schema = buildSchema(<span class="hljs-string">`</span><br><span class="hljs-string">  input AccountInput {</span><br><span class="hljs-string">    name: String</span><br><span class="hljs-string">    age: Int</span><br><span class="hljs-string">    sex: String</span><br><span class="hljs-string">    department: String</span><br><span class="hljs-string">  }</span><br><span class="hljs-string">  type Account {</span><br><span class="hljs-string">    name: String</span><br><span class="hljs-string">    age: Int</span><br><span class="hljs-string">    sex: String</span><br><span class="hljs-string">    department: String</span><br><span class="hljs-string">  }</span><br><span class="hljs-string">  type Mutation {</span><br><span class="hljs-string">    createAccount(input: AccountInput): Account</span><br><span class="hljs-string">    updateAccount(id: ID!, input: AccountInput): Account</span><br><span class="hljs-string">  }</span><br><span class="hljs-string">  type Query {</span><br><span class="hljs-string">    accounts: [Account]</span><br><span class="hljs-string">  }</span><br><span class="hljs-string">`</span>);<br><br><span class="hljs-keyword">const</span> fakeDb = {};<br><br><span class="hljs-comment">// 定义查询对应的处理器</span><br><span class="hljs-keyword">const</span> root = {<br>  accounts() {<br>    <span class="hljs-comment">// 对象转数组以便输出</span><br>    <span class="hljs-keyword">var</span> arr = [];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">const</span> key <span class="hljs-keyword">in</span> fakeDb) {<br>      arr.push(fakeDb[key])<br>    }<br>    <span class="hljs-keyword">return</span> arr;<br>  },<br>  createAccount({input}) {<br>    <span class="hljs-comment">// 相当于数据库的保存</span><br>    fakeDb[input.name] = input;<br>    <span class="hljs-keyword">return</span> fakeDb[input.name];<br>  },<br>  updateAccount({id, input}) {<br>    <span class="hljs-comment">// 相当于数据库的更新</span><br>    <span class="hljs-keyword">const</span> updatedAccount = <span class="hljs-built_in">Object</span>.assign({}, fakeDb[id], input);<br>    fakeDb[id] = <span class="hljs-keyword">this</span>.updatedAccount;<br>    <span class="hljs-keyword">return</span> updatedAccount;<br>  }<br>}<br><br><span class="hljs-keyword">const</span> app = express();<br><br><span class="hljs-keyword">const</span> middleware = <span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =></span> {<br>  <span class="hljs-comment">// 手动更改cookie，实战中需要后端生成token给前端</span><br>  <span class="hljs-keyword">if</span>(req.url.indexOf(<span class="hljs-string">'/graphql'</span>) !== <span class="hljs-number">-1</span> && req.headers.cookie.indexOf(<span class="hljs-string">'auth'</span>) === <span class="hljs-number">-1</span>) {<br>    res.send(<span class="hljs-built_in">JSON</span>.stringify({<br>      error: <span class="hljs-string">"您没有权限访问这个接口"</span><br>    }));<br>    <span class="hljs-keyword">return</span>;<br>  }<br>  next();<br>}<br><br>app.use(middleware);<br><br>app.use(<span class="hljs-string">'/graphql'</span>, graphqlHTTP({<br>  schema: schema,<br>  rootValue: root,<br>  graphiql: <span class="hljs-literal">true</span><br>}))<br><br>app.listen(<span class="hljs-number">3000</span>);<br></code></pre></td></tr></tbody></table></figure></body></html>
 
   
     <!-- <div class="post-reward">
@@ -245,12 +219,12 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2020/06/03/graphQL%E5%85%A5%E9%97%A8-1/">graphQL入门-1</a>
+          <a href="/2020/06/03/graphQL%E5%85%A5%E9%97%A8-5/">使用GraphQLObjectType定义type</a>
         
     </div>
     <div class="item right">
         
-          <a href="/2020/05/13/%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%8A%AB%E6%8C%81%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86/">关于数据劫持与数据代理</a>
+          <a href="/2020/06/03/graphQL%E5%85%A5%E9%97%A8-3/">mutation</a>
         
     </div>
   </div>
@@ -262,7 +236,7 @@
       本文作者：<a href="https://bbcfive.github.io">执白</a>
     </div>
     <!-- <div class="link">
-      永久链接：<a href="https://bbcfive.github.io/2020/05/13/js%E4%B8%AD%E8%A1%A8%E8%BE%BE%E5%BC%8F%20%3E%3E%3E%200%20%E6%B5%85%E6%9E%90/">https://bbcfive.github.io/2020/05/13/js%E4%B8%AD%E8%A1%A8%E8%BE%BE%E5%BC%8F%20%3E%3E%3E%200%20%E6%B5%85%E6%9E%90/</a>
+      永久链接：<a href="https://bbcfive.github.io/2020/06/03/graphQL%E5%85%A5%E9%97%A8-4/">https://bbcfive.github.io/2020/06/03/graphQL%E5%85%A5%E9%97%A8-4/</a>
     </div> -->
     <div class="declare">
       版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
