@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      Typescript基础 - 执白的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、数据类型"><span class="toc-text">一、数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、函数的定义"><span class="toc-text">二、函数的定义</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">执白</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">执白</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/bbcfive" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">Typescript基础</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/06/05</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/TypeScript">TypeScript</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h2 id="一、数据类型">一、数据类型<a class="post-anchor" href="#一、数据类型"></a></h2><ol>
+<li><p>布尔类型(boolean)<br>var flag:boolean = true</p>
+</li>
+<li><p>数字类型(number)<br>var a:number = 123</p>
+</li>
+<li><p>字符串类型(string)<br>var string = “this is ts”</p>
+</li>
+<li><p>数组类型(array)<br>其中数组的定义方式有两种：<br>方法一<br> let arr:number[] = [1,2,3,4]<br> let arr:string[] = [“php”, “js”, “golang”]</p>
+<p>方法二<br> let arr:Array<number> = [1,2,3,4]<br> let arr:Array<string> = [“php”, “js”, “golang”]</string></number></p>
+</li>
+<li><p>元组类型(tuple) (属于数组的一种<br>let arr:[string,number,boolean] = [“ts”,3.18,true]</p>
+</li>
+<li><p>枚举类型(enum) 用于标识状态的固定值，提升可读性</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">enum Flag { success = <span class="hljs-number">1</span>, error = <span class="hljs-number">-1</span>}<br><span class="hljs-keyword">var</span> f:Flag = Flag.success<br></code></pre></td></tr></tbody></table></figure></li>
+<li><p>任意类型(any)<br>var num:any = 123;</p>
+</li>
+<li><p>null和undefined 其他数据类型的子类型<br>var num:undefined;<br>var num:number | undefined;<br>var num:number | undefined | null;  </p>
+</li>
+<li><p>void类型 用于定义方法的时候方法没有返回值</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span>(<span class="hljs-params"></span>):<span class="hljs-title">viod</span> </span>{<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'run'</span>);<br>}<br><span class="hljs-comment">// 反之</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span>(<span class="hljs-params"></span>):<span class="hljs-title">number</span> </span>{<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">123</span>;<br>}<br></code></pre></td></tr></tbody></table></figure></li>
+<li><p>never类型<br>指其他类型(包括null和undefined)，代表从不会出现的值<br>声明never类型的变量只能被never类型所赋值</p>
+</li>
+</ol>
+<h2 id="二、函数的定义">二、函数的定义<a class="post-anchor" href="#二、函数的定义"></a></h2><ol>
+<li><p>一般定义<br>function run():number {<br> return 123;<br>}  </p>
+</li>
+<li><p>传参定义</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getInfo</span>(<span class="hljs-params">name:string, age:number</span>):<span class="hljs-title">string</span> </span>{<br>  <span class="hljs-comment">// 模板字符串</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${name}</span> --- <span class="hljs-subst">${age}</span>`</span>;<br>}<br><br><span class="hljs-comment">// 匿名函数</span><br><span class="hljs-keyword">var</span> getInfo = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name:string, age:number</span>):<span class="hljs-title">string</span> </span>{<br>  <span class="hljs-comment">// 模板字符串</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${name}</span> --- <span class="hljs-subst">${age}</span>`</span>;<br>}<br></code></pre></td></tr></tbody></table></figure></li>
+<li><p>可选参数</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getInfo</span>(<span class="hljs-params">name:string, age?:number</span>):<span class="hljs-title">string</span> </span>{<br>  <span class="hljs-keyword">if</span>(age) {<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${name}</span> --- <span class="hljs-subst">${age}</span>`</span>;<br>  } <span class="hljs-keyword">else</span> {<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${name}</span> --- 年龄保密`</span>;<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>默认参数</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getInfo</span>(<span class="hljs-params">name:string, age:number = <span class="hljs-number">20</span></span>):<span class="hljs-title">string</span> </span>{<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${name}</span> --- <span class="hljs-subst">${age}</span>`</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>剩余参数</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">a:number, b:number, c:number, d:number</span>):<span class="hljs-title">number</span> </span>{<br>  <span class="hljs-keyword">return</span> a+b+c+d;<br>}<br><br><span class="hljs-comment">// 三点运算符接受形参传过来的值</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">...result:number[]</span>):<span class="hljs-title">number</span> </span>{<br>  <span class="hljs-keyword">var</span> sum = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i < result.length; i++) {<br>    sum += result[i];<br>  }<br>  <span class="hljs-keyword">return</span> sum;<br>}<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">a:number, ...result:number[]</span>):<span class="hljs-title">number</span> </span>{<br>  <span class="hljs-keyword">var</span> sum = a;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i < result.length; i++) {<br>    sum += result[i];<br>  }<br>  <span class="hljs-keyword">return</span> sum;<br>}<br></code></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>函数重载</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// Java中的重载：指两个或两个以上同名函数，但它们的参数不一样，这时会出现函数重载情况。</span><br><span class="hljs-comment">// typescript中的重载：通过为同一个函数提供多个函数  类型定义来试下多种功能的目的。</span><br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getInfo</span>(<span class="hljs-params">name:string</span>):<span class="hljs-title">string</span>;</span><br><span class="hljs-function"><span class="hljs-title">function</span> <span class="hljs-title">getInfo</span>(<span class="hljs-params">age:number</span>):<span class="hljs-title">number</span>;</span><br><span class="hljs-function"><span class="hljs-title">function</span> <span class="hljs-title">getInfo</span>(<span class="hljs-params">str:any</span>):<span class="hljs-title">any</span> </span>{<br>  <span class="hljs-keyword">if</span> (typeOf str === <span class="hljs-string">"string"</span>) {<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">'我叫'</span> + str;<br>  } <span class="hljs-keyword">else</span> {<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">'我的年龄是'</span> + str;<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure></li>
+</ol>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/06/03/graphQL%E5%85%A5%E9%97%A8-5/">使用GraphQLObjectType定义type</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2020/06/05/Typescript%E5%9F%BA%E7%A1%80/">https://bbcfive.github.io/2020/06/05/Typescript%E5%9F%BA%E7%A1%80/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://bbcfive.github.io">执白</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
