@@ -16,7 +16,7 @@
     <meta name="description" content="" />
     
     <title>
-      test - 执白的博客
+      CPU和GPU的区别是什么？ - 执白的博客
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -29,7 +29,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Q："><span class="toc-text">Q：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Example"><span class="toc-text">Example:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A："><span class="toc-text">A：</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU-和-GPU-的区别是什么？"><span class="toc-text">CPU 和 GPU 的区别是什么？</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -155,11 +155,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">test</div>
+      <div class="title">CPU和GPU的区别是什么？</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2020/10/22</span>
+          <span>2020/11/09</span>
         </span>
 
         
@@ -170,7 +170,7 @@
           <span>
               
                 
-                  <a href="/categories/Algorithm">Algorithm</a>
+                  <a href="/categories/计算机原理">计算机原理</a>
                 
               
           </span>
@@ -183,7 +183,7 @@
             <span>
                 
                   
-                    <a href="/tags/Array">Array</a>
+                    <a href="/tags/基础原理">基础原理</a>
                   
                 
             </span>
@@ -193,13 +193,26 @@
       <div>
       </div>
     </div>
-    <html><head></head><body><p>test page test page</p>
-<h2 id="Q：">Q：<a class="post-anchor" href="#Q："></a></h2><p>Given an array nums of n integers, are there elements a , b , c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.</p>
-<p>Note:</p>
-<p>The solution set must not contain duplicate triplets.</p>
-<h4 id="Example">Example:<a class="post-anchor" href="#Example"></a></h4><p>Given array nums = [-1, 0, 1, 2, -1, -4],</p>
-<p>A solution set is:<br>[<br>[-1, 0, 1],<br>[-1, -1, 2]<br>] </p>
-<h2 id="A：">A：<a class="post-anchor" href="#A："></a></h2><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 3Sum</span><br><span class="hljs-comment"> * 三数之和</span><br><span class="hljs-comment">*/</span><br><br><span class="hljs-comment">// Complexity: O(n^2)</span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">{number[]}</span> <span class="hljs-variable">nums</span></span></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return <span class="hljs-type">{number[][]}</span></span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">var</span> threeSum = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">nums</span>) </span>{<br>  nums.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =></span> a - b)<br><br>  <span class="hljs-keyword">let</span> ans = []<br>  <span class="hljs-keyword">let</span> len = nums.length<br><br>  <span class="hljs-comment">// enumerate the array, and assume the item to be the smallest one</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i < len; i++ ) { <br><br>    <span class="hljs-comment">// have already enumerate the item as the smallest one among the three</span><br>    <span class="hljs-comment">// then continue</span><br>    <span class="hljs-keyword">if</span> (i && nums[i] === nums[i - <span class="hljs-number">1</span>]) <span class="hljs-keyword">continue</span> <br><br>    <span class="hljs-comment">// the sum of another two should be</span><br>    <span class="hljs-keyword">let</span> target = -nums[i]<br><br>    <span class="hljs-comment">// the indexes of another two </span><br>    <span class="hljs-keyword">let</span> [start, end] = [i + <span class="hljs-number">1</span>, len - <span class="hljs-number">1</span>]<br><br>    <span class="hljs-keyword">while</span> (start < end) {<br>      <span class="hljs-keyword">let</span> sum = nums[start] + nums[end]<br><br>      <span class="hljs-keyword">if</span> (sum > target) {<br>        end--<br>      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sum < target) {<br>        start++<br>      } <span class="hljs-keyword">else</span> {<br>        ans.push([nums[i], nums[start], nums[end]])<br>        <br>        <span class="hljs-comment">// remove the duplication</span><br>        <span class="hljs-keyword">while</span> (nums[start] === nums[start + <span class="hljs-number">1</span>]) <br>          start++<br>        start++<br><br>        <span class="hljs-comment">// remove the duplication</span><br>        <span class="hljs-keyword">while</span> (nums[end] === nums[end - <span class="hljs-number">1</span>])<br>          end--<br>        end--<br>      }<br>    }<br>  }<br><br>  <span class="hljs-keyword">return</span> ans<br>}<br></code></pre></td></tr></tbody></table></figure></body></html>
+    <html><head></head><body><h2 id="CPU-和-GPU-的区别是什么？">CPU 和 GPU 的区别是什么？<a class="post-anchor" href="#CPU-和-GPU-的区别是什么？"></a></h2><p>一、 为什么产生区别</p>
+<p>  CPU 和 GPU 的不同，是因为其设计目标的不同：</p>
+<ul>
+<li><p>CPU：需要很强的通用性来处理各种不同的数据类型，同时又要逻辑判断，又会引入大量的分支跳转和中断处理，因此CPU内部结构异常复杂。</p>
+</li>
+<li><p>GPU：面对类型高度统一、相互无依赖的大规模数据和不需要被打断从纯计算环境。</p>
+<p>因此两者呈现出不同的架构：<br><a href="https://pic1.zhimg.com/80/918367f36e34c18dc1f92bd16760dae1_720w.jpg?source=1940ef5c" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://pic1.zhimg.com/80/918367f36e34c18dc1f92bd16760dae1_720w.jpg?source=1940ef5c" alt="avatar"></a></p>
+</li>
+</ul>
+<p>二、架构区别</p>
+<ul>
+<li>CPU：大量cache空间、复杂的控制逻辑、诸多优化电路。</li>
+<li>GPU：数量众多的计算单元、超长的流水线、非常简单的控制逻辑、无cache。<br><a href="https://pic3.zhimg.com/80/894e6d2f20921e7c8be985bbb0dac5d5_720w.jpg?source=1940ef5c" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://pic3.zhimg.com/80/894e6d2f20921e7c8be985bbb0dac5d5_720w.jpg?source=1940ef5c" alt="avatar"></a><br>注：</li>
+</ul>
+<ol>
+<li>多寄存器可以支持非常多的Thread,thread需要用到register,thread数目大，register也必须得跟着很大才行。</li>
+<li>SIMD(Single Instruction Multiple Data)架构：单指令多数据流，以同步方式，在同一时间内执行同一条指令。</li>
+</ol>
+<p>三、总结</p>
+<pre><code>CPU有强大的ALU（算术运算单元），能够处理复杂的计算问题。GPU是基于大的吞吐量设计，易于计算密集型程序和并行程序的运行。</code></pre></body></html>
 
   
     <!-- <div class="post-reward">
@@ -240,7 +253,7 @@
       本文作者：<a href="https://bbcfive.github.io">执白</a>
     </div>
     <!-- <div class="link">
-      永久链接：<a href="https://bbcfive.github.io/2020/10/22/1test/">https://bbcfive.github.io/2020/10/22/1test/</a>
+      永久链接：<a href="https://bbcfive.github.io/2020/11/09/CPU%E5%92%8CGPU%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C/">https://bbcfive.github.io/2020/11/09/CPU%E5%92%8CGPU%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C/</a>
     </div> -->
     <div class="declare">
       版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
