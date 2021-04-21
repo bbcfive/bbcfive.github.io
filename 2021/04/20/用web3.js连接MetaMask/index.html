@@ -16,7 +16,7 @@
     <meta name="description" content="" />
     
     <title>
-      归档 - 执白的博客
+      用web3.js连接MetaMask - 执白的博客
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -26,6 +26,11 @@
   <meta name="generator" content="Hexo 4.2.0"></head>
   <body>
     <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、基本概念"><span class="toc-text">一、基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、具体实现"><span class="toc-text">二、具体实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、TF-IDF的量化过程"><span class="toc-text">三、TF-IDF的量化过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、实现"><span class="toc-text">四、实现</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -60,7 +65,7 @@
           首页
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -110,7 +115,7 @@
             首页
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -147,52 +152,137 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-            
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2018" >
-                2018
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2018/06/23/TensorFlow%E5%BB%BA%E9%80%A0%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" title="TensorFlow建造神经网络">
-                <span>2018/06/23</span>
-                <span>TensorFlow建造神经网络</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2018/06/22/TensorFlow%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="TensorFlow基础知识">
-                <span>2018/06/22</span>
-                <span>TensorFlow基础知识</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/12/">12</a><a class="page-number" href="/archives/page/13/">13</a><span class="page-number current">14</span>
-</div>
-</div>
+      <div class="title">用web3.js连接MetaMask</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/04/20</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/区块链">区块链</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/智能合约">智能合约</a>
+                  
+                
+                  
+                    <a href="/tags/以太坊">以太坊</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h2 id="一、基本概念">一、基本概念<a class="post-anchor" href="#一、基本概念"></a></h2><p>  MetaMask是基于ETH链的钱包，web3.js是一个前端库。前端页面可以通过web3.js来将web app连接MetaMask钱包（一般是以一个Chrome插件的形式存在于浏览器中），从而进行交易。</p>
+<h2 id="二、具体实现">二、具体实现<a class="post-anchor" href="#二、具体实现"></a></h2><p>  IF是指一个词在文档中出现的频率，一般来说出现频率越高的词，越能作为本篇文章的关键词，但也有特殊情况，例如文章中大量出现的“我”， “本文”等无意义的词，虽然其词频（TF）很高，但区分度（IDF）不大。于是我们把局部信息TF和全局信息IDF结合在一起分析的时候，就能得到更准确的结论。</p>
+<h2 id="三、TF-IDF的量化过程">三、TF-IDF的量化过程<a class="post-anchor" href="#三、TF-IDF的量化过程"></a></h2><p>  TF-IDF的本质就是将词语重要程度转换成向量并进行量化计算的操作，假设现有三个词语：“WordA”、“WordB”、“WordC”和三个文档“Doc1”，“Doc2”，“Doc3”，我们可以用TF-IDF表达每个word在doc里出现的具体次数，从而将文档量化成一个三维向量：</p>
+<table>
+<thead>
+<tr>
+<th align="center">vector</th>
+<th align="center">WordA</th>
+<th align="center">WordB</th>
+<th align="center">WordC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Doc1</td>
+<td align="center">x1 = 1</td>
+<td align="center">y1 = 13</td>
+<td align="center">z1 = 7</td>
+</tr>
+<tr>
+<td align="center">Doc2</td>
+<td align="center">x2 = 2</td>
+<td align="center">y2 = 12</td>
+<td align="center">z2 = 6</td>
+</tr>
+<tr>
+<td align="center">Doc3</td>
+<td align="center">x3 = 3</td>
+<td align="center">y3 = 11</td>
+<td align="center">z3 = 5</td>
+</tr>
+</tbody></table>
+<p>当我们把向量展示在三维坐标系中，两个空间向量之间的夹角，比如cosine的距离，就是文档的相似度。</p>
+<h2 id="四、实现">四、实现<a class="post-anchor" href="#四、实现"></a></h2><p>代码参考：<a href="https://github.com/bbcfive/Python-project/blob/master/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AF%87/NLP/tf-idf.py" target="_blank" rel="noopener">https://github.com/bbcfive/Python-project/blob/master/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AF%87/NLP/tf-idf.py</a></p>
+</body></html>
+
+  
+    <!-- <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div> -->
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/04/08/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%B8%AD%E7%9A%84TF-IDF/">搜索引擎中的TF-IDF</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://bbcfive.github.io">执白</a>
+    </div>
+    <!-- <div class="link">
+      永久链接：<a href="https://bbcfive.github.io/2021/04/20/%E7%94%A8web3.js%E8%BF%9E%E6%8E%A5MetaMask/">https://bbcfive.github.io/2021/04/20/%E7%94%A8web3.js%E8%BF%9E%E6%8E%A5MetaMask/</a>
+    </div> -->
+    <div class="declare">
+      版权声明：本文首发于<a href="https://bbcfive.github.io">执白</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2021
