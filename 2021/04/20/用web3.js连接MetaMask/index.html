@@ -16,7 +16,7 @@
     <meta name="description" content="" />
     
     <title>
-      用web3.js连接MetaMask - 执白的博客
+      连接webApp到MetaMask钱包 - 执白的博客
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -29,7 +29,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、基本概念"><span class="toc-text">一、基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、具体实现"><span class="toc-text">二、具体实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、TF-IDF的量化过程"><span class="toc-text">三、TF-IDF的量化过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、实现"><span class="toc-text">四、实现</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、基本概念"><span class="toc-text">一、基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、具体实现"><span class="toc-text">二、具体实现</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -155,7 +155,7 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">用web3.js连接MetaMask</div>
+      <div class="title">连接webApp到MetaMask钱包</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
@@ -198,38 +198,8 @@
       </div>
     </div>
     <html><head></head><body><h2 id="一、基本概念">一、基本概念<a class="post-anchor" href="#一、基本概念"></a></h2><p>  MetaMask是基于ETH链的钱包，web3.js是一个前端库。前端页面可以通过web3.js来将web app连接MetaMask钱包（一般是以一个Chrome插件的形式存在于浏览器中），从而进行交易。</p>
-<h2 id="二、具体实现">二、具体实现<a class="post-anchor" href="#二、具体实现"></a></h2><p>  IF是指一个词在文档中出现的频率，一般来说出现频率越高的词，越能作为本篇文章的关键词，但也有特殊情况，例如文章中大量出现的“我”， “本文”等无意义的词，虽然其词频（TF）很高，但区分度（IDF）不大。于是我们把局部信息TF和全局信息IDF结合在一起分析的时候，就能得到更准确的结论。</p>
-<h2 id="三、TF-IDF的量化过程">三、TF-IDF的量化过程<a class="post-anchor" href="#三、TF-IDF的量化过程"></a></h2><p>  TF-IDF的本质就是将词语重要程度转换成向量并进行量化计算的操作，假设现有三个词语：“WordA”、“WordB”、“WordC”和三个文档“Doc1”，“Doc2”，“Doc3”，我们可以用TF-IDF表达每个word在doc里出现的具体次数，从而将文档量化成一个三维向量：</p>
-<table>
-<thead>
-<tr>
-<th align="center">vector</th>
-<th align="center">WordA</th>
-<th align="center">WordB</th>
-<th align="center">WordC</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Doc1</td>
-<td align="center">x1 = 1</td>
-<td align="center">y1 = 13</td>
-<td align="center">z1 = 7</td>
-</tr>
-<tr>
-<td align="center">Doc2</td>
-<td align="center">x2 = 2</td>
-<td align="center">y2 = 12</td>
-<td align="center">z2 = 6</td>
-</tr>
-<tr>
-<td align="center">Doc3</td>
-<td align="center">x3 = 3</td>
-<td align="center">y3 = 11</td>
-<td align="center">z3 = 5</td>
-</tr>
-</tbody></table>
-<p>当我们把向量展示在三维坐标系中，两个空间向量之间的夹角，比如cosine的距离，就是文档的相似度。</p>
-<h2 id="四、实现">四、实现<a class="post-anchor" href="#四、实现"></a></h2><p>代码参考：<a href="https://github.com/bbcfive/Python-project/blob/master/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AF%87/NLP/tf-idf.py" target="_blank" rel="noopener">https://github.com/bbcfive/Python-project/blob/master/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AF%87/NLP/tf-idf.py</a></p>
+<h2 id="二、具体实现">二、具体实现<a class="post-anchor" href="#二、具体实现"></a></h2>  <figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> Web3 <span class="hljs-keyword">from</span> <span class="hljs-string">"web3"</span>;<br><br><span class="hljs-keyword">const</span> onSubmit = <span class="hljs-function">(<span class="hljs-params">values</span>) =></span> {<br>  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.ethereum?.isMetaMask) {<br>    <span class="hljs-built_in">window</span>.web3 = <span class="hljs-keyword">new</span> Web3(<span class="hljs-built_in">window</span>.ethereum);<br>    <span class="hljs-built_in">window</span>.ethereum.enable();<br>  } <span class="hljs-keyword">else</span> {<br>    alert(<span class="hljs-string">'请先下载Chrome应用商店内下载MetaMask!'</span>);<br>  }<br>};<br></code></pre></td></tr></tbody></table></figure>
+<p>  然后将onSubmit函数绑定到页面中的一个button上，当点击button时，如果检测到Chrome中已安装MetaMask插件，则会直接调出钱包并自动连接：<br>  <a href="https://img2020.cnblogs.com/blog/1549437/202104/1549437-20210421144245932-535278272.png" target="_blank" rel="noopener" data-caption="avatar" data-fancybox="images"><img src="https://img2020.cnblogs.com/blog/1549437/202104/1549437-20210421144245932-535278272.png" alt="avatar"></a></p>
 </body></html>
 
   
